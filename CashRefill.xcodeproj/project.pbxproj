@@ -1,0 +1,415 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5C8EB73E28358C67007D2237 /* CashRefillApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB73D28358C67007D2237 /* CashRefillApp.swift */; };
+		5C8EB74228358C69007D2237 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C8EB74128358C69007D2237 /* Assets.xcassets */; };
+		5C8EB74528358C69007D2237 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C8EB74428358C69007D2237 /* Preview Assets.xcassets */; };
+		5C8EB74C28358CA2007D2237 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB74B28358CA1007D2237 /* HomeView.swift */; };
+		5C8EB74F28358D7F007D2237 /* ItemsContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB74D28358D7F007D2237 /* ItemsContainer.xcdatamodeld */; };
+		5C8EB7522835B870007D2237 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB7512835B870007D2237 /* UIApplication.swift */; };
+		5C8EB7572836818D007D2237 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB7562836818D007D2237 /* HomeViewModel.swift */; };
+		5C8EB759283693BC007D2237 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB758283693BC007D2237 /* AccountModel.swift */; };
+		5C8EB75D2836986D007D2237 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB75C2836986D007D2237 /* AccountView.swift */; };
+		5C8EB7612836A851007D2237 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB7602836A851007D2237 /* AddView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5C8EB73A28358C67007D2237 /* StopSpendings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StopSpendings.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C8EB73D28358C67007D2237 /* CashRefillApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashRefillApp.swift; sourceTree = "<group>"; };
+		5C8EB74128358C69007D2237 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5C8EB74428358C69007D2237 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5C8EB74B28358CA1007D2237 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		5C8EB74E28358D7F007D2237 /* ItemsContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ItemsContainer.xcdatamodel; sourceTree = "<group>"; };
+		5C8EB7512835B870007D2237 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		5C8EB7562836818D007D2237 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		5C8EB758283693BC007D2237 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		5C8EB75C2836986D007D2237 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		5C8EB7602836A851007D2237 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5C8EB73728358C67007D2237 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5C8EB73128358C67007D2237 = {
+			isa = PBXGroup;
+			children = (
+				5C8EB73C28358C67007D2237 /* CashRefill */,
+				5C8EB73B28358C67007D2237 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5C8EB73B28358C67007D2237 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5C8EB73A28358C67007D2237 /* StopSpendings.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5C8EB73C28358C67007D2237 /* CashRefill */ = {
+			isa = PBXGroup;
+			children = (
+				5C8EB73D28358C67007D2237 /* CashRefillApp.swift */,
+				5C8EB7502835B851007D2237 /* Extensions */,
+				5C8EB75428368147007D2237 /* Models */,
+				5C8EB75328368128007D2237 /* Views */,
+				5C8EB7552836816D007D2237 /* View Models */,
+				5C8EB74128358C69007D2237 /* Assets.xcassets */,
+				5C8EB74328358C69007D2237 /* Preview Content */,
+			);
+			path = CashRefill;
+			sourceTree = "<group>";
+		};
+		5C8EB74328358C69007D2237 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5C8EB74428358C69007D2237 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5C8EB7502835B851007D2237 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5C8EB7512835B870007D2237 /* UIApplication.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5C8EB75328368128007D2237 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5C8EB74B28358CA1007D2237 /* HomeView.swift */,
+				5C8EB75C2836986D007D2237 /* AccountView.swift */,
+				5C8EB7602836A851007D2237 /* AddView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5C8EB75428368147007D2237 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5C8EB74D28358D7F007D2237 /* ItemsContainer.xcdatamodeld */,
+				5C8EB758283693BC007D2237 /* AccountModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5C8EB7552836816D007D2237 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				5C8EB7562836818D007D2237 /* HomeViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5C8EB73928358C67007D2237 /* CashRefill */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C8EB74828358C69007D2237 /* Build configuration list for PBXNativeTarget "CashRefill" */;
+			buildPhases = (
+				5C8EB73628358C67007D2237 /* Sources */,
+				5C8EB73728358C67007D2237 /* Frameworks */,
+				5C8EB73828358C67007D2237 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CashRefill;
+			productName = CashRefill;
+			productReference = 5C8EB73A28358C67007D2237 /* StopSpendings.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5C8EB73228358C67007D2237 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					5C8EB73928358C67007D2237 = {
+						CreatedOnToolsVersion = 13.4;
+					};
+				};
+			};
+			buildConfigurationList = 5C8EB73528358C67007D2237 /* Build configuration list for PBXProject "CashRefill" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5C8EB73128358C67007D2237;
+			productRefGroup = 5C8EB73B28358C67007D2237 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5C8EB73928358C67007D2237 /* CashRefill */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5C8EB73828358C67007D2237 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C8EB74528358C69007D2237 /* Preview Assets.xcassets in Resources */,
+				5C8EB74228358C69007D2237 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5C8EB73628358C67007D2237 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C8EB74F28358D7F007D2237 /* ItemsContainer.xcdatamodeld in Sources */,
+				5C8EB759283693BC007D2237 /* AccountModel.swift in Sources */,
+				5C8EB74C28358CA2007D2237 /* HomeView.swift in Sources */,
+				5C8EB7522835B870007D2237 /* UIApplication.swift in Sources */,
+				5C8EB7612836A851007D2237 /* AddView.swift in Sources */,
+				5C8EB75D2836986D007D2237 /* AccountView.swift in Sources */,
+				5C8EB7572836818D007D2237 /* HomeViewModel.swift in Sources */,
+				5C8EB73E28358C67007D2237 /* CashRefillApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5C8EB74628358C69007D2237 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5C8EB74728358C69007D2237 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5C8EB74928358C69007D2237 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CashRefill/Preview Content\"";
+				DEVELOPMENT_TEAM = UQJGK438M6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jantonowicz.CashRefill;
+				PRODUCT_NAME = StopSpendings;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		5C8EB74A28358C69007D2237 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CashRefill/Preview Content\"";
+				DEVELOPMENT_TEAM = UQJGK438M6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jantonowicz.CashRefill;
+				PRODUCT_NAME = StopSpendings;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5C8EB73528358C67007D2237 /* Build configuration list for PBXProject "CashRefill" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C8EB74628358C69007D2237 /* Debug */,
+				5C8EB74728358C69007D2237 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C8EB74828358C69007D2237 /* Build configuration list for PBXNativeTarget "CashRefill" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C8EB74928358C69007D2237 /* Debug */,
+				5C8EB74A28358C69007D2237 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5C8EB74D28358D7F007D2237 /* ItemsContainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5C8EB74E28358D7F007D2237 /* ItemsContainer.xcdatamodel */,
+			);
+			currentVersion = 5C8EB74E28358D7F007D2237 /* ItemsContainer.xcdatamodel */;
+			path = ItemsContainer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5C8EB73228358C67007D2237 /* Project object */;
+}
