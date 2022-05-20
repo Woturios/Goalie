@@ -28,7 +28,7 @@
 		5C08E94B2837E9B1001F6941 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		5C272F322837A2C00003E729 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		5C2E8D1D2836CAA100E5365D /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
-		5C8EB73A28358C67007D2237 /* StopSpendings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StopSpendings.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C8EB73A28358C67007D2237 /* Goalie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Goalie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C8EB73D28358C67007D2237 /* CashRefillApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashRefillApp.swift; sourceTree = "<group>"; };
 		5C8EB74128358C69007D2237 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C8EB74428358C69007D2237 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 		5C8EB73B28358C67007D2237 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5C8EB73A28358C67007D2237 /* StopSpendings.app */,
+				5C8EB73A28358C67007D2237 /* Goalie.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,7 +146,7 @@
 			);
 			name = CashRefill;
 			productName = CashRefill;
-			productReference = 5C8EB73A28358C67007D2237 /* StopSpendings.app */;
+			productReference = 5C8EB73A28358C67007D2237 /* Goalie.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -354,7 +354,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jantonowicz.CashRefill;
-				PRODUCT_NAME = StopSpendings;
+				PRODUCT_NAME = Goalie;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -384,7 +384,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jantonowicz.CashRefill;
-				PRODUCT_NAME = StopSpendings;
+				PRODUCT_NAME = Goalie;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

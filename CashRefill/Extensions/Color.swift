@@ -26,10 +26,10 @@ struct ColorTheme {
 
 struct GradientBackgroundTheme {
     
-    let accent = Color("AccentColor")
+    let accent = Color("GradientAccent")
     let background = RadialGradient(colors: [Color("SecondaryGradient").opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500)
     let reversed = Color("ReversedPrimary")
-    let secondaryText = Color("SecondaryTextColor")
+    let secondaryText = Color.primary
     let textFieldColor = Color("TextFieldColor")
     
 }
