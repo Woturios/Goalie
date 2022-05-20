@@ -27,7 +27,7 @@ struct HomeView: View {
                     Text("Add new")
                         .font(.headline)
                         .fontWeight(.bold)
-                        .foregroundColor(Color.accentColor)
+                        .foregroundColor(Color.theme.accent)
                     CircleButton(buttonName: "plus.circle.fill")
                 }
             }
@@ -40,7 +40,7 @@ struct HomeView: View {
                     Spacer()
                     Text("There is nothing on your list. Press + to add new item. 😱😨😰")
                         .font(.headline)
-                        .foregroundColor(Color.secondary)
+                        .foregroundColor(Color.theme.secondaryText)
                         .multilineTextAlignment(.center)
                     Spacer()
                     Spacer()
@@ -82,7 +82,7 @@ struct ListTitleView: View {
             .font(.title2)
             .fontWeight(.bold)
             .padding(.horizontal)
-            .foregroundColor(Color.accentColor)
+            .foregroundColor(Color.theme.accent)
     }
 }
 

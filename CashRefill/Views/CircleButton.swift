@@ -14,7 +14,7 @@ struct CircleButton: View {
     var body: some View {
         Image(systemName: buttonName)
             .font(.largeTitle)
-            .foregroundColor(Color.accentColor)
+            .foregroundColor(Color.theme.accent)
             .frame(width: 50, height: 50)
     }
 }

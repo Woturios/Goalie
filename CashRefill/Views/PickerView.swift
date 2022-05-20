@@ -14,7 +14,7 @@ struct PickerView: View {
     ]
     
     init() {
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.accentColor)
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.theme.accent)
         
         let attributes: [NSAttributedString.Key:Any] = [
             .foregroundColor : UIColor.white

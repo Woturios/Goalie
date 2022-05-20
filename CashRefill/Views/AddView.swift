@@ -22,7 +22,7 @@ struct AddView: View {
                 Text("Back")
                     .font(.headline)
                     .fontWeight(.bold)
-                    .foregroundColor(Color.accentColor)
+                    .foregroundColor(Color.theme.accent)
                 CircleButton(buttonName: "arrow.backward.circle.fill")
             }
                 .padding(.horizontal)
@@ -30,6 +30,7 @@ struct AddView: View {
                     self.presentationMode.wrappedValue.dismiss()
                 }
             Text("Add new item:")
+                .foregroundColor(Color.theme.accent)
                 .font(.title)
                 .fontWeight(.semibold)
                 .padding(.horizontal)
@@ -39,7 +40,7 @@ struct AddView: View {
                     .font(.headline)
                     .padding(.leading)
                     .frame(height: 55)
-                    .background(Color("SecondaryColor"))
+                    .background(Color.theme.textFieldColor)
                     .cornerRadius(10)
                     .padding(.horizontal)
                     .keyboardType(.alphabet)
@@ -48,7 +49,7 @@ struct AddView: View {
                     .font(.headline)
                     .padding(.leading)
                     .frame(height: 55)
-                    .background(Color("SecondaryColor"))
+                    .background(Color.theme.textFieldColor)
                     .cornerRadius(10)
                     .padding(.horizontal)
                     .keyboardType(.decimalPad)
@@ -64,10 +65,10 @@ struct AddView: View {
                 } label: {
                     Text("Add to my list 🥳")
                         .font(.headline)
-                        .foregroundColor(Color("ReversedPrimary"))
+                        .foregroundColor(Color.theme.reversed)
                         .frame(height: 55)
                         .frame(maxWidth: .infinity)
-                        .background(Color.accentColor)
+                        .background(Color.theme.accent)
                         .cornerRadius(10)
                         .padding(.horizontal)
                 }

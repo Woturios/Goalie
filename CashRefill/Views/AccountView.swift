@@ -14,8 +14,8 @@ struct AccountView: View {
     
     var body: some View {
             TabView {
-                AccountSummaryView(portfolioSummary: portfolioSummary, emoticonString: "💸", summaryTitle: "Balance", backgroundColor: Color.blue)
-                AccountSummaryView(portfolioSummary: 5000, emoticonString: "🏆", summaryTitle: "Goal", backgroundColor: Color.orange)
+                AccountSummaryView(portfolioSummary: portfolioSummary, emoticonString: "💸", summaryTitle: "Balance", backgroundColor: Color.blue, contentColor: Color.white)
+                AccountSummaryView(portfolioSummary: 5000, emoticonString: "🏆", summaryTitle: "Goal", backgroundColor: Color.orange, contentColor: Color.black)
             }
             .frame(height: 150)
             .tabViewStyle(.page)
@@ -44,6 +44,7 @@ struct AccountSummaryView: View {
     var emoticonString: String
     var summaryTitle: String
     var backgroundColor: Color
+    let contentColor: Color
     
     var body: some View {
         ZStack {
@@ -59,12 +60,12 @@ struct AccountSummaryView: View {
                     HStack {
                         Text(summaryTitle)
                             .font(.headline)
-                            .foregroundColor(Color("ReversedPrimary"))
+                            .foregroundColor(contentColor)
                     }
                     Text("\(portfolioSummary, specifier: "%.2f") zł")
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .foregroundColor(Color("ReversedPrimary"))
+                        .foregroundColor(contentColor)
                 }
             }
         }

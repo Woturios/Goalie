@@ -19,7 +19,7 @@ struct SettingsView: View {
                 Text("Back")
                     .font(.headline)
                     .fontWeight(.bold)
-                    .foregroundColor(Color.accentColor)
+                    .foregroundColor(Color.theme.accent)
                 CircleButton(buttonName: "arrow.backward.circle.fill")
             }
             .padding(.horizontal)
@@ -29,6 +29,7 @@ struct SettingsView: View {
             
             
             Text("Set your goal 🏆")
+                .foregroundColor(Color.theme.accent)
                 .font(.title)
                 .fontWeight(.semibold)
                 .padding(.horizontal)
@@ -41,7 +42,7 @@ struct SettingsView: View {
                 Spacer()
                 Text("Instead of spending money on things you don't really need, save them for something you really care about.")
                     .font(.headline)
-                    .foregroundColor(Color.secondary)
+                    .foregroundColor(Color.theme.secondaryText)
                     .bold()
                     .multilineTextAlignment(.center)
                 Spacer()

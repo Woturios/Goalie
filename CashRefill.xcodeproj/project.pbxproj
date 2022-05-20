@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C08E94A2837D9EC001F6941 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C08E9492837D9EC001F6941 /* Color.swift */; };
 		5C272F332837A2C00003E729 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C272F322837A2C00003E729 /* PickerView.swift */; };
 		5C2E8D1E2836CAA100E5365D /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E8D1D2836CAA100E5365D /* CircleButton.swift */; };
 		5C8EB73E28358C67007D2237 /* CashRefillApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB73D28358C67007D2237 /* CashRefillApp.swift */; };
@@ -16,13 +17,13 @@
 		5C8EB74F28358D7F007D2237 /* ItemsContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB74D28358D7F007D2237 /* ItemsContainer.xcdatamodeld */; };
 		5C8EB7522835B870007D2237 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB7512835B870007D2237 /* UIApplication.swift */; };
 		5C8EB7572836818D007D2237 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB7562836818D007D2237 /* HomeViewModel.swift */; };
-		5C8EB759283693BC007D2237 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB758283693BC007D2237 /* AccountModel.swift */; };
 		5C8EB75D2836986D007D2237 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB75C2836986D007D2237 /* AccountView.swift */; };
 		5C8EB7612836A851007D2237 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB7602836A851007D2237 /* AddView.swift */; };
 		5CE01B182837968E0074F6AE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE01B172837968E0074F6AE /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C08E9492837D9EC001F6941 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		5C272F322837A2C00003E729 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		5C2E8D1D2836CAA100E5365D /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		5C8EB73A28358C67007D2237 /* StopSpendings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StopSpendings.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,7 +34,6 @@
 		5C8EB74E28358D7F007D2237 /* ItemsContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ItemsContainer.xcdatamodel; sourceTree = "<group>"; };
 		5C8EB7512835B870007D2237 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		5C8EB7562836818D007D2237 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		5C8EB758283693BC007D2237 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		5C8EB75C2836986D007D2237 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		5C8EB7602836A851007D2237 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		5CE01B172837968E0074F6AE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -92,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				5C8EB7512835B870007D2237 /* UIApplication.swift */,
+				5C08E9492837D9EC001F6941 /* Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -113,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				5C8EB74D28358D7F007D2237 /* ItemsContainer.xcdatamodeld */,
-				5C8EB758283693BC007D2237 /* AccountModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -197,7 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C8EB74F28358D7F007D2237 /* ItemsContainer.xcdatamodeld in Sources */,
-				5C8EB759283693BC007D2237 /* AccountModel.swift in Sources */,
+				5C08E94A2837D9EC001F6941 /* Color.swift in Sources */,
 				5C8EB74C28358CA2007D2237 /* HomeView.swift in Sources */,
 				5C2E8D1E2836CAA100E5365D /* CircleButton.swift in Sources */,
 				5C8EB7522835B870007D2237 /* UIApplication.swift in Sources */,
