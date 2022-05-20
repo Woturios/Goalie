@@ -13,30 +13,60 @@ struct AccountView: View {
     var portfolioSummary: Double
     
     var body: some View {
-        HStack(alignment: .top, spacing: 0) {
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("Saldo:")
-                        .font(.headline)
-                        .foregroundColor(Color.primary)
-                    Spacer()
-                }
-                Text("\(portfolioSummary, specifier: "%.2f") PLN")
-                    .font(.title)
-                    .fontWeight(.bold)
+            TabView {
+                AccountSummaryView(portfolioSummary: portfolioSummary, emoticonString: "💸", summaryTitle: "Balance", backgroundColor: Color.blue)
+                AccountSummaryView(portfolioSummary: 5000, emoticonString: "🏆", summaryTitle: "Goal", backgroundColor: Color.orange)
             }
-            NavigationLink(destination: AddView(textFieldName: vm.textFieldName, textFieldPrice: vm.textFieldPrice, portfolioSummary: vm.portfolioSummary)) {
-                Image(systemName: "plus.circle.fill")
-                    .font(.title)
-                    .foregroundColor(Color("PrimaryColor"))
-            }
-        }
-        .padding(.horizontal)
+            .frame(height: 150)
+            .tabViewStyle(.page)
     }
 }
 
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
         AccountView(portfolioSummary: 100)
+            .padding(.vertical)
+            .environmentObject(HomeViewModel())
+            .previewLayout(.sizeThatFits)
+            .preferredColorScheme(.light)
+        
+        AccountView(portfolioSummary: 100)
+            .padding(.vertical)
+            .environmentObject(HomeViewModel())
+            .previewLayout(.sizeThatFits)
+            .preferredColorScheme(.dark)
+    }
+}
+
+struct AccountSummaryView: View {
+    
+    var portfolioSummary: Double
+    var emoticonString: String
+    var summaryTitle: String
+    var backgroundColor: Color
+    
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 25)
+                .frame(height: 150)
+                .frame(maxWidth: .infinity)
+                .foregroundColor(backgroundColor)
+                .padding(.horizontal)
+            HStack(spacing: 20) {
+                Text(emoticonString)
+                    .font(.system(size: 55))
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text(summaryTitle)
+                            .font(.headline)
+                            .foregroundColor(Color("ReversedPrimary"))
+                    }
+                    Text("\(portfolioSummary, specifier: "%.2f") zł")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color("ReversedPrimary"))
+                }
+            }
+        }
     }
 }

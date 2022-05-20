@@ -11,29 +11,45 @@ import CoreData
 struct HomeView: View {
     
     @EnvironmentObject private var vm: HomeViewModel
-    //    @State var textFieldName: String = ""
-    //    @State var textFieldPrice: Double = 0
-    //    @State var portfolioSummary: Double = 0
     
     var body: some View {
-        VStack(spacing: 20) {
-            AccountView(portfolioSummary: vm.portfolioSummary)           
-            
-            List {
-                ForEach(vm.savedEntities) { entity in
-                    HStack {
-                        Text(entity.name ?? "No Name")
-                            .font(.headline)
-                        Spacer()
-                        Text("\(entity.price, specifier: "%.2f") PLN")
-                            .font(.headline)
-                            .fontWeight(.semibold)
-                    }
-                    .padding(.horizontal)
+        VStack(alignment: .leading, spacing: nil) {
+            HStack {
+                NavigationLink {
+                    SettingsView()
+                } label: {
+                    CircleButton(buttonName: "gearshape.fill")
                 }
-                .onDelete(perform: vm.deletePost)
+                Spacer()
+                NavigationLink {
+                    AddView(textFieldName: vm.textFieldName, textFieldPrice: vm.textFieldPrice, portfolioSummary: vm.portfolioSummary)
+                } label: {
+                    Text("Add new")
+                        .font(.headline)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.accentColor)
+                    CircleButton(buttonName: "plus.circle.fill")
+                }
             }
-            .listStyle(.plain)
+            .padding(.horizontal)
+            
+            AccountView(portfolioSummary: vm.portfolioSummary)
+            ListTitleView()
+            if vm.savedEntities.isEmpty {
+                VStack(alignment: .center){
+                    Spacer()
+                    Text("There is nothing on your list. Press + to add new item. 😱😨😰")
+                        .font(.headline)
+                        .foregroundColor(Color.secondary)
+                        .multilineTextAlignment(.center)
+                    Spacer()
+                    Spacer()
+                }
+                .padding(.horizontal)
+                .frame(maxWidth: .infinity)
+            } else {
+                ListView()
+            }
         }
         .navigationBarHidden(true)
     }
@@ -41,14 +57,65 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
-            .preferredColorScheme(.dark)
+        NavigationView {
+            HomeView()
+                .preferredColorScheme(.light)
+                .environmentObject(HomeViewModel())
+        }
         
-        HomeView()
-            .preferredColorScheme(.light)
+        NavigationView {
+            HomeView()
+                .preferredColorScheme(.dark)
+                .environmentObject(HomeViewModel())
+        }
     }
 }
 
 extension Sequence  {
     func sum<T: AdditiveArithmetic>(_ predicate: (Element) -> T) -> T { reduce(.zero) { $0 + predicate($1) } }
+}
+
+
+struct ListTitleView: View {
+    var body: some View {
+        Text("History 🕰")
+            .font(.title2)
+            .fontWeight(.bold)
+            .padding(.horizontal)
+            .foregroundColor(Color.accentColor)
+    }
+}
+
+struct ListView: View {
+    
+    @EnvironmentObject private var vm: HomeViewModel
+
+    var body: some View {
+        VStack {
+            HStack {
+                Text("Item:")
+                    .font(.caption)
+                    .foregroundColor(Color.primary)
+                Spacer()
+                Text("Price:")
+                    .font(.caption)
+                    .foregroundColor(Color.primary)
+            }
+            .padding(.horizontal)
+            List {
+                ForEach(vm.savedEntities) { entity in
+                    HStack {
+                        Text(entity.name ?? "No Name")
+                            .font(.headline)
+                        Spacer()
+                        Text("\(entity.price, specifier: "%.2f") zł")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                    }
+                }
+                .onDelete(perform: vm.deletePost)
+            }
+            .listStyle(.plain)
+        }
+    }
 }

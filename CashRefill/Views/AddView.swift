@@ -16,49 +16,66 @@ struct AddView: View {
     @State var portfolioSummary: Double
     
     var body: some View {
-        VStack() {
-            TextField("Dodaj nazwę płyty...", text: $textFieldName)
-                .font(.headline)
-                .padding(.leading)
-                .frame(height: 55)
-                .background(Color("SecondaryColor"))
-                .cornerRadius(10)
-                .padding(.horizontal)
-                .keyboardType(.alphabet)
-            
-            TextField("Podaj oszczędzoną kwotę...", value: $textFieldPrice, format: .number)
-                .font(.headline)
-                .padding(.leading)
-                .frame(height: 55)
-                .background(Color("SecondaryColor"))
-                .cornerRadius(10)
-                .padding(.horizontal)
-                .keyboardType(.decimalPad)
-            
-            Button {
-                guard !textFieldName.isEmpty else { return }
-                vm.addPost(text: textFieldName, price: textFieldPrice)
-                UIApplication.shared.endEdditing()
-                textFieldName = ""
-                textFieldPrice = 0
-                portfolioSummary = vm.savedEntities.sum(\.price)
-                self.presentationMode.wrappedValue.dismiss()
-            } label: {
-                Text("Dodaj do mojej listy")
+        VStack(alignment: .leading) {
+            HStack {
+                Spacer()
+                Text("Back")
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.accentColor)
+                CircleButton(buttonName: "arrow.backward.circle.fill")
+            }
+                .padding(.horizontal)
+                .onTapGesture {
+                    self.presentationMode.wrappedValue.dismiss()
+                }
+            Text("Add new item:")
+                .font(.title)
+                .fontWeight(.semibold)
+                .padding(.horizontal)
+            
+            VStack(spacing: 10) {
+                TextField("Add new item...", text: $textFieldName)
+                    .font(.headline)
+                    .padding(.leading)
                     .frame(height: 55)
-                    .frame(maxWidth: .infinity)
-                    .background(Color("PrimaryColor"))
+                    .background(Color("SecondaryColor"))
                     .cornerRadius(10)
                     .padding(.horizontal)
+                    .keyboardType(.alphabet)
+                
+                TextField("Add price...", value: $textFieldPrice, format: .number)
+                    .font(.headline)
+                    .padding(.leading)
+                    .frame(height: 55)
+                    .background(Color("SecondaryColor"))
+                    .cornerRadius(10)
+                    .padding(.horizontal)
+                    .keyboardType(.decimalPad)
+                
+                Button {
+                    guard !textFieldName.isEmpty else { return }
+                    vm.addPost(text: textFieldName, price: textFieldPrice)
+                    UIApplication.shared.endEdditing()
+                    textFieldName = ""
+                    textFieldPrice = 0
+                    portfolioSummary = vm.savedEntities.sum(\.price)
+                    self.presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Text("Add to my list 🥳")
+                        .font(.headline)
+                        .foregroundColor(Color("ReversedPrimary"))
+                        .frame(height: 55)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.accentColor)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                }
             }
             
             Spacer()
         }
-        .navigationBarHidden(false)
-        .navigationTitle("Dodaj nową rzecz:")
-        .navigationBarBackButtonHidden(false)
+        .navigationBarHidden(true)
     }
 }
 
@@ -66,6 +83,14 @@ struct AddView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             AddView(textFieldName: "First", textFieldPrice: 10, portfolioSummary: 100)
+                .environmentObject(HomeViewModel())
+                .preferredColorScheme(.light)
+        }
+        
+        NavigationView {
+            AddView(textFieldName: "First", textFieldPrice: 10, portfolioSummary: 100)
+                .environmentObject(HomeViewModel())
+                .preferredColorScheme(.dark)
         }
     }
 }
