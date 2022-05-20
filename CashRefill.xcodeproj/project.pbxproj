@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5C08E94A2837D9EC001F6941 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C08E9492837D9EC001F6941 /* Color.swift */; };
+		5C08E94C2837E9B1001F6941 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C08E94B2837E9B1001F6941 /* Sequence.swift */; };
 		5C272F332837A2C00003E729 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C272F322837A2C00003E729 /* PickerView.swift */; };
 		5C2E8D1E2836CAA100E5365D /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E8D1D2836CAA100E5365D /* CircleButton.swift */; };
 		5C8EB73E28358C67007D2237 /* CashRefillApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB73D28358C67007D2237 /* CashRefillApp.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		5C08E9492837D9EC001F6941 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		5C08E94B2837E9B1001F6941 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		5C272F322837A2C00003E729 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		5C2E8D1D2836CAA100E5365D /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		5C8EB73A28358C67007D2237 /* StopSpendings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StopSpendings.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +95,7 @@
 			children = (
 				5C8EB7512835B870007D2237 /* UIApplication.swift */,
 				5C08E9492837D9EC001F6941 /* Color.swift */,
+				5C08E94B2837E9B1001F6941 /* Sequence.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			files = (
 				5C8EB74F28358D7F007D2237 /* ItemsContainer.xcdatamodeld in Sources */,
 				5C08E94A2837D9EC001F6941 /* Color.swift in Sources */,
+				5C08E94C2837E9B1001F6941 /* Sequence.swift in Sources */,
 				5C8EB74C28358CA2007D2237 /* HomeView.swift in Sources */,
 				5C2E8D1E2836CAA100E5365D /* CircleButton.swift in Sources */,
 				5C8EB7522835B870007D2237 /* UIApplication.swift in Sources */,

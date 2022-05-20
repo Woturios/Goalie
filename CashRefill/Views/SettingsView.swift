@@ -13,46 +13,27 @@ struct SettingsView: View {
     @EnvironmentObject private var vm: HomeViewModel
 
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Spacer()
-                Text("Back")
-                    .font(.headline)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.theme.accent)
-                CircleButton(buttonName: "arrow.backward.circle.fill")
-            }
-            .padding(.horizontal)
-            .onTapGesture {
-                self.presentationMode.wrappedValue.dismiss()
-            }
+        ZStack {
+            // Background layer
+            Color.theme.background.ignoresSafeArea()
             
-            
-            Text("Set your goal 🏆")
-                .foregroundColor(Color.theme.accent)
-                .font(.title)
-                .fontWeight(.semibold)
-                .padding(.horizontal)
-                        
-            VStack(alignment: .leading ,spacing: 10) {
-                Text("How much do you want to save?")
-                    .font(.headline)
-                    .fontWeight(.semibold)
-                PickerView()
-                Spacer()
-                Text("Instead of spending money on things you don't really need, save them for something you really care about.")
-                    .font(.headline)
-                    .foregroundColor(Color.theme.secondaryText)
-                    .bold()
-                    .multilineTextAlignment(.center)
-                Spacer()
+            // Content layer
+            VStack(alignment: .leading) {
+                navBar
+                pageTitle
+                VStack(alignment: .leading ,spacing: 10) {
+                    setGoalTitle
+                    PickerView()
+                    Spacer()
+                    smartTip
+                    Spacer()
+                }
+                .padding()
                 
+                Spacer()
             }
-            .padding()
-            
-            Spacer()
+            .navigationBarHidden(true)
         }
-        .navigationBarHidden(true)
     }
 }
 
@@ -69,5 +50,44 @@ struct SettingsView_Previews: PreviewProvider {
                 .environmentObject(HomeViewModel())
                 .preferredColorScheme(.dark)
         }
+    }
+}
+
+extension SettingsView {
+    private var navBar: some View {
+        HStack {
+            Spacer()
+            Text("Back")
+                .font(.headline)
+                .fontWeight(.bold)
+                .foregroundColor(Color.theme.accent)
+            CircleButton(buttonName: "arrow.backward.circle.fill")
+        }
+        .padding(.horizontal)
+        .onTapGesture {
+            self.presentationMode.wrappedValue.dismiss()
+        }
+    }
+    
+    private var pageTitle: some View {
+        Text("Set your goal 🏆")
+            .foregroundColor(Color.theme.accent)
+            .font(.title)
+            .fontWeight(.semibold)
+            .padding(.horizontal)
+    }
+    
+    private var setGoalTitle: some View {
+        Text("How much do you want to save?")
+            .font(.headline)
+            .fontWeight(.semibold)
+    }
+    
+    private var smartTip: some View {
+        Text("Instead of spending money on things you don't really need, save them for something you really care about.")
+            .font(.headline)
+            .foregroundColor(Color.theme.secondaryText)
+            .bold()
+            .multilineTextAlignment(.center)
     }
 }

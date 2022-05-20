@@ -14,27 +14,9 @@ struct HomeView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: nil) {
-            HStack {
-                NavigationLink {
-                    SettingsView()
-                } label: {
-                    CircleButton(buttonName: "gearshape.fill")
-                }
-                Spacer()
-                NavigationLink {
-                    AddView(textFieldName: vm.textFieldName, textFieldPrice: vm.textFieldPrice, portfolioSummary: vm.portfolioSummary)
-                } label: {
-                    Text("Add new")
-                        .font(.headline)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.theme.accent)
-                    CircleButton(buttonName: "plus.circle.fill")
-                }
-            }
-            .padding(.horizontal)
-            
+            homeNavigation
             AccountView(portfolioSummary: vm.portfolioSummary)
-            ListTitleView()
+            listTitleView
             if vm.savedEntities.isEmpty {
                 VStack(alignment: .center){
                     Spacer()
@@ -48,7 +30,7 @@ struct HomeView: View {
                 .padding(.horizontal)
                 .frame(maxWidth: .infinity)
             } else {
-                ListView()
+                listView
             }
         }
         .navigationBarHidden(true)
@@ -71,26 +53,42 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
-extension Sequence  {
-    func sum<T: AdditiveArithmetic>(_ predicate: (Element) -> T) -> T { reduce(.zero) { $0 + predicate($1) } }
-}
 
 
-struct ListTitleView: View {
-    var body: some View {
+
+extension HomeView {
+    
+    private var homeNavigation: some View {
+        HStack {
+            NavigationLink {
+                SettingsView()
+            } label: {
+                CircleButton(buttonName: "gearshape.fill")
+            }
+            Spacer()
+            NavigationLink {
+                AddView(textFieldName: vm.textFieldName, textFieldPrice: vm.textFieldPrice, portfolioSummary: vm.portfolioSummary)
+            } label: {
+                Text("Add new")
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.theme.accent)
+                CircleButton(buttonName: "plus.circle.fill")
+            }
+        }
+        .padding(.horizontal)
+    }
+    
+    private var listTitleView: some View {
         Text("History 🕰")
             .font(.title2)
             .fontWeight(.bold)
             .padding(.horizontal)
             .foregroundColor(Color.theme.accent)
     }
-}
-
-struct ListView: View {
     
-    @EnvironmentObject private var vm: HomeViewModel
-
-    var body: some View {
+    
+    private var listView: some View {
         VStack {
             HStack {
                 Text("Item:")
@@ -112,6 +110,7 @@ struct ListView: View {
                             .font(.headline)
                             .fontWeight(.semibold)
                     }
+                    .listRowBackground(Color.clear)
                 }
                 .onDelete(perform: vm.deletePost)
             }

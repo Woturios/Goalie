@@ -15,7 +15,13 @@ struct CashRefillApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                HomeView()
+                ZStack {
+                    // Background layer
+                    Color.theme.background.ignoresSafeArea()
+                    
+                    // Content layer
+                    HomeView()
+                }
             }
             .environmentObject(vm)
         }
