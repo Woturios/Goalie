@@ -14,9 +14,9 @@ struct AccountView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            AccountSummaryView(portfolioSummary: vm.portfolioSummary, emoticonString: "💸", summaryTitle: "Balance", backgroundColor: Color.theme.firstTabBg, contentColor: Color.theme.firstTabContent)
+            AccountSummaryView(portfolioSummary: vm.portfolioSummary, emoticonString: "💸", summaryTitle: "Balance", backgroundColor: Color.theme.firstTabBg, contentColor: Color.theme.firstTabContent, specifier: "%.2f")
                 .tag(0)
-            AccountSummaryView(portfolioSummary: Double(vm.goal) ?? 0, emoticonString: "🏆", summaryTitle: "Goal", backgroundColor: Color.theme.secondTabBg, contentColor: Color.theme.secondTabContent)
+            AccountSummaryView(portfolioSummary: Double(vm.goal) ?? 0, emoticonString: "🏆", summaryTitle: "Goal", backgroundColor: Color.theme.secondTabBg, contentColor: Color.theme.secondTabContent, specifier: "%.0f")
                 .tag(1)
             percentageTile
             .tag(2)
@@ -49,6 +49,7 @@ struct AccountSummaryView: View {
     var summaryTitle: String
     var backgroundColor: Color
     let contentColor: Color
+    var specifier: String
     
     var body: some View {
         ZStack {
@@ -66,7 +67,7 @@ struct AccountSummaryView: View {
                             .font(.headline)
                             .foregroundColor(contentColor)
                     }
-                    Text("\(portfolioSummary, specifier: "%.2f") zł")
+                    Text("\(portfolioSummary, specifier: specifier) zł")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(contentColor)

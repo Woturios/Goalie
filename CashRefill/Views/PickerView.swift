@@ -42,13 +42,18 @@ struct PickerView: View {
                 .frame(height: 55)
                 .background(Color.theme.textFieldColor)
                 .cornerRadius(10)
-                .keyboardType(.decimalPad)
+                .keyboardType(.numberPad)
             
             Button {
                 if (filterOptions.contains(selection)) {
                     newGoal = selection
+                    vm.goal = newGoal
+                    selection = "0"
+                } else if !newGoal.isEmpty {
+                    vm.goal = newGoal
+                } else {
+                    return
                 }
-                vm.goal = newGoal
                 vm.updateGoalPercentage()
                 UIApplication.shared.endEdditing()
                 newGoal = ""
@@ -64,13 +69,13 @@ struct PickerView: View {
             
             
             // DEV DATA
-            VStack {
-                Text("Developer Data")
-                Text("selection: \(selection)")
-                Text("newGoal: \(newGoal)")
-                Text("Curent goal: \(vm.goal)")
-                Text("Current percentage: \(vm.goalPercentage)")
-            }
+//            VStack {
+//                Text("Developer Data")
+//                Text("selection: \(selection)")
+//                Text("newGoal: \(newGoal)")
+//                Text("Curent goal: \(vm.goal)")
+//                Text("Current percentage: \(vm.goalPercentage)")
+//            }
 
         }
         

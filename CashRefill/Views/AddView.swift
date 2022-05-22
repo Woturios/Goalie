@@ -96,7 +96,8 @@ extension AddView {
             
             Button {
                 guard !textFieldName.isEmpty else { return }
-                vm.addPost(text: textFieldName, price: textFieldPrice)
+                let fieldPrice = String(textFieldPrice.replacingOccurrences(of: ",", with: "."))
+                vm.addPost(text: textFieldName, price: fieldPrice)
                 UIApplication.shared.endEdditing()
                 textFieldName = ""
                 textFieldPrice = ""
