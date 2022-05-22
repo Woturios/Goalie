@@ -21,11 +21,17 @@ struct SettingsView: View {
             VStack(alignment: .leading) {
                 navBar
                 pageTitle
-                VStack(alignment: .leading ,spacing: 10) {
+                VStack(alignment: .center ,spacing: 10) {
                     setGoalTitle
                     PickerView()
                     Spacer()
-                    smartTip
+                    if vm.goal == "0.0001" {
+                        smartTip
+                    } else {
+                        Text("Your current goal is \(vm.goal) zł")
+                            .font(.headline)
+                            .bold()
+                    }
                     Spacer()
                 }
                 .padding()
@@ -78,16 +84,24 @@ extension SettingsView {
     }
     
     private var setGoalTitle: some View {
-        Text("How much do you want to save?")
-            .font(.headline)
-            .fontWeight(.semibold)
+        HStack {
+            Text("How much do you want to save?")
+                .font(.headline)
+                .fontWeight(.semibold)
+            Spacer()
+        }
     }
     
     private var smartTip: some View {
-        Text("Instead of spending money on things you don't really need, save them for something you really care about.")
-            .font(.headline)
-            .foregroundColor(Color.theme.secondaryText)
-            .bold()
-            .multilineTextAlignment(.center)
+        VStack {
+            Text("Add your first goal!")
+                .font(.title)
+                .bold()
+            Text("Instead of spending money on things you don't really need, save them for something you really care about.")
+                .font(.headline)
+                .foregroundColor(Color.theme.secondaryText)
+                .bold()
+                .multilineTextAlignment(.center)
+        }
     }
 }

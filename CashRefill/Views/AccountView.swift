@@ -14,12 +14,12 @@ struct AccountView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            AccountSummaryView(portfolioSummary: vm.portfolioSummary, emoticonString: "💸", summaryTitle: "Balance", backgroundColor: Color.blue, contentColor: Color.white)
+            AccountSummaryView(portfolioSummary: vm.portfolioSummary, emoticonString: "💸", summaryTitle: "Balance", backgroundColor: Color.theme.firstTabBg, contentColor: Color.theme.firstTabContent)
                 .tag(0)
-            AccountSummaryView(portfolioSummary: 5000, emoticonString: "🏆", summaryTitle: "Goal", backgroundColor: Color.orange, contentColor: Color.black)
+            AccountSummaryView(portfolioSummary: Double(vm.goal) ?? 0, emoticonString: "🏆", summaryTitle: "Goal", backgroundColor: Color.theme.secondTabBg, contentColor: Color.theme.secondTabContent)
                 .tag(1)
-//            AccountSummaryView(portfolioSummary: 12, emoticonString: "", summaryTitle: "Test", backgroundColor: Color.black, contentColor: Color.white)
-//                .tag(2)
+            percentageTile
+            .tag(2)
         }
         .frame(height: 150)
         .tabViewStyle(.page)
@@ -70,6 +70,43 @@ struct AccountSummaryView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(contentColor)
+                }
+            }
+        }
+    }
+}
+
+extension AccountView {
+    private var percentageTile: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 25)
+                .frame(height: 150)
+                .frame(maxWidth: .infinity)
+                .foregroundColor(Color.theme.thirdTabBg)
+                .padding(.horizontal)
+            HStack(spacing: 20) {
+                // NORMAL EMOTICON
+//                Text("😱")
+//                    .font(.system(size: 55))
+                
+                // PROGRESSIVE EMOTICON SHOWING PROGRESS IN %
+                VStack(spacing: 1) {
+                    ForEach(1..<11) { index in
+                        Rectangle()
+                            .frame(width: 55, height: 5)
+                            .foregroundColor(Double(11 - index) > Double(vm.goalPercentage / 10) ? Color.theme.thirdTabContent.opacity(0.1) : Color.theme.thirdTabContent)
+                    }
+                }
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text("Progress")
+                            .font(.headline)
+                            .foregroundColor(Color.theme.thirdTabContent)
+                    }
+                    Text("\(vm.goalPercentage, specifier: "%.0f") %")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.theme.thirdTabContent)
                 }
             }
         }

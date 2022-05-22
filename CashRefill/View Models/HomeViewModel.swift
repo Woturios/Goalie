@@ -17,8 +17,10 @@ class HomeViewModel: ObservableObject {
     @Published var changeTheme: Bool = false
     
     @Published var textFieldName: String = ""
-    @Published var textFieldPrice: Double = 0
+    @Published var textFieldPrice: String = ""
     @Published var portfolioSummary: Double = 0
+    @AppStorage("goal") var goal: String = "500"
+    @Published var goalPercentage: Double = 0
     
     init() {
         container = NSPersistentContainer(name: "ItemsContainer")
@@ -27,13 +29,13 @@ class HomeViewModel: ObservableObject {
                 print("ERROR LOADING CORE DATA. \(error)")
             }
         }
-        fetchCoreItems()
+        fetchPortfolio()
         updatePortfolio()
+        updateGoalPercentage()
     }
 
-    func fetchCoreItems() {
+    func fetchPortfolio() {
         let request = NSFetchRequest<PostEntity>(entityName: "PostEntity")
-        
         do {
             savedEntities = try container.viewContext.fetch(request)
         } catch let error {
@@ -45,11 +47,12 @@ class HomeViewModel: ObservableObject {
         portfolioSummary = savedEntities.sum(\.price)
     }
     
-    func addPost(text: String, price: Double) {
+    func addPost(text: String, price: String) {
         let newPost = PostEntity(context: container.viewContext)
         newPost.name = text
-        newPost.price = price
+        newPost.price = Double(price) ?? 0
         saveData()
+        updateGoalPercentage()
     }
     
     func deletePost(indexSet: IndexSet) {
@@ -57,6 +60,7 @@ class HomeViewModel: ObservableObject {
         let entity = savedEntities[index]
         container.viewContext.delete(entity)
         saveData()
+        updateGoalPercentage()
     }
     
     /*
@@ -71,10 +75,14 @@ class HomeViewModel: ObservableObject {
 //    }
      */
     
+    func updateGoalPercentage() {
+        goalPercentage = Double((portfolioSummary / (Double(goal) ?? 0) * 100))
+    }
+    
     func saveData() {
         do {
             try container.viewContext.save()
-            fetchCoreItems()
+            fetchPortfolio()
             portfolioSummary = savedEntities.sum(\.price)
         } catch let error {
             print("Error saving. \(error)")

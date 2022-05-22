@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct PickerView: View {
-    @State var selection: String = "500"
+    @EnvironmentObject private var vm: HomeViewModel
+    @State private var selection: String = ""
     let filterOptions: [String] = [
         "500", "1000", "2000", "3000", "5000"
     ]
+    @State var newGoal: String = ""
     
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.theme.accent)
@@ -23,16 +25,55 @@ struct PickerView: View {
     }
     
     var body: some View {
-        Picker(selection: $selection) {
-            ForEach(filterOptions.indices) { index in
-                Text(filterOptions[index])
-                    .tag(filterOptions[index])
+        VStack {
+            Picker(selection: $selection) {
+                ForEach(filterOptions.indices) { index in
+                    Text(filterOptions[index])
+                        .tag(filterOptions[index])
+                }
+            } label: {
+                Text("Picker")
             }
-        } label: {
-            Text("Picker")
+            .pickerStyle(.segmented)
+                        
+            TextField("Add your custom goal!", text: $newGoal)
+                .font(.headline)
+                .padding(.leading)
+                .frame(height: 55)
+                .background(Color.theme.textFieldColor)
+                .cornerRadius(10)
+                .keyboardType(.decimalPad)
+            
+            Button {
+                if (filterOptions.contains(selection)) {
+                    newGoal = selection
+                }
+                vm.goal = newGoal
+                vm.updateGoalPercentage()
+                UIApplication.shared.endEdditing()
+                newGoal = ""
+            } label: {
+                Text("Save".uppercased())
+                    .font(.headline)
+                    .foregroundColor(Color.theme.reversed)
+                    .frame(height: 55)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.theme.accent)
+                    .cornerRadius(10)
+            }
+            
+            
+            // DEV DATA
+            VStack {
+                Text("Developer Data")
+                Text("selection: \(selection)")
+                Text("newGoal: \(newGoal)")
+                Text("Curent goal: \(vm.goal)")
+                Text("Current percentage: \(vm.goalPercentage)")
+            }
+
         }
-        .pickerStyle(.segmented)
-//        .background(Color.mint)
+        
     }
 }
 

@@ -12,7 +12,7 @@ struct AddView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject private var vm: HomeViewModel
     @State var textFieldName: String
-    @State var textFieldPrice: Double
+    @State var textFieldPrice: String
     @State var portfolioSummary: Double
     
     var body: some View {
@@ -36,13 +36,13 @@ struct AddView: View {
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddView(textFieldName: "First", textFieldPrice: 10, portfolioSummary: 100)
+            AddView(textFieldName: "First", textFieldPrice: "10", portfolioSummary: 100)
                 .environmentObject(HomeViewModel())
                 .preferredColorScheme(.light)
         }
         
         NavigationView {
-            AddView(textFieldName: "First", textFieldPrice: 10, portfolioSummary: 100)
+            AddView(textFieldName: "First", textFieldPrice: "10", portfolioSummary: 100)
                 .environmentObject(HomeViewModel())
                 .preferredColorScheme(.dark)
         }
@@ -84,7 +84,8 @@ extension AddView {
                 .padding(.horizontal)
                 .keyboardType(.alphabet)
             
-            TextField("Add price...", value: $textFieldPrice, format: .number)
+//            TextField("Add price...", value: $textFieldPrice, format: .number)
+            TextField("Add price", text: $textFieldPrice)
                 .font(.headline)
                 .padding(.leading)
                 .frame(height: 55)
@@ -98,11 +99,11 @@ extension AddView {
                 vm.addPost(text: textFieldName, price: textFieldPrice)
                 UIApplication.shared.endEdditing()
                 textFieldName = ""
-                textFieldPrice = 0
+                textFieldPrice = ""
                 portfolioSummary = vm.savedEntities.sum(\.price)
                 self.presentationMode.wrappedValue.dismiss()
             } label: {
-                Text("Add to my list 🥳")
+                Text("Add to my list 🥳".uppercased())
                     .font(.headline)
                     .foregroundColor(Color.theme.reversed)
                     .frame(height: 55)
