@@ -14,6 +14,8 @@ class HomeViewModel: ObservableObject {
     let container: NSPersistentContainer
     @Published var savedEntities: [PostEntity] = []
     
+    @Published var changeTheme: Bool = false
+    
     @Published var textFieldName: String = ""
     @Published var textFieldPrice: Double = 0
     @Published var portfolioSummary: Double = 0
@@ -28,7 +30,7 @@ class HomeViewModel: ObservableObject {
         fetchCoreItems()
         updatePortfolio()
     }
-    
+
     func fetchCoreItems() {
         let request = NSFetchRequest<PostEntity>(entityName: "PostEntity")
         

@@ -23,6 +23,7 @@ struct CashRefillApp: App {
                     HomeView()
                 }
             }
+            .navigationViewStyle(StackNavigationViewStyle())
             .environmentObject(vm)
         }
     }

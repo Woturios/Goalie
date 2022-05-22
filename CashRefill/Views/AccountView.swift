@@ -10,27 +10,31 @@ import SwiftUI
 struct AccountView: View {
     
     @EnvironmentObject private var vm: HomeViewModel
-    var portfolioSummary: Double
+    @State var selectedTab: Int = 0
     
     var body: some View {
-            TabView {
-                AccountSummaryView(portfolioSummary: portfolioSummary, emoticonString: "💸", summaryTitle: "Balance", backgroundColor: Color.blue, contentColor: Color.white)
-                AccountSummaryView(portfolioSummary: 5000, emoticonString: "🏆", summaryTitle: "Goal", backgroundColor: Color.orange, contentColor: Color.black)
-            }
-            .frame(height: 150)
-            .tabViewStyle(.page)
+        TabView(selection: $selectedTab) {
+            AccountSummaryView(portfolioSummary: vm.portfolioSummary, emoticonString: "💸", summaryTitle: "Balance", backgroundColor: Color.blue, contentColor: Color.white)
+                .tag(0)
+            AccountSummaryView(portfolioSummary: 5000, emoticonString: "🏆", summaryTitle: "Goal", backgroundColor: Color.orange, contentColor: Color.black)
+                .tag(1)
+//            AccountSummaryView(portfolioSummary: 12, emoticonString: "", summaryTitle: "Test", backgroundColor: Color.black, contentColor: Color.white)
+//                .tag(2)
+        }
+        .frame(height: 150)
+        .tabViewStyle(.page)
     }
 }
 
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountView(portfolioSummary: 100)
+        AccountView()
             .padding(.vertical)
             .environmentObject(HomeViewModel())
             .previewLayout(.sizeThatFits)
             .preferredColorScheme(.light)
         
-        AccountView(portfolioSummary: 100)
+        AccountView()
             .padding(.vertical)
             .environmentObject(HomeViewModel())
             .previewLayout(.sizeThatFits)

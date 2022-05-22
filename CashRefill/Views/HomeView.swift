@@ -15,7 +15,7 @@ struct HomeView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: nil) {
             homeNavigation
-            AccountView(portfolioSummary: vm.portfolioSummary)
+            AccountView()
             listTitleView
             if vm.savedEntities.isEmpty {
                 VStack(alignment: .center){
