@@ -13,27 +13,38 @@ struct HomeView: View {
     @EnvironmentObject private var vm: HomeViewModel
     
     var body: some View {
-        VStack(alignment: .leading, spacing: nil) {
-            homeNavigation
-            AccountView()
-            listTitleView
-            if vm.savedEntities.isEmpty {
-                VStack(alignment: .center){
-                    Spacer()
-                    Text("There is nothing on your list. Press + to add new item. 😱😨😰")
-                        .font(.headline)
-                        .foregroundColor(Color.theme.secondaryText)
-                        .multilineTextAlignment(.center)
-                    Spacer()
-                    Spacer()
-                }
-                .padding(.horizontal)
-                .frame(maxWidth: .infinity)
+        ZStack {
+            if vm.selectedTab == 0 {
+                RadialGradient(colors: [Color.blue.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
+            } else if vm.selectedTab == 1 {
+                RadialGradient(colors: [Color.orange.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
             } else {
-                listView
+                RadialGradient(colors: [Color.green.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
             }
+            
+            VStack(alignment: .leading, spacing: nil) {
+                homeNavigation
+                AccountView()
+                listTitleView
+                if vm.savedEntities.isEmpty {
+                    VStack(alignment: .center){
+                        Spacer()
+                        Text("There is nothing on your list. Press + to add new item. 😱😨😰")
+                            .font(.headline)
+                            .foregroundColor(Color.theme.secondaryText)
+                            .multilineTextAlignment(.center)
+                        Spacer()
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    .frame(maxWidth: .infinity)
+                } else {
+                    listView
+                }
+            }
+            .navigationBarHidden(true)
         }
-        .navigationBarHidden(true)
+        
     }
 }
 
@@ -72,7 +83,7 @@ extension HomeView {
                 Text("Add new")
                     .font(.headline)
                     .fontWeight(.bold)
-                    .foregroundColor(Color.theme.accent)
+                    .foregroundColor(vm.accentColor)
                 CircleButton(buttonName: "plus.circle.fill")
             }
         }
@@ -84,7 +95,7 @@ extension HomeView {
             .font(.title2)
             .fontWeight(.bold)
             .padding(.horizontal)
-            .foregroundColor(Color.theme.accent)
+            .foregroundColor(vm.accentColor)
     }
     
     

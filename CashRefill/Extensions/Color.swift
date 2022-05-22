@@ -11,8 +11,8 @@ import SwiftUI
 extension Color {
     
 //    static let theme = ColorTheme()
-//    static let theme = GradientBackgroundTheme()
-    static let theme = SubtleTheme()
+    static let theme = GradientBackgroundTheme()
+//    static let theme = SubtleTheme()
 }
 
 struct ColorTheme {
@@ -44,6 +44,7 @@ struct GradientBackgroundTheme {
     let secondTabContent = Color.black
     let thirdTabBg = Color.green
     let thirdTabContent = Color.white
+    
     
 }
 

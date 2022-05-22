@@ -16,7 +16,7 @@ struct PickerView: View {
     @State var newGoal: String = ""
     
     init() {
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.theme.accent)
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(vm.accentColor)
         
         let attributes: [NSAttributedString.Key:Any] = [
             .foregroundColor : UIColor.white
@@ -63,7 +63,7 @@ struct PickerView: View {
                     .foregroundColor(Color.theme.reversed)
                     .frame(height: 55)
                     .frame(maxWidth: .infinity)
-                    .background(Color.theme.accent)
+                    .background(vm.accentColor)
                     .cornerRadius(10)
             }
             

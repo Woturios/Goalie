@@ -9,12 +9,14 @@ import SwiftUI
 
 struct CircleButton: View {
     
+    @EnvironmentObject private var vm: HomeViewModel
+    
     let buttonName: String
     
     var body: some View {
         Image(systemName: buttonName)
             .font(.title)
-            .foregroundColor(Color.theme.accent)
+            .foregroundColor(vm.accentColor)
             .frame(width: 50, height: 50)
     }
 }

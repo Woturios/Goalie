@@ -18,7 +18,13 @@ struct AddView: View {
     var body: some View {
         ZStack {
             // Background layer
-            Color.theme.background.ignoresSafeArea()
+            if vm.selectedTab == 0 {
+                RadialGradient(colors: [Color.blue.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
+            } else if vm.selectedTab == 1 {
+                RadialGradient(colors: [Color.orange.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
+            } else {
+                RadialGradient(colors: [Color.green.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
+            }
             
             // Content layer
             VStack(alignment: .leading) {
@@ -56,7 +62,7 @@ extension AddView {
             Text("Back")
                 .font(.headline)
                 .fontWeight(.bold)
-                .foregroundColor(Color.theme.accent)
+                .foregroundColor(vm.accentColor)
             CircleButton(buttonName: "arrow.backward.circle.fill")
         }
             .padding(.horizontal)
@@ -67,7 +73,7 @@ extension AddView {
     
     private var pageTitle: some View {
         Text("Add new item:")
-            .foregroundColor(Color.theme.accent)
+            .foregroundColor(vm.accentColor)
             .font(.title)
             .fontWeight(.semibold)
             .padding(.horizontal)
@@ -109,7 +115,7 @@ extension AddView {
                     .foregroundColor(Color.theme.reversed)
                     .frame(height: 55)
                     .frame(maxWidth: .infinity)
-                    .background(Color.theme.accent)
+                    .background(vm.accentColor)
                     .cornerRadius(10)
                     .padding(.horizontal)
             }

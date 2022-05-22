@@ -15,7 +15,13 @@ struct SettingsView: View {
     var body: some View {
         ZStack {
             // Background layer
-            Color.theme.background.ignoresSafeArea()
+            if vm.selectedTab == 0 {
+                RadialGradient(colors: [Color.blue.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
+            } else if vm.selectedTab == 1 {
+                RadialGradient(colors: [Color.orange.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
+            } else {
+                RadialGradient(colors: [Color.green.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
+            }
             
             // Content layer
             VStack(alignment: .leading) {
@@ -66,7 +72,7 @@ extension SettingsView {
             Text("Back")
                 .font(.headline)
                 .fontWeight(.bold)
-                .foregroundColor(Color.theme.accent)
+                .foregroundColor(vm.accentColor)
             CircleButton(buttonName: "arrow.backward.circle.fill")
         }
         .padding(.horizontal)
@@ -77,7 +83,7 @@ extension SettingsView {
     
     private var pageTitle: some View {
         Text("Set your goal 🏆")
-            .foregroundColor(Color.theme.accent)
+            .foregroundColor(vm.accentColor)
             .font(.title)
             .fontWeight(.semibold)
             .padding(.horizontal)

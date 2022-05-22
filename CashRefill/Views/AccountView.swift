@@ -10,10 +10,9 @@ import SwiftUI
 struct AccountView: View {
     
     @EnvironmentObject private var vm: HomeViewModel
-    @State var selectedTab: Int = 0
     
     var body: some View {
-        TabView(selection: $selectedTab) {
+        TabView(selection: $vm.selectedTab) {
             AccountSummaryView(portfolioSummary: vm.portfolioSummary, emoticonString: "💸", summaryTitle: "Balance", backgroundColor: Color.theme.firstTabBg, contentColor: Color.theme.firstTabContent, specifier: "%.2f")
                 .tag(0)
             AccountSummaryView(portfolioSummary: Double(vm.goal) ?? 0, emoticonString: "🏆", summaryTitle: "Goal", backgroundColor: Color.theme.secondTabBg, contentColor: Color.theme.secondTabContent, specifier: "%.0f")
