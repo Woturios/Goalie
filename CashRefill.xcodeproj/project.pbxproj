@@ -11,6 +11,8 @@
 		5C08E94C2837E9B1001F6941 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C08E94B2837E9B1001F6941 /* Sequence.swift */; };
 		5C272F332837A2C00003E729 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C272F322837A2C00003E729 /* PickerView.swift */; };
 		5C2E8D1E2836CAA100E5365D /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E8D1D2836CAA100E5365D /* CircleButton.swift */; };
+		5C7C9888283C3008004C305E /* AddEditFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7C9887283C3008004C305E /* AddEditFormView.swift */; };
+		5C7C988A283C43CC004C305E /* EditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7C9889283C43CC004C305E /* EditingView.swift */; };
 		5C8EB73E28358C67007D2237 /* CashRefillApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB73D28358C67007D2237 /* CashRefillApp.swift */; };
 		5C8EB74228358C69007D2237 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C8EB74128358C69007D2237 /* Assets.xcassets */; };
 		5C8EB74528358C69007D2237 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C8EB74428358C69007D2237 /* Preview Assets.xcassets */; };
@@ -20,7 +22,7 @@
 		5C8EB7572836818D007D2237 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB7562836818D007D2237 /* HomeViewModel.swift */; };
 		5C8EB75D2836986D007D2237 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB75C2836986D007D2237 /* AccountView.swift */; };
 		5C8EB7612836A851007D2237 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB7602836A851007D2237 /* AddView.swift */; };
-		5CE01B182837968E0074F6AE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE01B172837968E0074F6AE /* SettingsView.swift */; };
+		5CE01B182837968E0074F6AE /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE01B172837968E0074F6AE /* GoalView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		5C08E94B2837E9B1001F6941 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		5C272F322837A2C00003E729 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		5C2E8D1D2836CAA100E5365D /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		5C7C9887283C3008004C305E /* AddEditFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditFormView.swift; sourceTree = "<group>"; };
+		5C7C9889283C43CC004C305E /* EditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingView.swift; sourceTree = "<group>"; };
 		5C8EB73A28358C67007D2237 /* Goalie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Goalie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C8EB73D28358C67007D2237 /* CashRefillApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashRefillApp.swift; sourceTree = "<group>"; };
 		5C8EB74128358C69007D2237 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,7 +42,7 @@
 		5C8EB7562836818D007D2237 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5C8EB75C2836986D007D2237 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		5C8EB7602836A851007D2237 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
-		5CE01B172837968E0074F6AE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5CE01B172837968E0074F6AE /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +111,10 @@
 				5C8EB75C2836986D007D2237 /* AccountView.swift */,
 				5C8EB7602836A851007D2237 /* AddView.swift */,
 				5C2E8D1D2836CAA100E5365D /* CircleButton.swift */,
-				5CE01B172837968E0074F6AE /* SettingsView.swift */,
+				5CE01B172837968E0074F6AE /* GoalView.swift */,
 				5C272F322837A2C00003E729 /* PickerView.swift */,
+				5C7C9887283C3008004C305E /* AddEditFormView.swift */,
+				5C7C9889283C43CC004C305E /* EditingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -199,8 +205,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C7C9888283C3008004C305E /* AddEditFormView.swift in Sources */,
 				5C8EB74F28358D7F007D2237 /* ItemsContainer.xcdatamodeld in Sources */,
 				5C08E94A2837D9EC001F6941 /* Color.swift in Sources */,
+				5C7C988A283C43CC004C305E /* EditingView.swift in Sources */,
 				5C08E94C2837E9B1001F6941 /* Sequence.swift in Sources */,
 				5C8EB74C28358CA2007D2237 /* HomeView.swift in Sources */,
 				5C2E8D1E2836CAA100E5365D /* CircleButton.swift in Sources */,
@@ -210,7 +218,7 @@
 				5C8EB75D2836986D007D2237 /* AccountView.swift in Sources */,
 				5C8EB7572836818D007D2237 /* HomeViewModel.swift in Sources */,
 				5C8EB73E28358C67007D2237 /* CashRefillApp.swift in Sources */,
-				5CE01B182837968E0074F6AE /* SettingsView.swift in Sources */,
+				5CE01B182837968E0074F6AE /* GoalView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

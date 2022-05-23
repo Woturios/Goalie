@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SettingsView: View {
+struct GoalView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject private var vm: HomeViewModel
@@ -15,13 +15,7 @@ struct SettingsView: View {
     var body: some View {
         ZStack {
             // Background layer
-            if vm.selectedTab == 0 {
-                RadialGradient(colors: [Color.blue.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
-            } else if vm.selectedTab == 1 {
-                RadialGradient(colors: [Color.red.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
-            } else {
-                RadialGradient(colors: [Color.green.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
-            }
+            RadialGradient(colors: [vm.getBackgroundColor().opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
             
             // Content layer
             VStack(alignment: .leading) {
@@ -30,6 +24,7 @@ struct SettingsView: View {
                 VStack(alignment: .center ,spacing: 10) {
                     setGoalTitle
                     PickerView()
+                    Spacer()
                     if vm.goal == "" {
                         smartTip
                     } else {
@@ -51,33 +46,31 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SettingsView()
+            GoalView()
                 .environmentObject(HomeViewModel())
                 .preferredColorScheme(.light)
         }
         
         NavigationView {
-            SettingsView()
+            GoalView()
                 .environmentObject(HomeViewModel())
                 .preferredColorScheme(.dark)
         }
     }
 }
 
-extension SettingsView {
+extension GoalView {
     private var navBar: some View {
         HStack {
             Spacer()
-            Text("Back")
-                .font(.headline)
-                .fontWeight(.bold)
-                .foregroundColor(Color.theme.accent)
-            CircleButton(buttonName: "arrow.backward.circle.fill")
+            CircleButton(buttonName: "xmark")
+                .frame(width: 50, height: 50)
+                .onTapGesture {
+                    self.presentationMode.wrappedValue.dismiss()
+                }
         }
         .padding(.horizontal)
-        .onTapGesture {
-            self.presentationMode.wrappedValue.dismiss()
-        }
+        .padding(.top)
     }
     
     private var pageTitle: some View {

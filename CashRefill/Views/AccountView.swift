@@ -17,6 +17,9 @@ struct AccountView: View {
                 .tag(0)
             goalTile
                 .tag(1)
+                .onTapGesture {
+                    vm.showSheet = true
+                }
             percentageTile
                 .tag(2)
         }
@@ -97,7 +100,7 @@ extension AccountView {
                         ForEach(1..<11) { index in
                             Rectangle()
                                 .frame(width: 55, height: 5)
-                                .foregroundColor(Double(11 - index) > Double(vm.goalPercentage / 10) ? Color.theme.thirdTabContent.opacity(0.1) : Color.theme.thirdTabContent)
+                                .foregroundColor(Double(11 - index) > (Double(vm.goalPercentage / 10) + 0.05) ? Color.theme.thirdTabContent.opacity(0.1) : Color.theme.thirdTabContent)
                         }
                     }
                 } else {

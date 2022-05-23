@@ -11,28 +11,26 @@ struct AddView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject private var vm: HomeViewModel
-    @State var textFieldName: String
-    @State var textFieldPrice: String
-    @State var portfolioSummary: Double
     
     var body: some View {
         ZStack {
             // Background layer
-            if vm.selectedTab == 0 {
-                RadialGradient(colors: [Color.blue.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
-            } else if vm.selectedTab == 1 {
-                RadialGradient(colors: [Color.red.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
-            } else {
-                RadialGradient(colors: [Color.green.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
-            }
+            RadialGradient(colors: [vm.getBackgroundColor().opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
             
             // Content layer
             VStack(alignment: .leading) {
                 navigationView
                 pageTitle
-                addItemForm
+                AddEditFormView(addItemTitle: "Add new item...", addPriceTitle: "Add price...")
+                button
                 Spacer()
             }
+            .onAppear(perform: {
+                if vm.editingSheet == false {
+                    vm.textFieldName = ""
+                    vm.textFieldPrice = ""
+                }
+            })
             .navigationBarHidden(true)
         }
         
@@ -42,13 +40,13 @@ struct AddView: View {
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddView(textFieldName: "First", textFieldPrice: "10", portfolioSummary: 100)
+            AddView()
                 .environmentObject(HomeViewModel())
                 .preferredColorScheme(.light)
         }
         
         NavigationView {
-            AddView(textFieldName: "First", textFieldPrice: "10", portfolioSummary: 100)
+            AddView()
                 .environmentObject(HomeViewModel())
                 .preferredColorScheme(.dark)
         }
@@ -79,46 +77,25 @@ extension AddView {
             .padding(.horizontal)
     }
     
-    private var addItemForm: some View {
-        VStack(spacing: 10) {
-            TextField("Add new item...", text: $textFieldName)
+    private var button: some View {
+        Button {
+            vm.addNewItemToList()
+            self.presentationMode.wrappedValue.dismiss()
+        } label: {
+            Text("Add to my list 🥳".uppercased())
                 .font(.headline)
-                .padding(.leading)
+                .foregroundColor(Color.theme.reversed)
                 .frame(height: 55)
-                .background(Color.theme.textFieldColor)
+                .frame(maxWidth: .infinity)
+                .background(Color.theme.button)
                 .cornerRadius(10)
                 .padding(.horizontal)
-                .keyboardType(.alphabet)
+        }
+        .alert("Oh, no! 😰😱🥶", isPresented: $vm.alertIsToggled) {
             
-//            TextField("Add price...", value: $textFieldPrice, format: .number)
-            TextField("Add price", text: $textFieldPrice)
-                .font(.headline)
-                .padding(.leading)
-                .frame(height: 55)
-                .background(Color.theme.textFieldColor)
-                .cornerRadius(10)
-                .padding(.horizontal)
-                .keyboardType(.decimalPad)
-            
-            Button {
-                guard !textFieldName.isEmpty else { return }
-                let fieldPrice = String(textFieldPrice.replacingOccurrences(of: ",", with: "."))
-                vm.addPost(text: textFieldName, price: fieldPrice)
-                UIApplication.shared.endEdditing()
-                textFieldName = ""
-                textFieldPrice = ""
-                portfolioSummary = vm.savedEntities.sum(\.price)
-                self.presentationMode.wrappedValue.dismiss()
-            } label: {
-                Text("Add to my list 🥳".uppercased())
-                    .font(.headline)
-                    .foregroundColor(Color.theme.reversed)
-                    .frame(height: 55)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.theme.button)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-            }
+        } message: {
+            Text("Please, type the name and price of the item! 🫡")
         }
     }
 }
+

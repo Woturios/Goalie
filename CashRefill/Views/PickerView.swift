@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PickerView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject private var vm: HomeViewModel
     @State private var selection: String = ""
     let filterOptions: [String] = [
@@ -57,6 +58,7 @@ struct PickerView: View {
                 vm.updateGoalPercentage()
                 UIApplication.shared.endEdditing()
                 newGoal = ""
+                self.presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("Save".uppercased())
                     .font(.headline)

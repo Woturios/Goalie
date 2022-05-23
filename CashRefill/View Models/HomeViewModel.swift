@@ -22,6 +22,10 @@ class HomeViewModel: ObservableObject {
     @AppStorage("goal") var goal: String = ""
     @Published var goalPercentage: Double = 0
     @Published var selectedTab: Int = 0
+    @Published var showSheet: Bool = false
+    @Published var editingSheet: Bool = false
+    @Published var alertIsToggled: Bool = false
+
     
     init() {
         container = NSPersistentContainer(name: "ItemsContainer")
@@ -33,6 +37,7 @@ class HomeViewModel: ObservableObject {
         fetchPortfolio()
         updatePortfolio()
         updateGoalPercentage()
+//        savedEntities.sorted(by: )
 //        loadColors()
     }
 
@@ -65,27 +70,16 @@ class HomeViewModel: ObservableObject {
         updateGoalPercentage()
     }
     
-//    func loadColors() {
-//        if selectedTab == 0 {
-//            accentColor = Color.blue
-//        } else if selectedTab == 1 {
-//            accentColor = Color.orange
-//        } else {
-//            accentColor = Color.green
-//        }
-//    }
-    
-    /*
-//    func updatePost(entity: PostEntity) {
-//        let currentName = entity.name ?? ""
-//        let currentPrice = entity.price
-//        let newName = currentName + "!"
-//        let newPrice = currentPrice + 10
-//        entity.name = newName
-//        entity.price = newPrice
-//        saveData()
-//    }
-     */
+
+
+    func updatePost(entity: PostEntity) {
+        let newName = textFieldName
+        let newPrice = Double(textFieldPrice) ?? 0
+        entity.name = newName
+        entity.price = newPrice
+        saveData()
+    }
+
     
     func updateGoalPercentage() {
         goalPercentage = Double((portfolioSummary / (Double(goal) ?? 0) * 100))
@@ -99,6 +93,26 @@ class HomeViewModel: ObservableObject {
             portfolioSummary = savedEntities.sum(\.price)
         } catch let error {
             print("Error saving. \(error)")
+        }
+    }
+    
+    func addNewItemToList() {
+        guard !textFieldName.isEmpty && !textFieldPrice.isEmpty else { return alertIsToggled = true }
+        let fieldPrice = String(textFieldPrice.replacingOccurrences(of: ",", with: "."))
+        addPost(text: textFieldName, price: fieldPrice)
+        UIApplication.shared.endEdditing()
+        textFieldName = ""
+        textFieldPrice = ""
+        portfolioSummary = savedEntities.sum(\.price)
+    }
+    
+    func getBackgroundColor() -> Color {
+        if selectedTab == 0 {
+            return Color.blue
+        } else if selectedTab == 1 {
+            return Color.red
+        } else {
+            return Color.green
         }
     }
     

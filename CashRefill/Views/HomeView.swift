@@ -14,13 +14,7 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            if vm.selectedTab == 0 {
-                RadialGradient(colors: [Color.blue.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
-            } else if vm.selectedTab == 1 {
-                RadialGradient(colors: [Color.red.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
-            } else {
-                RadialGradient(colors: [Color.green.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
-            }
+            RadialGradient(colors: [vm.getBackgroundColor().opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
             
             VStack(alignment: .leading, spacing: nil) {
                 homeNavigation
@@ -71,14 +65,14 @@ extension HomeView {
     
     private var homeNavigation: some View {
         HStack {
-            NavigationLink {
-                SettingsView()
-            } label: {
-                CircleButton(buttonName: "gearshape.fill")
-            }
+            Image(systemName: "rosette")
+                .font(.title)
+                .onTapGesture {
+                    vm.showSheet = true
+                }
             Spacer()
             NavigationLink {
-                AddView(textFieldName: vm.textFieldName, textFieldPrice: vm.textFieldPrice, portfolioSummary: vm.portfolioSummary)
+                AddView()
             } label: {
                 Text("Add new")
                     .font(.headline)
@@ -86,6 +80,9 @@ extension HomeView {
                     .foregroundColor(Color.theme.accent)
                 CircleButton(buttonName: "plus.circle.fill")
             }
+        }
+        .sheet(isPresented: $vm.showSheet) {
+            GoalView()
         }
         .padding(.horizontal)
     }
@@ -113,15 +110,24 @@ extension HomeView {
             .padding(.horizontal)
             List {
                 ForEach(vm.savedEntities) { entity in
-                    HStack {
-                        Text(entity.name ?? "No Name")
-                            .font(.headline)
-                        Spacer()
-                        Text("\(entity.price, specifier: "%.2f") zł")
-                            .font(.headline)
-                            .fontWeight(.semibold)
+                        HStack {
+                            Text(entity.name ?? "No Name")
+                                .font(.headline)
+                            Spacer()
+                            Text("\(entity.price, specifier: "%.2f") zł")
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                        }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            vm.editingSheet = true
+                            vm.textFieldName = entity.name ?? ""
+                            vm.textFieldPrice = String("\(entity.price)")
+                        }
+                        .listRowBackground(Color.clear)
+                        .sheet(isPresented: $vm.editingSheet) {
+                            EditingView(entity: entity)
                     }
-                    .listRowBackground(Color.clear)
                 }
                 .onDelete(perform: vm.deletePost)
             }
@@ -129,3 +135,5 @@ extension HomeView {
         }
     }
 }
+
+
