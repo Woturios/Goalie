@@ -17,7 +17,8 @@ extension Color {
 
 struct ColorTheme {
     
-    let accent = Color("AccentColor")
+    let button = Color("AccentColor")
+    let accent = Color.primary
     let background = Color("BackgroundColor")
     let reversed = Color("ReversedPrimary")
     let secondaryText = Color("SecondaryTextColor")
@@ -33,16 +34,17 @@ struct ColorTheme {
 
 struct GradientBackgroundTheme {
     
-    let accent = Color("GradientAccent")
+    let button = Color("GradientAccent")
+    let accent = Color.primary
     let background = RadialGradient(colors: [Color("SecondaryGradient").opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500)
     let reversed = Color("ReversedPrimary")
     let secondaryText = Color.primary
     let textFieldColor = Color("TextFieldColor")
-    let firstTabBg = Color.blue
+    let firstTabBg = Color.blue.opacity(0.5)
     let firstTabContent = Color.white
-    let secondTabBg = Color.orange
+    let secondTabBg = Color.red.opacity(0.5)
     let secondTabContent = Color.black
-    let thirdTabBg = Color.green
+    let thirdTabBg = Color.green.opacity(0.5)
     let thirdTabContent = Color.white
     
     

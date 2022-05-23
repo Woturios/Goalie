@@ -19,10 +19,9 @@ class HomeViewModel: ObservableObject {
     @Published var textFieldName: String = ""
     @Published var textFieldPrice: String = ""
     @Published var portfolioSummary: Double = 0
-    @AppStorage("goal") var goal: String = "500"
+    @AppStorage("goal") var goal: String = ""
     @Published var goalPercentage: Double = 0
     @Published var selectedTab: Int = 0
-    @Published var accentColor: Color = Color.theme.firstTabBg
     
     init() {
         container = NSPersistentContainer(name: "ItemsContainer")
@@ -34,7 +33,7 @@ class HomeViewModel: ObservableObject {
         fetchPortfolio()
         updatePortfolio()
         updateGoalPercentage()
-        loadColors()
+//        loadColors()
     }
 
     func fetchPortfolio() {
@@ -66,15 +65,15 @@ class HomeViewModel: ObservableObject {
         updateGoalPercentage()
     }
     
-    func loadColors() {
-        if selectedTab == 0 {
-            accentColor = Color.blue
-        } else if selectedTab == 1 {
-            accentColor = Color.orange
-        } else {
-            accentColor = Color.green
-        }
-    }
+//    func loadColors() {
+//        if selectedTab == 0 {
+//            accentColor = Color.blue
+//        } else if selectedTab == 1 {
+//            accentColor = Color.orange
+//        } else {
+//            accentColor = Color.green
+//        }
+//    }
     
     /*
 //    func updatePost(entity: PostEntity) {

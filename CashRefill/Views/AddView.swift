@@ -21,7 +21,7 @@ struct AddView: View {
             if vm.selectedTab == 0 {
                 RadialGradient(colors: [Color.blue.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
             } else if vm.selectedTab == 1 {
-                RadialGradient(colors: [Color.orange.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
+                RadialGradient(colors: [Color.red.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
             } else {
                 RadialGradient(colors: [Color.green.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
             }
@@ -62,7 +62,7 @@ extension AddView {
             Text("Back")
                 .font(.headline)
                 .fontWeight(.bold)
-                .foregroundColor(vm.accentColor)
+                .foregroundColor(Color.theme.accent)
             CircleButton(buttonName: "arrow.backward.circle.fill")
         }
             .padding(.horizontal)
@@ -73,7 +73,7 @@ extension AddView {
     
     private var pageTitle: some View {
         Text("Add new item:")
-            .foregroundColor(vm.accentColor)
+            .foregroundColor(Color.theme.accent)
             .font(.title)
             .fontWeight(.semibold)
             .padding(.horizontal)
@@ -115,7 +115,7 @@ extension AddView {
                     .foregroundColor(Color.theme.reversed)
                     .frame(height: 55)
                     .frame(maxWidth: .infinity)
-                    .background(vm.accentColor)
+                    .background(Color.theme.button)
                     .cornerRadius(10)
                     .padding(.horizontal)
             }

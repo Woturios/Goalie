@@ -17,7 +17,7 @@ struct HomeView: View {
             if vm.selectedTab == 0 {
                 RadialGradient(colors: [Color.blue.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
             } else if vm.selectedTab == 1 {
-                RadialGradient(colors: [Color.orange.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
+                RadialGradient(colors: [Color.red.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
             } else {
                 RadialGradient(colors: [Color.green.opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
             }
@@ -31,7 +31,7 @@ struct HomeView: View {
                         Spacer()
                         Text("There is nothing on your list. Press + to add new item. 😱😨😰")
                             .font(.headline)
-                            .foregroundColor(Color.theme.secondaryText)
+                            .foregroundColor(Color.secondary)
                             .multilineTextAlignment(.center)
                         Spacer()
                         Spacer()
@@ -83,7 +83,7 @@ extension HomeView {
                 Text("Add new")
                     .font(.headline)
                     .fontWeight(.bold)
-                    .foregroundColor(vm.accentColor)
+                    .foregroundColor(Color.theme.accent)
                 CircleButton(buttonName: "plus.circle.fill")
             }
         }
@@ -95,7 +95,7 @@ extension HomeView {
             .font(.title2)
             .fontWeight(.bold)
             .padding(.horizontal)
-            .foregroundColor(vm.accentColor)
+            .foregroundColor(Color.theme.accent)
     }
     
     
