@@ -11,16 +11,16 @@ import CoreData
 
 class HomeViewModel: ObservableObject {
     
-    let container: NSPersistentContainer
-    @Published var savedEntities: [PostEntity] = []
-    
-    @Published var changeTheme: Bool = false
-    
+    let coreDataManager: CoreDataManager = CoreDataManager()
+    @Published var savedEntities: [PostEntity] = [PostEntity]()
+        
     @Published var textFieldName: String = ""
     @Published var textFieldPrice: String = ""
+    
     @Published var portfolioSummary: Double = 0
     @AppStorage("goal") var goal: String = ""
     @Published var goalPercentage: Double = 0
+    
     @Published var selectedTab: Int = 0
     @Published var showSheet: Bool = false
     @Published var editingSheet: Bool = false
@@ -28,81 +28,84 @@ class HomeViewModel: ObservableObject {
 
     
     init() {
-        container = NSPersistentContainer(name: "ItemsContainer")
-        container.loadPersistentStores { description, error in
-            if let error = error {
-                print("ERROR LOADING CORE DATA. \(error)")
-            }
-        }
-        fetchPortfolio()
-        updatePortfolio()
-        updateGoalPercentage()
-//        savedEntities.sorted(by: )
-//        loadColors()
+//        container = NSPersistentContainer(name: "ItemsContainer")
+//        container.loadPersistentStores { description, error in
+//            if let error = error {
+//                print("ERROR LOADING CORE DATA. \(error)")
+//            }
+//        }
+        reloadItems()
+        updateBilance()
     }
 
-    func fetchPortfolio() {
-        let request = NSFetchRequest<PostEntity>(entityName: "PostEntity")
-        do {
-            savedEntities = try container.viewContext.fetch(request)
-        } catch let error {
-            print("Error fetching. \(error)")
-        }
+    // Fetch items
+    func fetchPortfolio() -> [PostEntity] {
+        coreDataManager.getListItems()
     }
     
-    func updatePortfolio() {
-        portfolioSummary = savedEntities.sum(\.price)
+    // Reload items
+    func reloadItems() {
+        savedEntities = fetchPortfolio()
     }
     
-    func addPost(text: String, price: String) {
-        let newPost = PostEntity(context: container.viewContext)
-        newPost.name = text
-        newPost.price = Double(price) ?? 0
-        saveData()
-        updateGoalPercentage()
-    }
-    
+    // Delete item
     func deletePost(indexSet: IndexSet) {
-        guard let index = indexSet.first else { return }
-        let entity = savedEntities[index]
-        container.viewContext.delete(entity)
-        saveData()
-        updateGoalPercentage()
+        indexSet.forEach { index in
+            let item = savedEntities[index]
+            coreDataManager.deleteItem(item: item)
+            reloadItems()
+        }
+//        guard let index = indexSet.first else { return }
+//        let entity = savedEntities[index]
+//        container.viewContext.delete(entity)
+//        saveData()
+        updateBilance()
     }
     
-
-
-    func updatePost(entity: PostEntity) {
-        let newName = textFieldName
-        let newPrice = Double(textFieldPrice) ?? 0
-        entity.name = newName
-        entity.price = newPrice
-        saveData()
+    // Update item
+    func updatePost() {
+        coreDataManager.updateItem()
     }
-
     
+    // Save item
+    func saveData(price: String) {
+        coreDataManager.saveItem(title: textFieldName, price: Double(price) ?? 0)
+//        do {
+//            try container.viewContext.save()
+//            fetchPortfolio()
+//            portfolioSummary = savedEntities.sum(\.price)
+//        } catch let error {
+//            print("Error saving. \(error)")
+//        }
+    }
+    
+    
+    // Update list item
+//    func updatePostItem() {
+//
+//    }
+    
+    // update Account Bilance and percentage
+    func updateBilance() {
+        portfolioSummary = savedEntities.sum(\.price)
+        goalPercentage = Double((portfolioSummary / (Double(goal) ?? 0) * 100))
+    }
+    
+    // update goal percentage
     func updateGoalPercentage() {
         goalPercentage = Double((portfolioSummary / (Double(goal) ?? 0) * 100))
     }
     
     
-    func saveData() {
-        do {
-            try container.viewContext.save()
-            fetchPortfolio()
-            portfolioSummary = savedEntities.sum(\.price)
-        } catch let error {
-            print("Error saving. \(error)")
-        }
-    }
     
     func addNewItemToList() {
         guard !textFieldName.isEmpty && !textFieldPrice.isEmpty else { return alertIsToggled = true }
         let fieldPrice = String(textFieldPrice.replacingOccurrences(of: ",", with: "."))
-        addPost(text: textFieldName, price: fieldPrice)
+        saveData(price: fieldPrice)
         UIApplication.shared.endEdditing()
         textFieldName = ""
         textFieldPrice = ""
+        reloadItems()
         portfolioSummary = savedEntities.sum(\.price)
     }
     

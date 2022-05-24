@@ -110,6 +110,9 @@ extension HomeView {
             .padding(.horizontal)
             List {
                 ForEach(vm.savedEntities) { entity in
+                    NavigationLink {
+                        EditingView(itemName: entity.name ?? "", itemPrice: String("\(entity.price)"), item: entity)
+                    } label: {
                         HStack {
                             Text(entity.name ?? "No Name")
                                 .font(.headline)
@@ -118,19 +121,23 @@ extension HomeView {
                                 .font(.headline)
                                 .fontWeight(.semibold)
                         }
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            vm.editingSheet = true
-                            vm.textFieldName = entity.name ?? ""
-                            vm.textFieldPrice = String("\(entity.price)")
-                        }
-                        .listRowBackground(Color.clear)
-                        .sheet(isPresented: $vm.editingSheet) {
-                            EditingView(entity: entity)
                     }
+
+                        
+//                        .contentShape(Rectangle())
+//                        .onTapGesture {
+//                            vm.editingSheet = true
+//                            vm.textFieldName = ""
+//                            vm.textFieldPrice = String("")
+//                        }
+                        .listRowBackground(Color.clear)
+//                        .sheet(isPresented: $vm.editingSheet) {
+//                            EditingView(itemName: entity.name ?? "", itemPrice: String("\(entity.price)"), item: entity)
+//                    }
                 }
                 .onDelete(perform: vm.deletePost)
             }
+            .navigationBarHidden(true)
             .listStyle(.plain)
         }
     }

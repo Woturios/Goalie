@@ -44,43 +44,6 @@ struct AccountView_Previews: PreviewProvider {
     }
 }
 
-/*
-//struct AccountSummaryView: View {
-//
-//    var portfolioSummary: Double
-//    var emoticonString: String
-//    var summaryTitle: String
-//    var backgroundColor: Color
-//    let contentColor: Color
-//    var specifier: String
-//
-//    var body: some View {
-//        ZStack {
-//            RoundedRectangle(cornerRadius: 25)
-//                .frame(height: 150)
-//                .frame(maxWidth: .infinity)
-//                .foregroundColor(backgroundColor)
-//                .padding(.horizontal)
-//            HStack(spacing: 20) {
-//                Text(emoticonString)
-//                    .font(.system(size: 55))
-//                VStack(alignment: .leading) {
-//                    HStack {
-//                        Text(summaryTitle)
-//                            .font(.headline)
-//                            .foregroundColor(contentColor)
-//                    }
-//                    Text("\(portfolioSummary, specifier: specifier) zł")
-//                        .font(.largeTitle)
-//                        .fontWeight(.bold)
-//                        .foregroundColor(contentColor)
-//                }
-//            }
-//        }
-//    }
-//}
- */
-
 extension AccountView {
     private var percentageTile: some View {
         ZStack {
@@ -90,10 +53,6 @@ extension AccountView {
                 .foregroundColor(Color.theme.thirdTabBg)
                 .padding(.horizontal)
             HStack(spacing: 20) {
-//                 NORMAL EMOTICON
-//                Text("😱")
-//                    .font(.system(size: 55))
-                
 //                 PROGRESSIVE EMOTICON SHOWING PROGRESS IN %
                 if vm.goal != "" {
                     VStack(spacing: 1) {
