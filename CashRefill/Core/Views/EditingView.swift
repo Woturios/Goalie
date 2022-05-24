@@ -20,16 +20,17 @@ struct EditingView: View {
             RadialGradient(colors: [vm.getBackgroundColor().opacity(0.3), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
             
             VStack(alignment: .leading) {
-//                HStack {
-//                    Spacer()
+                HStack {
+                    Spacer()
+                    CircleButton(buttonName: "arrow.backward.circle.fill")
 //                    CircleButton(buttonName: "xmark")
-//                        .frame(width: 50, height: 50)
-//                        .onTapGesture {
-//                            self.presentationMode.wrappedValue.dismiss()
-//                        }
-//                }
-//                .padding()
-//                Spacer()
+                        .frame(width: 50, height: 50)
+                        .onTapGesture {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                }
+                .padding()
+                Spacer()
                 Text("Edit your list item:")
                     .foregroundColor(Color.theme.accent)
                     .font(.title)
@@ -66,6 +67,7 @@ struct EditingView: View {
             }
             
         }
+        .navigationBarHidden(true)
     }
 }
 
@@ -105,10 +107,10 @@ extension EditingView {
     }
 }
 
-//struct EditingView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let item = PostEntity()
-//        EditingView()
-//            .environmentObject(HomeViewModel())
-//    }
-//}
+struct EditingView_Previews: PreviewProvider {
+    static var previews: some View {
+        let item = PostEntity()
+        EditingView(itemName: "", itemPrice: "0", item: item)
+            .environmentObject(HomeViewModel())
+    }
+}
