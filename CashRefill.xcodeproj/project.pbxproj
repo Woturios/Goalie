@@ -24,6 +24,7 @@
 		5C8EB75D2836986D007D2237 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB75C2836986D007D2237 /* AccountView.swift */; };
 		5C8EB7612836A851007D2237 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB7602836A851007D2237 /* AddView.swift */; };
 		5CE01B182837968E0074F6AE /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE01B172837968E0074F6AE /* GoalView.swift */; };
+		8350D5622840368100C6C385 /* NavigationBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8350D5612840368100C6C385 /* NavigationBackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		5C8EB75C2836986D007D2237 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		5C8EB7602836A851007D2237 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		5CE01B172837968E0074F6AE /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
+		8350D5612840368100C6C385 /* NavigationBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			children = (
 				5C3AF864283D667D00100C48 /* Components */,
 				5C8EB75328368128007D2237 /* Views */,
+				5C8EB7552836816D007D2237 /* View Models */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -74,6 +77,7 @@
 				5C272F322837A2C00003E729 /* PickerView.swift */,
 				5C2E8D1D2836CAA100E5365D /* CircleButton.swift */,
 				5C8EB75C2836986D007D2237 /* AccountView.swift */,
+				8350D5612840368100C6C385 /* NavigationBackView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -110,7 +114,6 @@
 				5C3AF865283D676E00100C48 /* Managers */,
 				5C8EB75428368147007D2237 /* Models */,
 				5C3AF863283D667500100C48 /* Core */,
-				5C8EB7552836816D007D2237 /* View Models */,
 				5C8EB74128358C69007D2237 /* Assets.xcassets */,
 				5C8EB74328358C69007D2237 /* Preview Content */,
 			);
@@ -247,6 +250,7 @@
 				5C8EB7572836818D007D2237 /* HomeViewModel.swift in Sources */,
 				5C8EB73E28358C67007D2237 /* CashRefillApp.swift in Sources */,
 				5CE01B182837968E0074F6AE /* GoalView.swift in Sources */,
+				8350D5622840368100C6C385 /* NavigationBackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

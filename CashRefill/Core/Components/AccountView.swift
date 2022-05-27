@@ -100,7 +100,7 @@ extension AccountView {
                     .font(.system(size: 55))
                 VStack(alignment: .leading) {
                     HStack {
-                        Text("Balance")
+                        Text("Savings")
                             .font(.headline)
                             .foregroundColor(Color.theme.firstTabContent)
                     }

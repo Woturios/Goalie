@@ -23,7 +23,7 @@ class HomeViewModel: ObservableObject {
     
     @Published var selectedTab: Int = 0
     @Published var showSheet: Bool = false
-    @Published var editingSheet: Bool = false
+//    @Published var editingSheet: Bool = false
     @Published var alertIsToggled: Bool = false
 
     
@@ -99,7 +99,6 @@ class HomeViewModel: ObservableObject {
     
     
     func addNewItemToList() {
-        guard !textFieldName.isEmpty && !textFieldPrice.isEmpty else { return alertIsToggled = true }
         let fieldPrice = String(textFieldPrice.replacingOccurrences(of: ",", with: "."))
         saveData(price: fieldPrice)
         UIApplication.shared.endEdditing()

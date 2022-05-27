@@ -1,0 +1,34 @@
+//
+//  NavigationBackView.swift
+//  CashRefill
+//
+//  Created by Woturios on 27/05/2022.
+//
+
+import SwiftUI
+
+struct NavigationBackView: View {
+    var body: some View {
+        HStack {
+            CircleButton(buttonName: "arrow.backward.circle.fill")
+            Text("Back")
+                .font(.headline)
+                .fontWeight(.bold)
+                .foregroundColor(Color.theme.accent)
+            Spacer()
+        }
+            .padding(.horizontal)
+    }
+}
+
+struct NavigationBackView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationBackView()
+            .previewLayout(.sizeThatFits)
+            .preferredColorScheme(.light)
+        
+        NavigationBackView()
+            .previewLayout(.sizeThatFits)
+            .preferredColorScheme(.dark)
+    }
+}
