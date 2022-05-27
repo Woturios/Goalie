@@ -13,15 +13,6 @@ struct AddEditFormView: View {
     @EnvironmentObject private var vm: HomeViewModel
     var addItemTitle: String
     var addPriceTitle: String
-//    var buttonTitle: String
-
-    
-//    enum addingField: Hashable {
-//        case itemTitle
-//        case itemPrice
-//    }
-    
-//    @FocusState private var fieldInFocus: addingField?
     @FocusState private var firstFocus: Bool
     
     var body: some View {

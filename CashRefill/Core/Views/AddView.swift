@@ -19,18 +19,15 @@ struct AddView: View {
             
             // Content layer
             VStack(alignment: .leading) {
-                navigationView
+                NavigationBackView()
+                    .onTapGesture {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
                 pageTitle
                 AddEditFormView(addItemTitle: "Add new item...", addPriceTitle: "Add price...")
                 button
                 Spacer()
             }
-            .onAppear(perform: {
-                if vm.editingSheet == false {
-                    vm.textFieldName = ""
-                    vm.textFieldPrice = ""
-                }
-            })
             .navigationBarHidden(true)
         }
         
@@ -54,21 +51,6 @@ struct AddView_Previews: PreviewProvider {
 }
 
 extension AddView {
-    private var navigationView: some View {
-        HStack {
-            Spacer()
-            Text("Back")
-                .font(.headline)
-                .fontWeight(.bold)
-                .foregroundColor(Color.theme.accent)
-            CircleButton(buttonName: "arrow.backward.circle.fill")
-        }
-            .padding(.horizontal)
-            .onTapGesture {
-                self.presentationMode.wrappedValue.dismiss()
-            }
-    }
-    
     private var pageTitle: some View {
         Text("Add new item:")
             .foregroundColor(Color.theme.accent)
@@ -79,6 +61,7 @@ extension AddView {
     
     private var button: some View {
         Button {
+            guard !vm.textFieldName.isEmpty && !vm.textFieldPrice.isEmpty else { return vm.alertIsToggled = true }
             vm.addNewItemToList()
             self.presentationMode.wrappedValue.dismiss()
         } label: {

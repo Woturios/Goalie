@@ -11,6 +11,7 @@ import CoreData
 struct HomeView: View {
     
     @EnvironmentObject private var vm: HomeViewModel
+    @State var editingSheet: Bool = false
     
     var body: some View {
         ZStack {
@@ -108,8 +109,10 @@ extension HomeView {
                     .foregroundColor(Color.primary)
             }
             .padding(.horizontal)
+            
             List {
                 ForEach(vm.savedEntities) { entity in
+                    ZStack {
                         HStack {
                             Text(entity.name ?? "No Name")
                                 .font(.headline)
@@ -118,19 +121,19 @@ extension HomeView {
                                 .font(.headline)
                                 .fontWeight(.semibold)
                         }
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            vm.editingSheet = true
-                            vm.textFieldName = entity.name ?? ""
-                            vm.textFieldPrice = String("\(entity.price)")
-                        }
-                        .listRowBackground(Color.clear)
-                        .sheet(isPresented: $vm.editingSheet) {
-                            EditingView(entity: entity)
+                        
+                        NavigationLink {
+                            EditingView(itemName: entity.name ?? "", itemPrice: String("\(entity.price)"), item: entity)
+                        } label: {
+                            EmptyView()
+                       }
+                        .opacity(0)
                     }
+                    .listRowBackground(Color.clear)
                 }
                 .onDelete(perform: vm.deletePost)
             }
+            .navigationBarHidden(true)
             .listStyle(.plain)
         }
     }
