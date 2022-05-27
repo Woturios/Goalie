@@ -15,7 +15,7 @@ struct GoalView: View {
     var body: some View {
         ZStack {
             // Background layer
-            RadialGradient(colors: [vm.getBackgroundColor().opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
+            RadialGradient(colors: [vm.getAccentColor().opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
             
             // Content layer
             VStack(alignment: .leading) {

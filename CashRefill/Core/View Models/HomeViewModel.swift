@@ -108,7 +108,7 @@ class HomeViewModel: ObservableObject {
         portfolioSummary = savedEntities.sum(\.price)
     }
     
-    func getBackgroundColor() -> Color {
+    func getAccentColor() -> Color {
         if selectedTab == 0 {
             return Color.blue
         } else if selectedTab == 1 {

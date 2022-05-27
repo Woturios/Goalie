@@ -18,7 +18,7 @@ struct EditingView: View {
     
     var body: some View {
         ZStack {
-            RadialGradient(colors: [vm.getBackgroundColor().opacity(0.3), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
+            RadialGradient(colors: [vm.getAccentColor().opacity(0.3), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
             
             VStack(alignment: .leading) {
                 NavigationBackView()
@@ -88,7 +88,7 @@ extension EditingView {
                 .foregroundColor(Color.theme.reversed)
                 .frame(height: 55)
                 .frame(maxWidth: .infinity)
-                .background(Color.theme.button)
+                .background(vm.getAccentColor())
                 .cornerRadius(10)
                 .padding(.horizontal)
         }

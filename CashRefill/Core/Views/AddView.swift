@@ -15,22 +15,32 @@ struct AddView: View {
     var body: some View {
         ZStack {
             // Background layer
-            RadialGradient(colors: [vm.getBackgroundColor().opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
+            RadialGradient(colors: [vm.getAccentColor().opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
             
             // Content layer
             VStack(alignment: .leading) {
-                NavigationBackView()
-                    .onTapGesture {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }
-                pageTitle
+//                NavigationBackView()
+//                    .onTapGesture {
+//                        self.presentationMode.wrappedValue.dismiss()
+//                    }
+//                pageTitle
                 AddEditFormView(addItemTitle: "Add new item...", addPriceTitle: "Add price...")
                 button
                 Spacer()
             }
-            .navigationBarHidden(true)
+//            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarTitleDisplayMode(.large)
+            .navigationTitle("Add new item:")
         }
-        
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                CircleButton(buttonName: "arrow.backward.circle.fill")
+                    .onTapGesture {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+            }
+        }
     }
 }
 
@@ -70,7 +80,7 @@ extension AddView {
                 .foregroundColor(Color.theme.reversed)
                 .frame(height: 55)
                 .frame(maxWidth: .infinity)
-                .background(Color.theme.button)
+                .background(vm.getAccentColor())
                 .cornerRadius(10)
                 .padding(.horizontal)
         }
@@ -81,4 +91,5 @@ extension AddView {
         }
     }
 }
+
 

@@ -32,6 +32,9 @@ struct PickerView: View {
                     Text(filterOptions[index])
                         .tag(filterOptions[index])
                 }
+                .onAppear {
+                    UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(vm.getAccentColor())
+                }
             } label: {
                 Text("Picker")
             }
@@ -65,7 +68,7 @@ struct PickerView: View {
                     .foregroundColor(Color.theme.reversed)
                     .frame(height: 55)
                     .frame(maxWidth: .infinity)
-                    .background(Color.theme.button)
+                    .background(vm.getAccentColor())
                     .cornerRadius(10)
             }
             
