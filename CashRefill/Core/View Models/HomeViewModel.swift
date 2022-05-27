@@ -43,6 +43,11 @@ class HomeViewModel: ObservableObject {
         coreDataManager.getListItems()
     }
     
+    // New items on top
+    func sortedListItems() -> [PostEntity] {
+        savedEntities.reversed()
+    }
+    
     // Reload items
     func reloadItems() {
         savedEntities = fetchPortfolio()
@@ -51,7 +56,7 @@ class HomeViewModel: ObservableObject {
     // Delete item
     func deletePost(indexSet: IndexSet) {
         indexSet.forEach { index in
-            let item = savedEntities[index]
+            let item = sortedListItems()[index]
             coreDataManager.deleteItem(item: item)
             reloadItems()
         }
@@ -70,24 +75,11 @@ class HomeViewModel: ObservableObject {
     // Save item
     func saveData(price: String) {
         coreDataManager.saveItem(title: textFieldName, price: Double(price) ?? 0)
-//        do {
-//            try container.viewContext.save()
-//            fetchPortfolio()
-//            portfolioSummary = savedEntities.sum(\.price)
-//        } catch let error {
-//            print("Error saving. \(error)")
-//        }
     }
     
     
-    // Update list item
-//    func updatePostItem() {
-//
-//    }
-    
-    // update Account Bilance and percentage
     func updateBilance() {
-        portfolioSummary = savedEntities.sum(\.price)
+        portfolioSummary = sortedListItems().sum(\.price)
         goalPercentage = Double((portfolioSummary / (Double(goal) ?? 0) * 100))
     }
     

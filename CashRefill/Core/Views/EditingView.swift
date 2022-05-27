@@ -78,9 +78,6 @@ extension EditingView {
                 vm.reloadItems()
                 vm.updateBilance()
             }
-            //            vm.textFieldName = ""
-            //            vm.textFieldPrice = ""
-            //            vm.portfolioSummary = vm.savedEntities.sum(\.price)
             self.presentationMode.wrappedValue.dismiss()
         } label: {
             Text("Submit your changes 👍".uppercased())

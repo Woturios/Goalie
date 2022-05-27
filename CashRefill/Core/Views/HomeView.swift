@@ -21,7 +21,7 @@ struct HomeView: View {
                 homeNavigation
                 AccountView()
                 listTitleView
-                if vm.savedEntities.isEmpty {
+                if vm.sortedListItems().isEmpty {
                     VStack(alignment: .center){
                         Spacer()
                         Text("There is nothing on your list. Press + to add new item. 😱😨😰")
@@ -111,7 +111,7 @@ extension HomeView {
             .padding(.horizontal)
             
             List {
-                ForEach(vm.savedEntities) { entity in
+                ForEach(vm.sortedListItems()) { entity in
                     ZStack {
                         HStack {
                             Text(entity.name ?? "No Name")
