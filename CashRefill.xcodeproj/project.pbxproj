@@ -25,6 +25,7 @@
 		5C8EB7612836A851007D2237 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB7602836A851007D2237 /* AddView.swift */; };
 		5CE01B182837968E0074F6AE /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE01B172837968E0074F6AE /* GoalView.swift */; };
 		8350D5622840368100C6C385 /* NavigationBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8350D5612840368100C6C385 /* NavigationBackView.swift */; };
+		8350D56A2840E3DD00C6C385 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8350D5692840E3DD00C6C385 /* UINavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		5C8EB7602836A851007D2237 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		5CE01B172837968E0074F6AE /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
 		8350D5612840368100C6C385 /* NavigationBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBackView.swift; sourceTree = "<group>"; };
+		8350D5692840E3DD00C6C385 /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				5C8EB7512835B870007D2237 /* UIApplication.swift */,
 				5C08E9492837D9EC001F6941 /* Color.swift */,
 				5C08E94B2837E9B1001F6941 /* Sequence.swift */,
+				8350D5692840E3DD00C6C385 /* UINavigationController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				5C272F332837A2C00003E729 /* PickerView.swift in Sources */,
 				5C8EB7612836A851007D2237 /* AddView.swift in Sources */,
 				5C8EB75D2836986D007D2237 /* AccountView.swift in Sources */,
+				8350D56A2840E3DD00C6C385 /* UINavigationController.swift in Sources */,
 				5C8EB7572836818D007D2237 /* HomeViewModel.swift in Sources */,
 				5C8EB73E28358C67007D2237 /* CashRefillApp.swift in Sources */,
 				5CE01B182837968E0074F6AE /* GoalView.swift in Sources */,

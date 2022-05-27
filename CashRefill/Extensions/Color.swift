@@ -15,21 +15,6 @@ extension Color {
 //    static let theme = SubtleTheme()
 }
 
-struct ColorTheme {
-    
-    let button = Color("AccentColor")
-    let accent = Color.primary
-    let background = Color("BackgroundColor")
-    let reversed = Color("ReversedPrimary")
-    let secondaryText = Color("SecondaryTextColor")
-    let textFieldColor = Color("TextFieldColor")
-    let firstTabBg = Color.blue
-    let firstTabContent = Color.white
-    let secondTabBg = Color.orange
-    let secondTabContent = Color.black
-    let thirdTabBg = Color.green
-    let thirdTabContent = Color.white
-}
 
 
 struct GradientBackgroundTheme {
@@ -47,10 +32,9 @@ struct GradientBackgroundTheme {
     let thirdTabBg = Color.green.opacity(0.5)
     let thirdTabContent = Color.white
     
-    
 }
 
-
+/*
 struct SubtleTheme {
     
     let accent = Color("SubtleGradient")
@@ -66,3 +50,21 @@ struct SubtleTheme {
     let thirdTabContent = Color("BackgroundColor")
 }
 
+
+struct ColorTheme {
+    
+    let button = Color("AccentColor")
+    let accent = Color.primary
+    let background = Color("BackgroundColor")
+    let reversed = Color("ReversedPrimary")
+    let secondaryText = Color("SecondaryTextColor")
+    let textFieldColor = Color("TextFieldColor")
+    let firstTabBg = Color.blue
+    let firstTabContent = Color.white
+    let secondTabBg = Color.orange
+    let secondTabContent = Color.black
+    let thirdTabBg = Color.green
+    let thirdTabContent = Color.white
+}
+
+*/

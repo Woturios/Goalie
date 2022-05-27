@@ -15,7 +15,7 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            RadialGradient(colors: [vm.getBackgroundColor().opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
+            RadialGradient(colors: [vm.getAccentColor().opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
             
             VStack(alignment: .leading, spacing: nil) {
                 homeNavigation
