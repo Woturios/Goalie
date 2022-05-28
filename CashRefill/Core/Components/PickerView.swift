@@ -38,6 +38,9 @@ struct PickerView: View {
             } label: {
                 Text("Picker")
             }
+            .onChange(of: selection, perform: { newValue in
+                newGoal = selection
+            })
             .pickerStyle(.segmented)
                         
             TextField("Add your custom goal!", text: $newGoal)
@@ -49,14 +52,12 @@ struct PickerView: View {
                 .keyboardType(.numberPad)
             
             Button {
-                if (filterOptions.contains(selection)) {
+                if !newGoal.isEmpty {
+                    vm.goal = newGoal
+                } else if (filterOptions.contains(selection)) {
                     newGoal = selection
                     vm.goal = newGoal
                     selection = "0"
-                } else if !newGoal.isEmpty {
-                    vm.goal = newGoal
-                } else {
-                    return
                 }
                 vm.updateGoalPercentage()
                 UIApplication.shared.endEdditing()
@@ -74,13 +75,13 @@ struct PickerView: View {
             
             
             // DEV DATA
-//            VStack {
-//                Text("Developer Data")
-//                Text("selection: \(selection)")
-//                Text("newGoal: \(newGoal)")
-//                Text("Curent goal: \(vm.goal)")
-//                Text("Current percentage: \(vm.goalPercentage)")
-//            }
+            VStack {
+                Text("Developer Data")
+                Text("selection: \(selection)")
+                Text("newGoal: \(newGoal)")
+                Text("Curent goal: \(vm.goal)")
+                Text("Current percentage: \(vm.goalPercentage)")
+            }
 
         }
         
