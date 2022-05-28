@@ -21,11 +21,6 @@ struct EditingView: View {
             RadialGradient(colors: [vm.getAccentColor().opacity(0.3), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
             
             VStack(alignment: .leading) {
-                NavigationBackView()
-                    .onTapGesture {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }
-                Spacer()
                 Text("Edit your list item:")
                     .foregroundColor(Color.theme.accent)
                     .font(.title)
@@ -60,9 +55,17 @@ struct EditingView: View {
                     }
                 }
             }
-            
         }
-        .navigationBarHidden(true)
+        .navigationBarHidden(false)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                NavigationBackView()
+                    .onTapGesture {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+            }
+        }
     }
 }
 

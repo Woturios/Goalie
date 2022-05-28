@@ -15,9 +15,7 @@ struct NavigationBackView: View {
                 .font(.headline)
                 .fontWeight(.bold)
                 .foregroundColor(Color.theme.accent)
-            Spacer()
         }
-            .padding(.horizontal)
     }
 }
 

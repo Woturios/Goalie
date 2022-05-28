@@ -19,23 +19,23 @@ struct AddView: View {
             
             // Content layer
             VStack(alignment: .leading) {
-//                NavigationBackView()
-//                    .onTapGesture {
-//                        self.presentationMode.wrappedValue.dismiss()
-//                    }
-//                pageTitle
+                //                NavigationBackView()
+                //                    .onTapGesture {
+                //                        self.presentationMode.wrappedValue.dismiss()
+                //                    }
+                //                pageTitle
                 AddEditFormView(addItemTitle: "Add new item...", addPriceTitle: "Add price...")
                 button
                 Spacer()
             }
-//            .navigationBarHidden(true)
+            .navigationBarHidden(false)
             .navigationBarBackButtonHidden(true)
             .navigationBarTitleDisplayMode(.large)
             .navigationTitle("Add new item:")
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                CircleButton(buttonName: "arrow.backward.circle.fill")
+                NavigationBackView()
                     .onTapGesture {
                         self.presentationMode.wrappedValue.dismiss()
                     }

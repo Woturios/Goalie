@@ -63,7 +63,8 @@ extension GoalView {
     private var navBar: some View {
         HStack {
             Spacer()
-            CircleButton(buttonName: "xmark")
+            Image(systemName: "xmark")
+                .font(.title)
                 .frame(width: 50, height: 50)
                 .onTapGesture {
                     self.presentationMode.wrappedValue.dismiss()

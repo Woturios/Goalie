@@ -18,8 +18,11 @@ struct HomeView: View {
             RadialGradient(colors: [vm.getAccentColor().opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
             
             VStack(alignment: .leading, spacing: nil) {
-                homeNavigation
+//                homeNavigation
                 AccountView()
+                    .sheet(isPresented: $vm.showSheet) {
+                        GoalView()
+                    }
                 listTitleView
                 if vm.sortedListItems().isEmpty {
                     VStack(alignment: .center){
@@ -37,7 +40,27 @@ struct HomeView: View {
                     listView
                 }
             }
-            .navigationBarHidden(true)
+            .navigationBarHidden(false)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    NavigationLink {
+                        AddView()
+                    } label: {
+                        Text("Add new")
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.theme.accent)
+                        CircleButton(buttonName: "plus.circle.fill")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    CircleButton(buttonName: "rosette")
+                        .onTapGesture {
+                            vm.showSheet = true
+                        }
+                }
+            }
         }
         
     }
