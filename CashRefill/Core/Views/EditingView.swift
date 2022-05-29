@@ -28,7 +28,7 @@ struct EditingView: View {
                     .padding(.horizontal)
                 
                 VStack(spacing: 10) {
-                    TextField(item.name ?? "", text: $itemName)
+                    TextField(item.name ?? "", text: $itemName).modifier(ClearButton(text: $itemName))
                         .focused($firstFocus)
                         .font(.headline)
                         .padding(.leading)
@@ -38,7 +38,7 @@ struct EditingView: View {
                         .padding(.horizontal)
                         .keyboardType(.alphabet)
                     
-                    TextField(String("\(item.price)"), text: $itemPrice)
+                    TextField(String("\(item.price)"), text: $itemPrice).modifier(ClearButton(text: $itemPrice))
                         .font(.headline)
                         .padding(.leading)
                         .frame(height: 55)
@@ -73,7 +73,6 @@ struct EditingView: View {
 extension EditingView {
     private var button: some View {
         Button {
-            //            guard !vm.textFieldName.isEmpty && !vm.textFieldPrice.isEmpty else { return vm.alertIsToggled = true }
             if !itemName.isEmpty && !itemPrice.isEmpty {
                 item.name = itemName
                 item.price = Double("\(itemPrice)") ?? 0
