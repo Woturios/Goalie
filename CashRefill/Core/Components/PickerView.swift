@@ -38,25 +38,29 @@ struct PickerView: View {
             } label: {
                 Text("Picker")
             }
+            .onChange(of: selection, perform: { newValue in
+                newGoal = selection
+            })
             .pickerStyle(.segmented)
                         
-            TextField("Add your custom goal!", text: $newGoal)
+            TextField("Add your custom goal!", text: $newGoal).modifier(ClearButton(text: $newGoal))
                 .font(.headline)
                 .padding(.leading)
                 .frame(height: 55)
                 .background(Color.theme.textFieldColor)
                 .cornerRadius(10)
                 .keyboardType(.numberPad)
+//                .onTapGesture {
+//                    newGoal = ""
+//                }
             
             Button {
-                if (filterOptions.contains(selection)) {
+                if !newGoal.isEmpty {
+                    vm.goal = newGoal
+                } else if (filterOptions.contains(selection)) {
                     newGoal = selection
                     vm.goal = newGoal
                     selection = "0"
-                } else if !newGoal.isEmpty {
-                    vm.goal = newGoal
-                } else {
-                    return
                 }
                 vm.updateGoalPercentage()
                 UIApplication.shared.endEdditing()
@@ -92,6 +96,8 @@ struct PickerView_Previews: PreviewProvider {
         PickerView()
     }
 }
+
+
 
 
 
