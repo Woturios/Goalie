@@ -43,13 +43,16 @@ struct PickerView: View {
             })
             .pickerStyle(.segmented)
                         
-            TextField("Add your custom goal!", text: $newGoal)
+            TextField("Add your custom goal!", text: $newGoal).modifier(ClearButton(text: $newGoal))
                 .font(.headline)
                 .padding(.leading)
                 .frame(height: 55)
                 .background(Color.theme.textFieldColor)
                 .cornerRadius(10)
                 .keyboardType(.numberPad)
+//                .onTapGesture {
+//                    newGoal = ""
+//                }
             
             Button {
                 if !newGoal.isEmpty {
@@ -75,13 +78,13 @@ struct PickerView: View {
             
             
             // DEV DATA
-            VStack {
-                Text("Developer Data")
-                Text("selection: \(selection)")
-                Text("newGoal: \(newGoal)")
-                Text("Curent goal: \(vm.goal)")
-                Text("Current percentage: \(vm.goalPercentage)")
-            }
+//            VStack {
+//                Text("Developer Data")
+//                Text("selection: \(selection)")
+//                Text("newGoal: \(newGoal)")
+//                Text("Curent goal: \(vm.goal)")
+//                Text("Current percentage: \(vm.goalPercentage)")
+//            }
 
         }
         
@@ -93,6 +96,8 @@ struct PickerView_Previews: PreviewProvider {
         PickerView()
     }
 }
+
+
 
 
 

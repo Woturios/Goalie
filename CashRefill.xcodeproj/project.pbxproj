@@ -24,6 +24,7 @@
 		5C8EB75D2836986D007D2237 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB75C2836986D007D2237 /* AccountView.swift */; };
 		5C8EB7612836A851007D2237 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8EB7602836A851007D2237 /* AddView.swift */; };
 		5CE01B182837968E0074F6AE /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE01B172837968E0074F6AE /* GoalView.swift */; };
+		8304E0D92843911C0078F616 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304E0D82843911C0078F616 /* ClearButton.swift */; };
 		8350D5622840368100C6C385 /* NavigationBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8350D5612840368100C6C385 /* NavigationBackView.swift */; };
 		8350D56A2840E3DD00C6C385 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8350D5692840E3DD00C6C385 /* UINavigationController.swift */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,7 @@
 		5C8EB75C2836986D007D2237 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		5C8EB7602836A851007D2237 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		5CE01B172837968E0074F6AE /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
+		8304E0D82843911C0078F616 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
 		8350D5612840368100C6C385 /* NavigationBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBackView.swift; sourceTree = "<group>"; };
 		8350D5692840E3DD00C6C385 /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +82,7 @@
 				5C2E8D1D2836CAA100E5365D /* CircleButton.swift */,
 				5C8EB75C2836986D007D2237 /* AccountView.swift */,
 				8350D5612840368100C6C385 /* NavigationBackView.swift */,
+				8304E0D82843911C0078F616 /* ClearButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				5C7C988A283C43CC004C305E /* EditingView.swift in Sources */,
 				5C08E94C2837E9B1001F6941 /* Sequence.swift in Sources */,
 				5C8EB74C28358CA2007D2237 /* HomeView.swift in Sources */,
+				8304E0D92843911C0078F616 /* ClearButton.swift in Sources */,
 				5C2E8D1E2836CAA100E5365D /* CircleButton.swift in Sources */,
 				5C8EB7522835B870007D2237 /* UIApplication.swift in Sources */,
 				5C272F332837A2C00003E729 /* PickerView.swift in Sources */,

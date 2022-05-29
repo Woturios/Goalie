@@ -18,7 +18,7 @@ struct AddEditFormView: View {
     var body: some View {
         VStack(spacing: 10) {
             TextField(addItemTitle, text: $vm.textFieldName)
-                .focused($firstFocus)
+                .focused($firstFocus).modifier(ClearButton(text: $vm.textFieldName))
 //                .focused($fieldInFocus, equals: .itemTitle)
                 .font(.headline)
                 .padding(.leading)
@@ -28,7 +28,7 @@ struct AddEditFormView: View {
                 .padding(.horizontal)
                 .keyboardType(.alphabet)
             
-            TextField(addPriceTitle, text: $vm.textFieldPrice)
+            TextField(addPriceTitle, text: $vm.textFieldPrice).modifier(ClearButton(text: $vm.textFieldPrice))
 //                .focused($fieldInFocus, equals: .itemPrice)
                 .font(.headline)
                 .padding(.leading)
