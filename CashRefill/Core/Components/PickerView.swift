@@ -50,9 +50,9 @@ struct PickerView: View {
                 .background(Color.theme.textFieldColor)
                 .cornerRadius(10)
                 .keyboardType(.numberPad)
-//                .onTapGesture {
-//                    newGoal = ""
-//                }
+                .onChange(of: newGoal) { newValue in
+                    selection = newGoal
+                }
             
             Button {
                 if !newGoal.isEmpty {
