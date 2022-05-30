@@ -28,10 +28,10 @@ struct GoalView: View {
                         .padding(.horizontal)
                     SetGoalView()
                     Spacer()
-                    if vm.goal == "" {
+                    if vm.goal == 0 {
                         smartTip
                     } else {
-                        Text("Your current goal is \(vm.goal) zł")
+                        Text("Your current goal is \(vm.goal.asCurrencyWith0Decimals())")
                             .font(.headline)
                             .bold()
                     }

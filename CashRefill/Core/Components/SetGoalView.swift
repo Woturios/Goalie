@@ -55,7 +55,6 @@ struct SetGoalView_Previews: PreviewProvider {
     }
 }
 
-
 // MARK: EXTENSION
 extension SetGoalView {
     private var picker: some View {
@@ -91,10 +90,10 @@ extension SetGoalView {
     private var button: some View {
         Button {
             if !newGoal.isEmpty {
-                vm.goal = newGoal
+                vm.goal = Double(newGoal) ?? 0
             } else if (filterOptions.contains(selection)) {
                 newGoal = selection
-                vm.goal = newGoal
+                vm.goal = Double(newGoal) ?? 0
                 selection = "0"
             }
             vm.updateGoalPercentage()
@@ -107,7 +106,6 @@ extension SetGoalView {
                 .padding(.horizontal)
         }
         .withPressableStyle()
-
     }
 }
 

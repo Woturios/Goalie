@@ -19,14 +19,12 @@ class HomeViewModel: ObservableObject {
     @Published var textFieldPrice: String = ""
     
     @Published var portfolioSummary: Double = 0
-    @AppStorage("goal") var goal: String = ""
+    @AppStorage("goal") var goal: Double = 0
     @Published var goalPercentage: Double = 0
     
     @Published var selectedTab: Int = 0
     @Published var showSheet: Bool = false
-//    @Published var editingSheet: Bool = false
     @Published var alertIsToggled: Bool = false
-
     
     // MARK: INIT
     init() {
@@ -73,15 +71,17 @@ class HomeViewModel: ObservableObject {
     
     func updateBilance() {
         portfolioSummary = sortedListItems().sum(\.price)
-        goalPercentage = Double((portfolioSummary / (Double(goal) ?? 0) * 100))
+        updateGoalPercentage()
     }
     
     // update goal percentage
     func updateGoalPercentage() {
-        goalPercentage = Double((portfolioSummary / (Double(goal) ?? 0) * 100))
+        goalPercentage = (portfolioSummary / goal * 100)
     }
     
-    
+    func goalAsCurrency() -> String {
+        return goal.asCurrencyWith0Decimals()
+    }
     
     func addNewItemToList() {
         let fieldPrice = String(textFieldPrice.replacingOccurrences(of: ",", with: "."))
@@ -92,7 +92,6 @@ class HomeViewModel: ObservableObject {
         reloadItems()
         portfolioSummary = savedEntities.sum(\.price)
     }
-    
     
     // MARK: THEME FUNC
     func getAccentColor() -> Color {

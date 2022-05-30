@@ -58,9 +58,10 @@ extension AccountView {
                 .frame(maxWidth: .infinity)
                 .foregroundColor(Color.theme.thirdTabBg)
                 .padding(.horizontal)
+            
             HStack(spacing: 20) {
 //                 PROGRESSIVE EMOTICON SHOWING PROGRESS IN %
-                if vm.goal != "" {
+                if vm.goal != 0 {
                     VStack(spacing: 1) {
                         ForEach(1..<11) { index in
                             Rectangle()
@@ -78,7 +79,7 @@ extension AccountView {
                             .font(.headline)
                             .foregroundColor(Color.theme.thirdTabContent)
                     }
-                    if vm.goal != "" {
+                    if vm.goal != 0 {
                         Text("\(vm.goalPercentage, specifier: "%.0f") %")
                             .font(.largeTitle)
                             .fontWeight(.bold)
@@ -111,7 +112,7 @@ extension AccountView {
                             .font(.headline)
                             .foregroundColor(Color.theme.firstTabContent)
                     }
-                    Text("\(vm.portfolioSummary, specifier: "%.2f") zł")
+                    Text("\(vm.portfolioSummary.asCurrencyWith2Decimals())")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(Color.theme.firstTabContent)
@@ -137,8 +138,8 @@ extension AccountView {
                             .font(.headline)
                             .foregroundColor(Color.theme.secondTabContent)
                     }
-                    if vm.goal != "" {
-                        Text("\(Double(vm.goal) ?? 0, specifier: "%.0f") zł")
+                    if vm.goal != 0 {
+                        Text("\(vm.goal.asCurrencyWith0Decimals())")
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .foregroundColor(Color.theme.secondTabContent)

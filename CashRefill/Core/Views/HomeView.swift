@@ -143,7 +143,7 @@ extension HomeView {
                             Text(entity.name ?? "No Name")
                                 .font(.headline)
                             Spacer()
-                            Text("\(entity.price, specifier: "%.2f") zł")
+                            Text("\(entity.price.asCurrencyWith2Decimals())")
                                 .font(.headline)
                                 .fontWeight(.semibold)
                         }
