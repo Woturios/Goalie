@@ -12,8 +12,8 @@ struct AddEditFormView: View {
     // MARK: PROPERTIES
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject private var vm: HomeViewModel
-    var addItemTitle: String
-    var addPriceTitle: String
+    var addItemTitle: LocalizedStringKey
+    var addPriceTitle: LocalizedStringKey
     @FocusState private var firstFocus: Bool
     
     // MARK: BODY

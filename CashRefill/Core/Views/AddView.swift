@@ -21,7 +21,7 @@ struct AddView: View {
             
             // Content layer
             VStack(alignment: .leading) {
-                AddEditFormView(addItemTitle: "Add new item...", addPriceTitle: "Add price...")
+                AddEditFormView(addItemTitle: LocalizedStringKey("Add new item..."), addPriceTitle: LocalizedStringKey("Add price..."))
                 button
                 Spacer()
             }
@@ -75,7 +75,7 @@ extension AddView {
             vm.addNewItemToList()
             self.presentationMode.wrappedValue.dismiss()
         } label: {
-            Text("Add to my list 🥳".uppercased())
+            Text(LocalizedStringKey("ADD TO MY LIST 🥳"))
                 .withDefaultButtonFormatting(backgroundColor: vm.getAccentColor(), foregroundColor: Color.theme.reversed)
         }
         .withPressableStyle()

@@ -75,9 +75,9 @@ extension SetGoalView {
         .pickerStyle(.segmented)
         .padding(.horizontal)
     }
-    
+
     private var textField: some View {
-        TextField("Add your custom goal!", text: $newGoal)
+        TextField(LocalizedStringKey("Add your custom goal!"), text: $newGoal)
             .withClearButton(text: $newGoal)
             .withDefaultTextFieldFormatting()
             .keyboardType(.numberPad)
@@ -101,7 +101,7 @@ extension SetGoalView {
             newGoal = ""
             self.presentationMode.wrappedValue.dismiss()
         } label: {
-            Text("Save".uppercased())
+            Text(LocalizedStringKey("SAVE"))
                 .withDefaultButtonFormatting(backgroundColor: vm.getAccentColor(), foregroundColor: Color.theme.reversed)
                 .padding(.horizontal)
         }

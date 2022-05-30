@@ -78,7 +78,7 @@ extension EditingView {
             }
             self.presentationMode.wrappedValue.dismiss()
         } label: {
-            Text("Submit your changes 👍".uppercased())
+            Text(LocalizedStringKey("SUBMIT YOUR CHANGES 👍"))
                 .withDefaultButtonFormatting(backgroundColor: vm.getAccentColor(), foregroundColor: Color.theme.reversed)
                 .padding(.horizontal)
         }
