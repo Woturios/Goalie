@@ -42,6 +42,7 @@ struct PickerView: View {
                 newGoal = selection
             })
             .pickerStyle(.segmented)
+            .padding(.horizontal)
                         
             TextField("Add your custom goal!", text: $newGoal).modifier(ClearButton(text: $newGoal))
                 .font(.headline)
@@ -53,6 +54,7 @@ struct PickerView: View {
                 .onChange(of: newGoal) { newValue in
                     selection = newGoal
                 }
+                .padding(.horizontal)
             
             Button {
                 if !newGoal.isEmpty {
@@ -68,16 +70,14 @@ struct PickerView: View {
                 self.presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("Save".uppercased())
-                    .font(.headline)
-                    .foregroundColor(Color.theme.reversed)
-                    .frame(height: 55)
-                    .frame(maxWidth: .infinity)
-                    .background(vm.getAccentColor())
-                    .cornerRadius(10)
+                    .withDefaultButtonFormatting(backgroundColor: vm.getAccentColor(), foregroundColor: Color.theme.reversed)
+                    .padding(.horizontal)
             }
+            .withPressableStyle()
             
             
             // DEV DATA
+            /*
 //            VStack {
 //                Text("Developer Data")
 //                Text("selection: \(selection)")
@@ -85,6 +85,7 @@ struct PickerView: View {
 //                Text("Curent goal: \(vm.goal)")
 //                Text("Current percentage: \(vm.goalPercentage)")
 //            }
+             */
 
         }
         

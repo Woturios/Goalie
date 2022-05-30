@@ -76,14 +76,10 @@ extension AddView {
             self.presentationMode.wrappedValue.dismiss()
         } label: {
             Text("Add to my list 🥳".uppercased())
-                .font(.headline)
-                .foregroundColor(Color.theme.reversed)
-                .frame(height: 55)
-                .frame(maxWidth: .infinity)
-                .background(vm.getAccentColor())
-                .cornerRadius(10)
+                .withDefaultButtonFormatting(backgroundColor: vm.getAccentColor(), foregroundColor: Color.theme.reversed)
                 .padding(.horizontal)
         }
+        .withPressableStyle()
         .alert("Oh, no! 😰😱🥶", isPresented: $vm.alertIsToggled) {
             
         } message: {

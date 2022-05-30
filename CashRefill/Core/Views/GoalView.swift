@@ -23,6 +23,7 @@ struct GoalView: View {
                 pageTitle
                 VStack(alignment: .center ,spacing: 10) {
                     setGoalTitle
+                        .padding(.horizontal)
                     PickerView()
                     Spacer()
                     if vm.goal == "" {
@@ -34,7 +35,6 @@ struct GoalView: View {
                     }
                     Spacer()
                 }
-                .padding()
                 
                 Spacer()
             }
