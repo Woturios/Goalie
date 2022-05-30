@@ -9,33 +9,25 @@ import SwiftUI
 
 struct AddEditFormView: View {
     
+    // MARK: PROPERTIES
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject private var vm: HomeViewModel
     var addItemTitle: String
     var addPriceTitle: String
     @FocusState private var firstFocus: Bool
     
+    // MARK: BODY
     var body: some View {
         VStack(spacing: 10) {
             TextField(addItemTitle, text: $vm.textFieldName)
-                .focused($firstFocus).modifier(ClearButton(text: $vm.textFieldName))
-//                .focused($fieldInFocus, equals: .itemTitle)
-                .font(.headline)
-                .padding(.leading)
-                .frame(height: 55)
-                .background(Color.theme.textFieldColor)
-                .cornerRadius(10)
-                .padding(.horizontal)
+                .withClearButton(text: $vm.textFieldName)
+                .focused($firstFocus)
+                .withDefaultTextFieldFormatting()
                 .keyboardType(.alphabet)
             
-            TextField(addPriceTitle, text: $vm.textFieldPrice).modifier(ClearButton(text: $vm.textFieldPrice))
-//                .focused($fieldInFocus, equals: .itemPrice)
-                .font(.headline)
-                .padding(.leading)
-                .frame(height: 55)
-                .background(Color.theme.textFieldColor)
-                .cornerRadius(10)
-                .padding(.horizontal)
+            TextField(addPriceTitle, text: $vm.textFieldPrice)
+                .withClearButton(text: $vm.textFieldPrice)
+                .withDefaultTextFieldFormatting()
                 .keyboardType(.decimalPad)
         }
         .onAppear {
@@ -46,6 +38,7 @@ struct AddEditFormView: View {
     }
 }
 
+// MARK: PREVIEWS
 struct AddEditFormView_Previews: PreviewProvider {
     static var previews: some View {
         AddEditFormView(addItemTitle: "", addPriceTitle: "")

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EditingView: View {
     
+    // MARK: PROPERTIES
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject private var vm: HomeViewModel
     @State var itemName: String
@@ -16,6 +17,7 @@ struct EditingView: View {
     @FocusState private var firstFocus: Bool
     let item: PostEntity
     
+    // MARK: BODY
     var body: some View {
         ZStack {
             RadialGradient(colors: [vm.getAccentColor().opacity(0.3), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
@@ -28,22 +30,16 @@ struct EditingView: View {
                     .padding(.horizontal)
                 
                 VStack(spacing: 10) {
-                    TextField(item.name ?? "", text: $itemName).modifier(ClearButton(text: $itemName))
+                    TextField(item.name ?? "", text: $itemName)
+                        .withClearButton(text: $itemName)
                         .focused($firstFocus)
-                        .font(.headline)
-                        .padding(.leading)
-                        .frame(height: 55)
-                        .background(Color.theme.textFieldColor)
-                        .cornerRadius(10)
+                        .withDefaultTextFieldFormatting()
                         .padding(.horizontal)
                         .keyboardType(.alphabet)
                     
-                    TextField(String("\(item.price)"), text: $itemPrice).modifier(ClearButton(text: $itemPrice))
-                        .font(.headline)
-                        .padding(.leading)
-                        .frame(height: 55)
-                        .background(Color.theme.textFieldColor)
-                        .cornerRadius(10)
+                    TextField(String("\(item.price)"), text: $itemPrice)
+                        .withClearButton(text: $itemPrice)
+                        .withDefaultTextFieldFormatting()
                         .padding(.horizontal)
                         .keyboardType(.decimalPad)
                     button
@@ -69,7 +65,7 @@ struct EditingView: View {
     }
 }
 
-
+// MARK: EXTENSION
 extension EditingView {
     private var button: some View {
         Button {
@@ -96,10 +92,9 @@ extension EditingView {
     }
 }
 
-struct EditingView_Previews: PreviewProvider {
-    static var previews: some View {
-        let item = PostEntity()
-        EditingView(itemName: "", itemPrice: "0", item: item)
-            .environmentObject(HomeViewModel())
-    }
-}
+// MARK: PREVIEW
+//struct EditingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EditingView(itemName: "name", itemPrice: "23", item: PostEntity.indice)
+//    }
+//}

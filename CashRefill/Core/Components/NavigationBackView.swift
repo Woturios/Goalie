@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NavigationBackView: View {
+    // MARK: BODY
     var body: some View {
         HStack {
             CircleButton(buttonName: "arrow.backward.circle.fill")
@@ -19,6 +20,7 @@ struct NavigationBackView: View {
     }
 }
 
+// MARK: PREVIEWS
 struct NavigationBackView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationBackView()

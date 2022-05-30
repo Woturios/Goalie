@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Adds pressing animation to button
 struct PressableButtonStyle: ButtonStyle {
     
     let scaledAmount: CGFloat

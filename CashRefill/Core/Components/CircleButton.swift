@@ -13,6 +13,7 @@ struct CircleButton: View {
     
     let buttonName: String
     
+    // MARK: BODY
     var body: some View {
         Image(systemName: buttonName)
             .font(.title2)
@@ -21,6 +22,7 @@ struct CircleButton: View {
     }
 }
 
+// MARK: PREVIEWS
 struct CircleButton_Previews: PreviewProvider {
     static var previews: some View {
         CircleButton(buttonName: "plus.circle.fill")

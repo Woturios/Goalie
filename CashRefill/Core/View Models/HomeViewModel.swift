@@ -11,6 +11,7 @@ import CoreData
 
 class HomeViewModel: ObservableObject {
     
+    // MARK: PROPERTIES
     let coreDataManager: CoreDataManager = CoreDataManager()
     @Published var savedEntities: [PostEntity] = [PostEntity]()
         
@@ -27,17 +28,13 @@ class HomeViewModel: ObservableObject {
     @Published var alertIsToggled: Bool = false
 
     
+    // MARK: INIT
     init() {
-//        container = NSPersistentContainer(name: "ItemsContainer")
-//        container.loadPersistentStores { description, error in
-//            if let error = error {
-//                print("ERROR LOADING CORE DATA. \(error)")
-//            }
-//        }
         reloadItems()
         updateBilance()
     }
 
+    // MARK: FUNC
     // Fetch items
     func fetchPortfolio() -> [PostEntity] {
         coreDataManager.getListItems()
@@ -60,10 +57,6 @@ class HomeViewModel: ObservableObject {
             coreDataManager.deleteItem(item: item)
             reloadItems()
         }
-//        guard let index = indexSet.first else { return }
-//        let entity = savedEntities[index]
-//        container.viewContext.delete(entity)
-//        saveData()
         updateBilance()
     }
     
@@ -100,6 +93,8 @@ class HomeViewModel: ObservableObject {
         portfolioSummary = savedEntities.sum(\.price)
     }
     
+    
+    // MARK: THEME FUNC
     func getAccentColor() -> Color {
         if selectedTab == 0 {
             return Color.blue

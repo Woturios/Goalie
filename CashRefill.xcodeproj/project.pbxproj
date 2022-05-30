@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		5C08E94A2837D9EC001F6941 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C08E9492837D9EC001F6941 /* Color.swift */; };
 		5C08E94C2837E9B1001F6941 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C08E94B2837E9B1001F6941 /* Sequence.swift */; };
-		5C272F332837A2C00003E729 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C272F322837A2C00003E729 /* PickerView.swift */; };
+		5C272F332837A2C00003E729 /* SetGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C272F322837A2C00003E729 /* SetGoalView.swift */; };
 		5C2E8D1E2836CAA100E5365D /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E8D1D2836CAA100E5365D /* CircleButton.swift */; };
 		5C3AF867283D678D00100C48 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3AF866283D678D00100C48 /* CoreDataManager.swift */; };
 		5C7C9888283C3008004C305E /* AddEditFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7C9887283C3008004C305E /* AddEditFormView.swift */; };
@@ -30,12 +30,13 @@
 		835AD7A02844E72000EE04AF /* DefaultButtonViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835AD79F2844E72000EE04AF /* DefaultButtonViewModifier.swift */; };
 		835AD7A22844E78A00EE04AF /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835AD7A12844E78A00EE04AF /* ViewModifiers.swift */; };
 		835AD7A42844E95900EE04AF /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835AD7A32844E95900EE04AF /* PressableButtonStyle.swift */; };
+		835AD7A62845086E00EE04AF /* DefaultTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835AD7A52845086E00EE04AF /* DefaultTextFieldModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5C08E9492837D9EC001F6941 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		5C08E94B2837E9B1001F6941 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
-		5C272F322837A2C00003E729 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		5C272F322837A2C00003E729 /* SetGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalView.swift; sourceTree = "<group>"; };
 		5C2E8D1D2836CAA100E5365D /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		5C3AF866283D678D00100C48 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5C7C9887283C3008004C305E /* AddEditFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditFormView.swift; sourceTree = "<group>"; };
@@ -57,6 +58,7 @@
 		835AD79F2844E72000EE04AF /* DefaultButtonViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButtonViewModifier.swift; sourceTree = "<group>"; };
 		835AD7A12844E78A00EE04AF /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		835AD7A32844E95900EE04AF /* PressableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressableButtonStyle.swift; sourceTree = "<group>"; };
+		835AD7A52845086E00EE04AF /* DefaultTextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextFieldModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,11 +86,10 @@
 			isa = PBXGroup;
 			children = (
 				5C7C9887283C3008004C305E /* AddEditFormView.swift */,
-				5C272F322837A2C00003E729 /* PickerView.swift */,
+				5C272F322837A2C00003E729 /* SetGoalView.swift */,
 				5C2E8D1D2836CAA100E5365D /* CircleButton.swift */,
 				5C8EB75C2836986D007D2237 /* AccountView.swift */,
 				8350D5612840368100C6C385 /* NavigationBackView.swift */,
-				8304E0D82843911C0078F616 /* ClearButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -182,8 +183,10 @@
 		835AD79E2844E6E400EE04AF /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
+				8304E0D82843911C0078F616 /* ClearButton.swift */,
 				835AD79F2844E72000EE04AF /* DefaultButtonViewModifier.swift */,
 				835AD7A32844E95900EE04AF /* PressableButtonStyle.swift */,
+				835AD7A52845086E00EE04AF /* DefaultTextFieldModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -270,8 +273,9 @@
 				8304E0D92843911C0078F616 /* ClearButton.swift in Sources */,
 				5C2E8D1E2836CAA100E5365D /* CircleButton.swift in Sources */,
 				5C8EB7522835B870007D2237 /* UIApplication.swift in Sources */,
-				5C272F332837A2C00003E729 /* PickerView.swift in Sources */,
+				5C272F332837A2C00003E729 /* SetGoalView.swift in Sources */,
 				5C8EB7612836A851007D2237 /* AddView.swift in Sources */,
+				835AD7A62845086E00EE04AF /* DefaultTextFieldModifier.swift in Sources */,
 				5C8EB75D2836986D007D2237 /* AccountView.swift in Sources */,
 				8350D56A2840E3DD00C6C385 /* UINavigationController.swift in Sources */,
 				835AD7A22844E78A00EE04AF /* ViewModifiers.swift in Sources */,

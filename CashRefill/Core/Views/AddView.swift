@@ -9,9 +9,11 @@ import SwiftUI
 
 struct AddView: View {
     
+    // MARK: PROPERTIES
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject private var vm: HomeViewModel
     
+    // MARK: BODY
     var body: some View {
         ZStack {
             // Background layer
@@ -19,15 +21,11 @@ struct AddView: View {
             
             // Content layer
             VStack(alignment: .leading) {
-                //                NavigationBackView()
-                //                    .onTapGesture {
-                //                        self.presentationMode.wrappedValue.dismiss()
-                //                    }
-                //                pageTitle
                 AddEditFormView(addItemTitle: "Add new item...", addPriceTitle: "Add price...")
                 button
                 Spacer()
             }
+            .padding(.horizontal)
             .navigationBarHidden(false)
             .navigationBarBackButtonHidden(true)
             .navigationBarTitleDisplayMode(.large)
@@ -44,6 +42,7 @@ struct AddView: View {
     }
 }
 
+// MARK: PREVIEW
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
@@ -60,6 +59,7 @@ struct AddView_Previews: PreviewProvider {
     }
 }
 
+// MARK: EXTENSION
 extension AddView {
     private var pageTitle: some View {
         Text("Add new item:")
@@ -77,7 +77,6 @@ extension AddView {
         } label: {
             Text("Add to my list 🥳".uppercased())
                 .withDefaultButtonFormatting(backgroundColor: vm.getAccentColor(), foregroundColor: Color.theme.reversed)
-                .padding(.horizontal)
         }
         .withPressableStyle()
         .alert("Oh, no! 😰😱🥶", isPresented: $vm.alertIsToggled) {

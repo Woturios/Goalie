@@ -10,9 +10,11 @@ import CoreData
 
 struct HomeView: View {
     
+    // MARK: PROPERTIES
     @EnvironmentObject private var vm: HomeViewModel
     @State var editingSheet: Bool = false
     
+    // MARK: BODY
     var body: some View {
         ZStack {
             RadialGradient(colors: [vm.getAccentColor().opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
@@ -66,6 +68,7 @@ struct HomeView: View {
     }
 }
 
+// MARK: PREVIEWS
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
@@ -84,7 +87,7 @@ struct HomeView_Previews: PreviewProvider {
 
 
 
-
+// MARK: EXTENSION
 extension HomeView {
     
     private var homeNavigation: some View {

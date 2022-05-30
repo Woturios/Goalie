@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Default Approving button
 struct DefaultButtonViewModifier: ViewModifier {
     
     let backgroundColor: Color

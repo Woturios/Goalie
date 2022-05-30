@@ -11,6 +11,7 @@ struct AccountView: View {
     
     @EnvironmentObject private var vm: HomeViewModel
     
+    // MARK: BODY
     var body: some View {
         TabView(selection: $vm.selectedTab) {
             balanceTile
@@ -28,6 +29,7 @@ struct AccountView: View {
     }
 }
 
+// MARK: PREVIEWS
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
         AccountView()
@@ -44,7 +46,11 @@ struct AccountView_Previews: PreviewProvider {
     }
 }
 
+// MARK: EXTENSION
 extension AccountView {
+    
+    
+    // MARK: account
     private var percentageTile: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 25)
@@ -88,6 +94,7 @@ extension AccountView {
         }
     }
     
+    // MARK: balance
     private var balanceTile: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 25)
@@ -113,6 +120,7 @@ extension AccountView {
         }
     }
     
+    // MARK: goal
     private var goalTile: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 25)

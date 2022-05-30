@@ -9,9 +9,11 @@ import SwiftUI
 
 struct GoalView: View {
     
+    // MARK: PROPERTIES
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject private var vm: HomeViewModel
 
+    // MARK: BODY
     var body: some View {
         ZStack {
             // Background layer
@@ -24,7 +26,7 @@ struct GoalView: View {
                 VStack(alignment: .center ,spacing: 10) {
                     setGoalTitle
                         .padding(.horizontal)
-                    PickerView()
+                    SetGoalView()
                     Spacer()
                     if vm.goal == "" {
                         smartTip
@@ -43,6 +45,7 @@ struct GoalView: View {
     }
 }
 
+// MARK: PREVIEW
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
@@ -59,6 +62,7 @@ struct SettingsView_Previews: PreviewProvider {
     }
 }
 
+// MARK: EXTENSION
 extension GoalView {
     private var navBar: some View {
         HStack {

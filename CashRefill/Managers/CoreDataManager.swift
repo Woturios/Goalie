@@ -21,6 +21,7 @@ class CoreDataManager {
         }
     }
     
+    /// Fetch core data
     func getListItems() -> [PostEntity] {
         
         let fetchRequest: NSFetchRequest<PostEntity> = PostEntity.fetchRequest()

@@ -8,6 +8,7 @@
 import SwiftUI
 
 // Soure: https://stackoverflow.com/a/58896723/18373625
+/// This view deletes all the characters typed into TextField.
 struct ClearButton: ViewModifier
 {
     @Binding var text: String
