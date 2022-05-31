@@ -24,8 +24,8 @@ struct AccountView: View {
             percentageTile
                 .tag(2)
         }
-        .frame(height: 150)
-        .tabViewStyle(.page)
+        .frame(height: 100)
+        .tabViewStyle(.page(indexDisplayMode: .never))
     }
 }
 
@@ -54,7 +54,7 @@ extension AccountView {
     private var percentageTile: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
-                .frame(height: 150)
+                .frame(height: 100)
                 .frame(maxWidth: .infinity)
                 .foregroundColor(Color.theme.thirdTabBg)
                 .padding(.horizontal)
@@ -99,7 +99,7 @@ extension AccountView {
     private var balanceTile: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
-                .frame(height: 150)
+                .frame(height: 100)
                 .frame(maxWidth: .infinity)
                 .foregroundColor(Color.theme.firstTabBg)
                 .padding(.horizontal)
@@ -125,7 +125,7 @@ extension AccountView {
     private var goalTile: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
-                .frame(height: 150)
+                .frame(height: 100)
                 .frame(maxWidth: .infinity)
                 .foregroundColor(Color.theme.secondTabBg)
                 .padding(.horizontal)

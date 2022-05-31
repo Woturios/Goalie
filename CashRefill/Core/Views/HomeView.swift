@@ -25,7 +25,7 @@ struct HomeView: View {
                     .sheet(isPresented: $vm.showSheet) {
                         GoalView()
                     }
-                listTitleView
+//                listTitleView
                 if vm.sortedListItems().isEmpty {
                     VStack(alignment: .center){
                         Spacer()
@@ -49,18 +49,19 @@ struct HomeView: View {
                     NavigationLink {
                         AddView()
                     } label: {
-                        Text("Add new")
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.theme.accent)
-                        CircleButton(buttonName: "plus.circle.fill")
+                        CircleButton(buttonName: "plus.circle")
                     }
                 }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    CircleButton(buttonName: "rosette")
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    CircleButton(buttonName: "crown")
                         .onTapGesture {
                             vm.showSheet = true
                         }
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Text("Your Savings")
+                        .font(.title)
+                        .fontWeight(.bold)
                 }
             }
         }
