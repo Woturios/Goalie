@@ -71,7 +71,7 @@ extension EditingView {
         Button {
             if !itemName.isEmpty && !itemPrice.isEmpty {
                 item.name = itemName
-                item.price = Double("\(itemPrice)") ?? 0
+                item.price = Double("\(itemPrice.replacingOccurrences(of: ",", with: "."))") ?? 0
                 vm.updatePost()
                 vm.reloadItems()
                 vm.updateBilance()

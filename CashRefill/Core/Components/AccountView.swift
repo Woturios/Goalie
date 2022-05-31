@@ -53,7 +53,7 @@ extension AccountView {
     // MARK: account
     private var percentageTile: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 25)
+            RoundedRectangle(cornerRadius: 10)
                 .frame(height: 150)
                 .frame(maxWidth: .infinity)
                 .foregroundColor(Color.theme.thirdTabBg)
@@ -98,7 +98,7 @@ extension AccountView {
     // MARK: balance
     private var balanceTile: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 25)
+            RoundedRectangle(cornerRadius: 10)
                 .frame(height: 150)
                 .frame(maxWidth: .infinity)
                 .foregroundColor(Color.theme.firstTabBg)
@@ -124,7 +124,7 @@ extension AccountView {
     // MARK: goal
     private var goalTile: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 25)
+            RoundedRectangle(cornerRadius: 10)
                 .frame(height: 150)
                 .frame(maxWidth: .infinity)
                 .foregroundColor(Color.theme.secondTabBg)
