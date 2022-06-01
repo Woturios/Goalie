@@ -71,6 +71,9 @@
 "Savings" = "Oszczędności";
 
 /* No comment provided by engineer. */
+"Select your theme!" = "Wybierz motyw!";
+
+/* No comment provided by engineer. */
 "Set your goal 🏆" = "Ustaw cel 🏆";
 
 /* No comment provided by engineer. */
@@ -81,4 +84,7 @@
 
 /* No comment provided by engineer. */
 "Your current goal is %@" = "Twój cel wynosi %@";
+
+/* No comment provided by engineer. */
+"Your Savings" = "Twoje oszczędności";
 

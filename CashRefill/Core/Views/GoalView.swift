@@ -17,7 +17,7 @@ struct GoalView: View {
     var body: some View {
         ZStack {
             // Background layer
-            RadialGradient(colors: [vm.getAccentColor().opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
+            GetBackgroundTheme()
             
             // Content layer
             VStack(alignment: .leading) {
@@ -28,6 +28,51 @@ struct GoalView: View {
                         .padding(.horizontal)
                     SetGoalView()
                     Spacer()
+                    VStack {
+                        Text("Select your theme!")
+                            .font(.headline)
+                            .foregroundColor(Color.white)
+                        
+                        HStack {
+                            Button {
+                                vm.selectedTheme = 3
+                            } label: {
+                                BackgroundGradient(primaryGradientColor: vm.getAccentColor(), secondaryGradientColor: Color("PrimaryGradient"))
+                                    .cornerRadius(10)
+                                    .frame(width: 100, height: 100, alignment: .center)
+                                    .scaleEffect((vm.selectedTheme == 3) ? 0.9 : 1)
+                            }
+                            .buttonStyle(.plain)
+
+                            Button {
+                                vm.selectedTheme = 1
+                            } label: {
+                                BottomGradientBackground(primaryGradientColor: vm.getAccentColor(), secondaryGradientColor: Color("PrimaryGradient"))
+                                    .cornerRadius(10)
+                                    .frame(width: 100, height: 100, alignment: .center)
+                                    .scaleEffect((vm.selectedTheme == 1) ? 0.9 : 1)
+                            }
+                            .buttonStyle(.plain)
+                            
+                            Button {
+                                vm.selectedTheme = 2
+                            } label: {
+                                AngularGradientBackground(primaryGradientColor: vm.getAccentColor(), secondaryGradientColor: Color("PrimaryGradient"))
+                                    .cornerRadius(10)
+                                    .frame(width: 100, height: 100, alignment: .center)
+                                    .scaleEffect((vm.selectedTheme == 2) ? 0.9 : 1)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                    .frame(height: 170)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.black)
+                    .cornerRadius(10)
+                    .padding()
+                    
+                    Spacer()
+                    
                     if vm.goal == 0 {
                         smartTip
                     } else {

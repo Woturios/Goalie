@@ -26,6 +26,8 @@ class HomeViewModel: ObservableObject {
     @Published var showSheet: Bool = false
     @Published var alertIsToggled: Bool = false
     
+    @AppStorage("SelectedTheme") var selectedTheme: Int = 1
+    
     // MARK: INIT
     init() {
         reloadItems()
@@ -103,5 +105,5 @@ class HomeViewModel: ObservableObject {
             return Color.green
         }
     }
-    
+
 }

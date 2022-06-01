@@ -20,27 +20,30 @@ struct EditingView: View {
     // MARK: BODY
     var body: some View {
         ZStack {
-            RadialGradient(colors: [vm.getAccentColor().opacity(0.3), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
+            GetBackgroundTheme()
             
             VStack(alignment: .leading) {
+                NavigationBackView()
+                    .onTapGesture {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                    .padding(.top, 25)
+                
                 Text("Edit your list item:")
                     .foregroundColor(Color.theme.accent)
                     .font(.title)
                     .fontWeight(.semibold)
-                    .padding(.horizontal)
                 
                 VStack(spacing: 10) {
                     TextField(item.name ?? "", text: $itemName)
                         .withClearButton(text: $itemName)
                         .focused($firstFocus)
                         .withDefaultTextFieldFormatting()
-                        .padding(.horizontal)
                         .keyboardType(.alphabet)
                     
                     TextField(String("\(item.price)"), text: $itemPrice)
                         .withClearButton(text: $itemPrice)
                         .withDefaultTextFieldFormatting()
-                        .padding(.horizontal)
                         .keyboardType(.decimalPad)
                     button
                     Spacer()
@@ -51,17 +54,9 @@ struct EditingView: View {
                     }
                 }
             }
+            .padding(.horizontal)
         }
-        .navigationBarHidden(false)
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                NavigationBackView()
-                    .onTapGesture {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }
-            }
-        }
+        .navigationBarHidden(true)
     }
 }
 
@@ -80,7 +75,6 @@ extension EditingView {
         } label: {
             Text(LocalizedStringKey("SUBMIT YOUR CHANGES 👍"))
                 .withDefaultButtonFormatting(backgroundColor: vm.getAccentColor(), foregroundColor: Color.theme.reversed)
-                .padding(.horizontal)
         }
         .withPressableStyle()
         .alert("Oh, no! 😰😱🥶", isPresented: $vm.alertIsToggled) {

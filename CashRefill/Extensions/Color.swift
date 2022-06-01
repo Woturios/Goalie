@@ -21,7 +21,6 @@ struct GradientBackgroundTheme {
     
     let button = Color("GradientAccent")
     let accent = Color.primary
-    let background = RadialGradient(colors: [Color("SecondaryGradient").opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500)
     let reversed = Color("ReversedPrimary")
     let secondaryText = Color.primary
     let textFieldColor = Color("TextFieldColor")

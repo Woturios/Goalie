@@ -11,11 +11,12 @@ struct NavigationBackView: View {
     // MARK: BODY
     var body: some View {
         HStack {
-            CircleButton(buttonName: "arrow.backward.circle.fill")
+            CircleButton(buttonName: "arrow.backward.circle")
             Text("Back")
                 .font(.headline)
                 .fontWeight(.bold)
                 .foregroundColor(Color.theme.accent)
+            Spacer()
         }
     }
 }

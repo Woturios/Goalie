@@ -17,27 +17,23 @@ struct AddView: View {
     var body: some View {
         ZStack {
             // Background layer
-            RadialGradient(colors: [vm.getAccentColor().opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
+            GetBackgroundTheme()
             
             // Content layer
             VStack(alignment: .leading) {
+                NavigationBackView()
+                    .onTapGesture {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                    .padding(.top, 25)
+                
+                Text("Add new item:")
                 AddEditFormView(addItemTitle: LocalizedStringKey("Add new item..."), addPriceTitle: LocalizedStringKey("Add price..."))
                 button
                 Spacer()
             }
             .padding(.horizontal)
-            .navigationBarHidden(false)
-            .navigationBarBackButtonHidden(true)
-            .navigationBarTitleDisplayMode(.large)
-            .navigationTitle("Add new item:")
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                NavigationBackView()
-                    .onTapGesture {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }
-            }
+            .navigationBarHidden(true)
         }
     }
 }

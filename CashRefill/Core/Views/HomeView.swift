@@ -17,15 +17,15 @@ struct HomeView: View {
     // MARK: BODY
     var body: some View {
         ZStack {
-            RadialGradient(colors: [vm.getAccentColor().opacity(0.5), Color("PrimaryGradient")], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
+            GetBackgroundTheme()
             
-            VStack(alignment: .leading, spacing: nil) {
-//                homeNavigation
+            VStack(alignment: .leading, spacing: 3) {
+                homeNavigation
                 AccountView()
                     .sheet(isPresented: $vm.showSheet) {
                         GoalView()
                     }
-//                listTitleView
+                //                listTitleView
                 if vm.sortedListItems().isEmpty {
                     VStack(alignment: .center){
                         Spacer()
@@ -42,28 +42,7 @@ struct HomeView: View {
                     listView
                 }
             }
-            .navigationBarHidden(false)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    NavigationLink {
-                        AddView()
-                    } label: {
-                        CircleButton(buttonName: "plus.circle")
-                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    CircleButton(buttonName: "crown")
-                        .onTapGesture {
-                            vm.showSheet = true
-                        }
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Text("Your Savings")
-                        .font(.title)
-                        .fontWeight(.bold)
-                }
-            }
+            .navigationBarHidden(true)
         }
         
     }
@@ -92,27 +71,28 @@ struct HomeView_Previews: PreviewProvider {
 extension HomeView {
     
     private var homeNavigation: some View {
-        HStack {
-            Image(systemName: "rosette")
-                .font(.title)
+        HStack(spacing: 20) {
+            Text("Your Savings")
+                .font(.title2)
+                .fontWeight(.bold)
+            
+            Spacer()
+            CircleButton(buttonName: "crown")
                 .onTapGesture {
                     vm.showSheet = true
                 }
-            Spacer()
             NavigationLink {
                 AddView()
             } label: {
-                Text("Add new")
-                    .font(.headline)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.theme.accent)
-                CircleButton(buttonName: "plus.circle.fill")
+                CircleButton(buttonName: "plus.circle")
             }
         }
+        .minimumScaleFactor(0.5)
         .sheet(isPresented: $vm.showSheet) {
             GoalView()
         }
         .padding(.horizontal)
+        .padding(.top, 25)
     }
     
     private var listTitleView: some View {
@@ -129,11 +109,11 @@ extension HomeView {
             HStack {
                 Text("Item:")
                     .font(.caption)
-                    .foregroundColor(Color.primary)
+                    .foregroundColor(Color.theme.accent)
                 Spacer()
                 Text("Price:")
                     .font(.caption)
-                    .foregroundColor(Color.primary)
+                    .foregroundColor(Color.theme.accent)
             }
             .padding(.horizontal)
             
@@ -143,23 +123,26 @@ extension HomeView {
                         HStack {
                             Text(entity.name ?? "No Name")
                                 .font(.headline)
+                                .foregroundColor(Color.theme.accent)
                             Spacer()
                             Text("\(entity.price.asCurrencyWith2Decimals())")
                                 .font(.headline)
                                 .fontWeight(.semibold)
+                                .foregroundColor(Color.theme.accent)
                         }
                         
                         NavigationLink {
                             EditingView(itemName: entity.name ?? "", itemPrice: String("\(entity.price)"), item: entity)
                         } label: {
                             EmptyView()
-                       }
+                        }
                         .opacity(0)
                     }
                     .listRowBackground(Color.clear)
                 }
                 .onDelete(perform: vm.deletePost)
             }
+            .foregroundColor(Color.theme.accent)
             .navigationBarHidden(true)
             .listStyle(.plain)
         }
