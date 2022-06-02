@@ -92,7 +92,7 @@ class HomeViewModel: ObservableObject {
         textFieldName = ""
         textFieldPrice = ""
         reloadItems()
-        portfolioSummary = savedEntities.sum(\.price)
+        updateBilance()
     }
     
     // MARK: THEME FUNC

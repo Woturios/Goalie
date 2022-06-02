@@ -23,7 +23,7 @@ struct AngularGradientBackground: View {
     var secondaryGradientColor: Color
     
     var body: some View {
-        AngularGradient(colors: [primaryGradientColor.opacity(0.5), secondaryGradientColor], center: .center, angle: .degrees(90)).ignoresSafeArea()
+        AngularGradient(colors: [primaryGradientColor, secondaryGradientColor], center: .topLeading, angle: .degrees(95)).ignoresSafeArea()
     }
 }
 
@@ -36,6 +36,8 @@ struct BottomGradientBackground: View {
         RadialGradient(colors: [primaryGradientColor.opacity(0.5), secondaryGradientColor], center: .bottom, startRadius: 0, endRadius: 500).ignoresSafeArea()
     }
 }
+
+//struct
 
 
 struct GetBackgroundTheme: View {
