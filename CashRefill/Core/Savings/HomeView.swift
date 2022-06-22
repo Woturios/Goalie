@@ -39,6 +39,7 @@ struct HomeView: View {
                     .padding(.horizontal)
                     .frame(maxWidth: .infinity)
                 } else {
+//                    Text("\(Date())")
                     listView
                 }
             }
@@ -118,13 +119,15 @@ extension HomeView {
             .padding(.horizontal)
             
             List {
-                ForEach(vm.sortedListItems()) { entity in
+                ForEach(vm.sortedArray) { entity in
                     ZStack {
                         HStack {
                             Text(entity.name ?? "No Name")
                                 .font(.headline)
                                 .foregroundColor(Color.theme.accent)
                             Spacer()
+//                            Text("\(entity.date?.formatted(date: .numeric, time: .shortened) ?? "")")
+//                            Spacer()
                             Text("\(entity.price.asCurrencyWith2Decimals())")
                                 .font(.headline)
                                 .fontWeight(.semibold)

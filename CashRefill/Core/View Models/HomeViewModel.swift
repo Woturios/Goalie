@@ -13,7 +13,8 @@ class HomeViewModel: ObservableObject {
     
     // MARK: PROPERTIES
     let coreDataManager: CoreDataManager = CoreDataManager()
-    @Published var savedEntities: [PostEntity] = [PostEntity]()
+    @Published var savedEntities: [PostEntity] = []
+    @Published var sortedArray: [PostEntity] = []
         
     @Published var textFieldName: String = ""
     @Published var textFieldPrice: String = ""
@@ -31,6 +32,7 @@ class HomeViewModel: ObservableObject {
     // MARK: INIT
     init() {
         reloadItems()
+        sortListItems()
         updateBilance()
     }
 
@@ -45,9 +47,14 @@ class HomeViewModel: ObservableObject {
         savedEntities.reversed()
     }
     
+    func sortListItems() {
+        sortedArray = savedEntities.sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
+    }
+    
     // Reload items
     func reloadItems() {
         savedEntities = fetchPortfolio()
+        sortListItems()
     }
     
     // Delete item
@@ -66,8 +73,8 @@ class HomeViewModel: ObservableObject {
     }
     
     // Save item
-    func saveData(price: String) {
-        coreDataManager.saveItem(title: textFieldName, price: Double(price) ?? 0)
+    func saveData(price: String, date: Date) {
+        coreDataManager.saveItem(title: textFieldName, price: Double(price) ?? 0, date: date)
     }
     
     
@@ -87,7 +94,8 @@ class HomeViewModel: ObservableObject {
     
     func addNewItemToList() {
         let fieldPrice = String(textFieldPrice.replacingOccurrences(of: ",", with: "."))
-        saveData(price: fieldPrice)
+        let currentDate = Date()
+        saveData(price: fieldPrice, date: currentDate)
         UIApplication.shared.endEdditing()
         textFieldName = ""
         textFieldPrice = ""
