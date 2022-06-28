@@ -1,7 +1,4 @@
 /* No comment provided by engineer. */
-"Add new" = "Neue hinzufügen";
-
-/* No comment provided by engineer. */
 "Add new item:" = "Neue Sache hinzufüg";
 
 /* No comment provided by engineer. */
@@ -26,6 +23,9 @@
 "Back" = "Zurück";
 
 /* No comment provided by engineer. */
+"Created: " = "Erstellt:";
+
+/* No comment provided by engineer. */
 "Edit your list item:" = "Eintrag bearbeiten";
 
 /* No comment provided by engineer. */
@@ -44,6 +44,9 @@
 "Item:" = "Sache:";
 
 /* No comment provided by engineer. */
+"Oh, no! 😰😱🥶" = "Oh, nein! 😰😱🥶";
+
+/* No comment provided by engineer. */
 "Please, type the name and price of the item! 🫡" = "Tippst du die name und den Preis der Sache ein! Bitte 🫡";
 
 /* No comment provided by engineer. */
@@ -56,10 +59,16 @@
 "SAVE" = "SPAREN BEGINNEN";
 
 /* No comment provided by engineer. */
-"Savings" = "Erparnis";
+"Savings" = "Ersparnis";
+
+/* No comment provided by engineer. */
+"Select your theme!" = "Wähl deine Thema!";
 
 /* No comment provided by engineer. */
 "Set your goal 🏆" = "Einstellt dein Ziel 🏆";
+
+/* No comment provided by engineer. */
+"Settings" = "Einstellungen";
 
 /* No comment provided by engineer. */
 "SUBMIT YOUR CHANGES 👍" = "BESTÄTIG DEINE AUSWAHL 👍";
@@ -69,4 +78,7 @@
 
 /* No comment provided by engineer. */
 "Your current goal is %@" = "Dein Ziel ist %@";
+
+/* No comment provided by engineer. */
+"Your Savings" = "Deine Ersparnisse";
 

@@ -25,73 +25,26 @@ struct GoalView: View {
                 pageTitle
                 VStack(alignment: .center ,spacing: 10) {
                     setGoalTitle
-                        .padding(.horizontal)
                     SetGoalView()
-                    Spacer()
-                    VStack {
-                        Text("Select your theme!")
-                            .font(.headline)
-                            .foregroundColor(Color.white)
-                        
-                        HStack {
-                            Button {
-                                vm.selectedTheme = 3
-                            } label: {
-                                BackgroundGradient(primaryGradientColor: vm.getAccentColor(), secondaryGradientColor: Color("PrimaryGradient"))
-                                    .cornerRadius(10)
-                                    .frame(width: 100, height: 100, alignment: .center)
-                                    .scaleEffect((vm.selectedTheme == 3) ? 0.9 : 1)
-                            }
-                            .buttonStyle(.plain)
-
-                            Button {
-                                vm.selectedTheme = 1
-                            } label: {
-                                BottomGradientBackground(primaryGradientColor: vm.getAccentColor(), secondaryGradientColor: Color("PrimaryGradient"))
-                                    .cornerRadius(10)
-                                    .frame(width: 100, height: 100, alignment: .center)
-                                    .scaleEffect((vm.selectedTheme == 1) ? 0.9 : 1)
-                            }
-                            .buttonStyle(.plain)
-                            
-                            Button {
-                                vm.selectedTheme = 2
-                            } label: {
-                                AngularGradientBackground(primaryGradientColor: vm.getAccentColor(), secondaryGradientColor: Color("PrimaryGradient"))
-                                    .cornerRadius(10)
-                                    .frame(width: 100, height: 100, alignment: .center)
-                                    .scaleEffect((vm.selectedTheme == 2) ? 0.9 : 1)
-                            }
-                            .buttonStyle(.plain)
-                        }
-                    }
-                    .frame(height: 170)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.black)
-                    .cornerRadius(10)
-                    .padding()
-                    
-                    Spacer()
-                    
                     if vm.goal == 0 {
                         smartTip
                     } else {
                         Text("Your current goal is \(vm.goal.asCurrencyWith0Decimals())")
-                            .font(.headline)
-                            .bold()
+                            .foregroundColor(Color.black.opacity(0.5))
+                            .withDataPresentationFieldStyle()
                     }
-                    Spacer()
                 }
                 
                 Spacer()
             }
+            .padding(.horizontal)
             .navigationBarHidden(true)
         }
     }
 }
 
 // MARK: PREVIEW
-struct SettingsView_Previews: PreviewProvider {
+struct GoalView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             GoalView()
@@ -119,7 +72,6 @@ extension GoalView {
                     self.presentationMode.wrappedValue.dismiss()
                 }
         }
-        .padding(.horizontal)
         .padding(.top)
     }
     
@@ -128,7 +80,6 @@ extension GoalView {
             .foregroundColor(Color.theme.accent)
             .font(.title)
             .fontWeight(.semibold)
-            .padding(.horizontal)
     }
     
     private var setGoalTitle: some View {
@@ -141,15 +92,20 @@ extension GoalView {
     }
     
     private var smartTip: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Text("Add your first goal!")
+                .foregroundColor(Color.black.opacity(0.5))
                 .font(.title)
                 .bold()
             Text("Instead of spending money on things you don't really need, save them for something you really care about.")
                 .font(.headline)
-                .foregroundColor(Color.theme.secondaryText)
+                .foregroundColor(Color.black.opacity(0.4))
                 .bold()
-                .multilineTextAlignment(.center)
+                .multilineTextAlignment(.leading)
         }
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(Color.gray.opacity(0.3))
+        .cornerRadius(10)
     }
 }

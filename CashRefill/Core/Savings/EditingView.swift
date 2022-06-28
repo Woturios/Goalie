@@ -46,6 +46,14 @@ struct EditingView: View {
                         .withDefaultTextFieldFormatting()
                         .keyboardType(.decimalPad)
                     button
+                    HStack {
+                        Text("Created: ")
+                            .foregroundColor(Color.black.opacity(0.5))
+                        Text("\(item.date?.formatted(date: .long, time: .shortened) ?? "")")
+                            .foregroundColor(Color.gray)
+                            
+                    }
+                    .withDataPresentationFieldStyle()
                     Spacer()
                 }
                 .onAppear {

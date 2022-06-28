@@ -48,7 +48,7 @@ class HomeViewModel: ObservableObject {
     }
     
     func sortListItems() {
-        sortedArray = savedEntities.sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
+        sortedArray = savedEntities.sorted(by: { ($0.date ?? DateFormatter().date(from: "01/05/2004")) ?? Date() > $1.date ?? Date() })
     }
     
     // Reload items

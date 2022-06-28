@@ -34,6 +34,8 @@
 		835AD7A62845086E00EE04AF /* DefaultTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835AD7A52845086E00EE04AF /* DefaultTextFieldModifier.swift */; };
 		835AD7A82845149700EE04AF /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835AD7A72845149700EE04AF /* Double.swift */; };
 		835AD7AC2845257300EE04AF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 835AD7AE2845257300EE04AF /* Localizable.strings */; };
+		8381B578286B39EE00A6FE9C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8381B577286B39EE00A6FE9C /* SettingsView.swift */; };
+		8381B57A286B432500A6FE9C /* DataPresentationFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8381B579286B432500A6FE9C /* DataPresentationFieldModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +69,8 @@
 		835AD7AD2845257300EE04AF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		835AD7AF2845259000EE04AF /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		835AD7B02845259900EE04AF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8381B577286B39EE00A6FE9C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		8381B579286B432500A6FE9C /* DataPresentationFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPresentationFieldModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +174,7 @@
 				5C8EB74B28358CA1007D2237 /* HomeView.swift */,
 				5C8EB7602836A851007D2237 /* AddView.swift */,
 				5CE01B172837968E0074F6AE /* GoalView.swift */,
+				8381B577286B39EE00A6FE9C /* SettingsView.swift */,
 				5C7C9889283C43CC004C305E /* EditingView.swift */,
 			);
 			path = Savings;
@@ -198,6 +203,7 @@
 				835AD79F2844E72000EE04AF /* DefaultButtonViewModifier.swift */,
 				835AD7A32844E95900EE04AF /* PressableButtonStyle.swift */,
 				835AD7A52845086E00EE04AF /* DefaultTextFieldModifier.swift */,
+				8381B579286B432500A6FE9C /* DataPresentationFieldModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -298,6 +304,7 @@
 				5C8EB7522835B870007D2237 /* UIApplication.swift in Sources */,
 				5C272F332837A2C00003E729 /* SetGoalView.swift in Sources */,
 				5C8EB7612836A851007D2237 /* AddView.swift in Sources */,
+				8381B578286B39EE00A6FE9C /* SettingsView.swift in Sources */,
 				835AD7A62845086E00EE04AF /* DefaultTextFieldModifier.swift in Sources */,
 				5C8EB75D2836986D007D2237 /* AccountView.swift in Sources */,
 				831F59CB2846670800EDA488 /* BackgroundGradient.swift in Sources */,
@@ -305,6 +312,7 @@
 				835AD7A22844E78A00EE04AF /* ViewModifiers.swift in Sources */,
 				5C8EB7572836818D007D2237 /* HomeViewModel.swift in Sources */,
 				5C8EB73E28358C67007D2237 /* CashRefillApp.swift in Sources */,
+				8381B57A286B432500A6FE9C /* DataPresentationFieldModifier.swift in Sources */,
 				5CE01B182837968E0074F6AE /* GoalView.swift in Sources */,
 				8350D5622840368100C6C385 /* NavigationBackView.swift in Sources */,
 			);

@@ -5,9 +5,6 @@
 "%@" = "%@";
 
 /* No comment provided by engineer. */
-"Add new" = "Dodaj";
-
-/* No comment provided by engineer. */
 "Add new item:" = "Dodaj nową rzecz:";
 
 /* No comment provided by engineer. */
@@ -29,7 +26,10 @@
 "Add your goal!" = "Dodaj cel!";
 
 /* No comment provided by engineer. */
-"Back" = "cofnij";
+"Back" = "Cofnij";
+
+/* No comment provided by engineer. */
+"Created: " = "Stworzono:";
 
 /* No comment provided by engineer. */
 "Edit your list item:" = "Edytuj swój wpis:";
@@ -75,6 +75,9 @@
 
 /* No comment provided by engineer. */
 "Set your goal 🏆" = "Ustaw cel 🏆";
+
+/* No comment provided by engineer. */
+"Settings" = "Ustawienia";
 
 /* No comment provided by engineer. */
 "SUBMIT YOUR CHANGES 👍" = "POTWIERDŹ ZMIANY 👍";

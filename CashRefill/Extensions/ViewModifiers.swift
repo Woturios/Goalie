@@ -26,4 +26,8 @@ extension View {
         modifier(DefaultTextFieldModifier())
     }
     
+    func withDataPresentationFieldStyle() -> some View {
+        modifier(DataPresentationFieldModifier())
+    }
+    
 }

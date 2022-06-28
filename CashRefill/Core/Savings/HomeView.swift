@@ -12,7 +12,7 @@ struct HomeView: View {
     
     // MARK: PROPERTIES
     @EnvironmentObject private var vm: HomeViewModel
-    @State var editingSheet: Bool = false
+    @State var settingsSheet: Bool = false
     
     // MARK: BODY
     var body: some View {
@@ -82,6 +82,16 @@ extension HomeView {
                 .onTapGesture {
                     vm.showSheet = true
                 }
+                .sheet(isPresented: $vm.showSheet) {
+                    GoalView()
+                }
+            CircleButton(buttonName: "gearshape")
+                .onTapGesture {
+                    settingsSheet = true
+                }
+                .sheet(isPresented: $settingsSheet) {
+                    SettingsView()
+                }
             NavigationLink {
                 AddView()
             } label: {
@@ -89,9 +99,6 @@ extension HomeView {
             }
         }
         .minimumScaleFactor(0.5)
-        .sheet(isPresented: $vm.showSheet) {
-            GoalView()
-        }
         .padding(.horizontal)
         .padding(.top, 25)
     }

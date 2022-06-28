@@ -73,7 +73,6 @@ extension SetGoalView {
             newGoal = selection
         })
         .pickerStyle(.segmented)
-        .padding(.horizontal)
     }
 
     private var textField: some View {
@@ -84,7 +83,6 @@ extension SetGoalView {
             .onChange(of: newGoal) { newValue in
                 selection = newGoal
             }
-            .padding(.horizontal)
     }
     
     private var button: some View {
@@ -103,7 +101,6 @@ extension SetGoalView {
         } label: {
             Text(LocalizedStringKey("SAVE"))
                 .withDefaultButtonFormatting(backgroundColor: vm.getAccentColor(), foregroundColor: Color.theme.reversed)
-                .padding(.horizontal)
         }
         .withPressableStyle()
     }

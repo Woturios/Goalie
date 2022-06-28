@@ -17,3 +17,4 @@ struct DefaultTextFieldModifier: ViewModifier {
             .cornerRadius(10)
     }
 }
+
