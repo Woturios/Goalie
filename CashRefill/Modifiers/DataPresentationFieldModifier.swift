@@ -12,8 +12,7 @@ struct DataPresentationFieldModifier: ViewModifier {
         content
             .font(.headline)
             .frame(maxWidth: .infinity)
-            .frame(height: 55)
-            .background(Color.gray.opacity(0.3))
+            .background(Color.gray.opacity(0.2))
             .cornerRadius(10)
     }
 }

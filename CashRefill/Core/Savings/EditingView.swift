@@ -53,6 +53,7 @@ struct EditingView: View {
                             .foregroundColor(Color.gray)
                             
                     }
+                    .frame(height: 55)
                     .withDataPresentationFieldStyle()
                     Spacer()
                 }

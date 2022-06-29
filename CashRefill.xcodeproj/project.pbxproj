@@ -36,6 +36,7 @@
 		835AD7AC2845257300EE04AF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 835AD7AE2845257300EE04AF /* Localizable.strings */; };
 		8381B578286B39EE00A6FE9C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8381B577286B39EE00A6FE9C /* SettingsView.swift */; };
 		8381B57A286B432500A6FE9C /* DataPresentationFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8381B579286B432500A6FE9C /* DataPresentationFieldModifier.swift */; };
+		8381B57C286B50C500A6FE9C /* SheetTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8381B57B286B50C500A6FE9C /* SheetTitleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		835AD7B02845259900EE04AF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8381B577286B39EE00A6FE9C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		8381B579286B432500A6FE9C /* DataPresentationFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPresentationFieldModifier.swift; sourceTree = "<group>"; };
+		8381B57B286B50C500A6FE9C /* SheetTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetTitleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				5C8EB75C2836986D007D2237 /* AccountView.swift */,
 				8350D5612840368100C6C385 /* NavigationBackView.swift */,
 				831F59CA2846670800EDA488 /* BackgroundGradient.swift */,
+				8381B57B286B50C500A6FE9C /* SheetTitleView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -135,11 +138,11 @@
 			isa = PBXGroup;
 			children = (
 				5C8EB73D28358C67007D2237 /* CashRefillApp.swift */,
+				835AD7AB2845254700EE04AF /* Resources */,
 				5C3AF865283D676E00100C48 /* Managers */,
 				835AD79E2844E6E400EE04AF /* Modifiers */,
 				5C8EB7502835B851007D2237 /* Extensions */,
 				5C8EB75428368147007D2237 /* Models */,
-				835AD7AB2845254700EE04AF /* Resources */,
 				5C3AF863283D667500100C48 /* Core */,
 				5C8EB74128358C69007D2237 /* Assets.xcassets */,
 				5C8EB74328358C69007D2237 /* Preview Content */,
@@ -312,6 +315,7 @@
 				835AD7A22844E78A00EE04AF /* ViewModifiers.swift in Sources */,
 				5C8EB7572836818D007D2237 /* HomeViewModel.swift in Sources */,
 				5C8EB73E28358C67007D2237 /* CashRefillApp.swift in Sources */,
+				8381B57C286B50C500A6FE9C /* SheetTitleView.swift in Sources */,
 				8381B57A286B432500A6FE9C /* DataPresentationFieldModifier.swift in Sources */,
 				5CE01B182837968E0074F6AE /* GoalView.swift in Sources */,
 				8350D5622840368100C6C385 /* NavigationBackView.swift in Sources */,

@@ -12,7 +12,7 @@ struct GoalView: View {
     // MARK: PROPERTIES
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject private var vm: HomeViewModel
-
+    
     // MARK: BODY
     var body: some View {
         ZStack {
@@ -21,8 +21,9 @@ struct GoalView: View {
             
             // Content layer
             VStack(alignment: .leading) {
-                navBar
-                pageTitle
+//                navBar
+//                pageTitle
+                SheetTitleView(title: "Set your goal 🏆")
                 VStack(alignment: .center ,spacing: 10) {
                     setGoalTitle
                     SetGoalView()
@@ -30,7 +31,8 @@ struct GoalView: View {
                         smartTip
                     } else {
                         Text("Your current goal is \(vm.goal.asCurrencyWith0Decimals())")
-                            .foregroundColor(Color.black.opacity(0.5))
+                            .foregroundColor(Color.primary.opacity(0.5))
+                            .frame(height: 55)
                             .withDataPresentationFieldStyle()
                     }
                 }
@@ -94,18 +96,16 @@ extension GoalView {
     private var smartTip: some View {
         VStack(alignment: .leading) {
             Text("Add your first goal!")
-                .foregroundColor(Color.black.opacity(0.5))
+                .foregroundColor(Color.primary.opacity(0.5))
                 .font(.title)
                 .bold()
             Text("Instead of spending money on things you don't really need, save them for something you really care about.")
-                .font(.headline)
-                .foregroundColor(Color.black.opacity(0.4))
+                .foregroundColor(Color.primary.opacity(0.4))
                 .bold()
                 .multilineTextAlignment(.leading)
         }
-        .frame(maxWidth: .infinity)
         .padding()
-        .background(Color.gray.opacity(0.3))
-        .cornerRadius(10)
+        .withDataPresentationFieldStyle()
     }
 }
+

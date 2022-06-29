@@ -25,21 +25,9 @@ struct HomeView: View {
                     .sheet(isPresented: $vm.showSheet) {
                         GoalView()
                     }
-                //                listTitleView
                 if vm.sortedListItems().isEmpty {
-                    VStack(alignment: .center){
-                        Spacer()
-                        Text("There is nothing on your list. Press + to add new item. 😱😨😰")
-                            .font(.headline)
-                            .foregroundColor(Color.secondary)
-                            .multilineTextAlignment(.center)
-                        Spacer()
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    .frame(maxWidth: .infinity)
+                    nothingOnListView
                 } else {
-//                    Text("\(Date())")
                     listView
                 }
             }
@@ -103,6 +91,21 @@ extension HomeView {
         .padding(.top, 25)
     }
     
+    private var nothingOnListView: some View {
+        VStack(alignment: .center){
+            Spacer()
+            Text("There is nothing on your list. Press + to add new item. 😱😨😰")
+                .font(.headline)
+                .foregroundColor(Color.secondary)
+                .multilineTextAlignment(.center)
+            Spacer()
+            Spacer()
+        }
+        .padding(.horizontal)
+        .frame(maxWidth: .infinity)
+
+    }
+    
     private var listTitleView: some View {
         Text("History 🕰")
             .font(.title2)
@@ -133,8 +136,6 @@ extension HomeView {
                                 .font(.headline)
                                 .foregroundColor(Color.theme.accent)
                             Spacer()
-//                            Text("\(entity.date?.formatted(date: .numeric, time: .shortened) ?? "")")
-//                            Spacer()
                             Text("\(entity.price.asCurrencyWith2Decimals())")
                                 .font(.headline)
                                 .fontWeight(.semibold)
