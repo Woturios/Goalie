@@ -129,6 +129,15 @@ extension HomeView {
             .padding(.horizontal)
             
             List {
+                Text(DateFormatter.displayDate.string(from: Date()))
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 55)
+                    .background(Color.primary.opacity(0.1))
+                    .cornerRadius(10)
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
                 ForEach(vm.sortedArray) { entity in
                     ZStack {
                         HStack {

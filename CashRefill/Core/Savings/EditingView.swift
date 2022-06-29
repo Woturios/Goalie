@@ -48,7 +48,7 @@ struct EditingView: View {
                     button
                     HStack {
                         Text("Created: ")
-                            .foregroundColor(Color.black.opacity(0.5))
+                            .foregroundColor(Color.primary.opacity(0.3))
                         Text("\(item.date?.formatted(date: .long, time: .shortened) ?? "")")
                             .foregroundColor(Color.gray)
                             
