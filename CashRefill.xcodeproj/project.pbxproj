@@ -38,6 +38,7 @@
 		8381B57A286B432500A6FE9C /* DataPresentationFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8381B579286B432500A6FE9C /* DataPresentationFieldModifier.swift */; };
 		8381B57C286B50C500A6FE9C /* SheetTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8381B57B286B50C500A6FE9C /* SheetTitleView.swift */; };
 		8381B57E286CBDA000A6FE9C /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8381B57D286CBDA000A6FE9C /* DateFormatter.swift */; };
+		8381B581286CD0CF00A6FE9C /* ChangeCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8381B580286CD0CF00A6FE9C /* ChangeCurrencyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		8381B579286B432500A6FE9C /* DataPresentationFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPresentationFieldModifier.swift; sourceTree = "<group>"; };
 		8381B57B286B50C500A6FE9C /* SheetTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetTitleView.swift; sourceTree = "<group>"; };
 		8381B57D286CBDA000A6FE9C /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		8381B580286CD0CF00A6FE9C /* ChangeCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCurrencyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			children = (
 				5C3AF864283D667D00100C48 /* Components */,
 				5C8EB75328368128007D2237 /* Savings */,
+				8381B57F286CD0B000A6FE9C /* Settings */,
 				5C8EB7552836816D007D2237 /* View Models */,
 			);
 			path = Core;
@@ -180,7 +183,6 @@
 				5C8EB74B28358CA1007D2237 /* HomeView.swift */,
 				5C8EB7602836A851007D2237 /* AddView.swift */,
 				5CE01B172837968E0074F6AE /* GoalView.swift */,
-				8381B577286B39EE00A6FE9C /* SettingsView.swift */,
 				5C7C9889283C43CC004C305E /* EditingView.swift */,
 			);
 			path = Savings;
@@ -220,6 +222,15 @@
 				835AD7AE2845257300EE04AF /* Localizable.strings */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		8381B57F286CD0B000A6FE9C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				8381B577286B39EE00A6FE9C /* SettingsView.swift */,
+				8381B580286CD0CF00A6FE9C /* ChangeCurrencyView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,6 +332,7 @@
 				8381B57C286B50C500A6FE9C /* SheetTitleView.swift in Sources */,
 				8381B57E286CBDA000A6FE9C /* DateFormatter.swift in Sources */,
 				8381B57A286B432500A6FE9C /* DataPresentationFieldModifier.swift in Sources */,
+				8381B581286CD0CF00A6FE9C /* ChangeCurrencyView.swift in Sources */,
 				5CE01B182837968E0074F6AE /* GoalView.swift in Sources */,
 				8350D5622840368100C6C385 /* NavigationBackView.swift in Sources */,
 			);

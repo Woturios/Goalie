@@ -29,6 +29,9 @@
 "Back" = "Cofnij";
 
 /* No comment provided by engineer. */
+"Change Currency" = "Zmień walutę";
+
+/* No comment provided by engineer. */
 "Created: " = "Stworzono:";
 
 /* No comment provided by engineer. */
@@ -36,6 +39,9 @@
 
 /* No comment provided by engineer. */
 "Goal" = "Cel";
+
+/* No comment provided by engineer. */
+"Goalie is Currently supporting three Currencies:\n🇵🇱 Polish zloty PLN\n🇺🇸 US Dollar $\n🇪🇺 European Euro €\n\nTo change currency follow this steps:\n\n⚙️ Open Settings App on your device.\n🔍 Search for \"Language & Region\"\n🌍 Change Region to country that uses Currency you want!" = "Goalie wspiera obecnie trzy waluty:\n🇵🇱 Polski złoty - PLN\n🇺🇸 Dolar Amerykański - $\n🇪🇺 Euro - €\n\nAby zmienić walutę podążaj za poniższymi instrukcjami:\n\n⚙️ Na swoim urządzeniu otwórz aplikację Ustawienia.\n🔍 Wyszukaj \"Język i Region\" lub kliknij w opcje \"Ogólne\", ustawienie języka i regionu powinno znajdować się na liście.\n🌍 Zmień region na kraj, którego walutę chcesz używać (Niemcy - Euro, USA - Dolar)\n\nUstawienie nie zmieni języku aplikacji ani telefonu, natomiast może zmienić się format daty oraz czasu i dystansów (np przy zmienie na USA : \n12 godzinny format czasu, MM/DD/RRRR, Mile zamiast kilometrów)\nW ustawieniach można ustawić z powrotem polskie wartości, lecz może być to trudne dla niektórych użytkowników. Pomoc można znaleźć w internecie.";
 
 /* No comment provided by engineer. */
 "History 🕰" = "Historia 🕰";
@@ -69,6 +75,9 @@
 
 /* No comment provided by engineer. */
 "Savings" = "Oszczędności";
+
+/* No comment provided by engineer. */
+"Select background theme you will be using in goalie app." = "Zmień tło aplikacji, klikając w przyciski poniżej.";
 
 /* No comment provided by engineer. */
 "Select your theme!" = "Wybierz motyw!";

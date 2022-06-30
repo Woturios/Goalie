@@ -73,13 +73,18 @@ extension HomeView {
                 .sheet(isPresented: $vm.showSheet) {
                     GoalView()
                 }
-            CircleButton(buttonName: "gearshape")
-                .onTapGesture {
-                    settingsSheet = true
-                }
-                .sheet(isPresented: $settingsSheet) {
-                    SettingsView()
-                }
+            NavigationLink {
+                SettingsView()
+            } label: {
+                CircleButton(buttonName: "gearshape")
+
+            }
+//                .onTapGesture {
+//                    settingsSheet = true
+//                }
+//                .sheet(isPresented: $settingsSheet) {
+//                    SettingsView()
+//                }
             NavigationLink {
                 AddView()
             } label: {
