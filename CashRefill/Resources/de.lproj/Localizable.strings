@@ -23,6 +23,15 @@
 "Back" = "Zurück";
 
 /* No comment provided by engineer. */
+"Change currency" = "Währung ändern";
+
+/* No comment provided by engineer. */
+"Change currency 💰" = "Währung ändern";
+
+/* No comment provided by engineer. */
+"Change language" = "Sprache ändern";
+
+/* No comment provided by engineer. */
 "Created: " = "Erstellt:";
 
 /* No comment provided by engineer. */
@@ -30,6 +39,9 @@
 
 /* No comment provided by engineer. */
 "Goal" = "Ziel";
+
+/* No comment provided by engineer. */
+"Goalie is currently supporting three languages:\n\n🇺🇸 English\n🇵🇱 Polish\n🇩🇪 German\n\nTo change language go to Settings app, search for Goalie. You will see a setting to change app language.\n" = "Goalie unterstützt derzeit drei Sprache:\n\n🇺🇸 English\n🇵🇱 Polnisch\n🇩🇪 Deutsch \n\nSie können die Sprache in die \"Einstellungen\" App ändern.";
 
 /* No comment provided by engineer. */
 "History 🕰" = "Geschichte 🕰";
@@ -62,6 +74,9 @@
 "Savings" = "Ersparnis";
 
 /* No comment provided by engineer. */
+"Select background theme you will be using in goalie app." = "Wähl den App-Hintergrund";
+
+/* No comment provided by engineer. */
 "Select your theme!" = "Wähl deine Thema!";
 
 /* No comment provided by engineer. */
@@ -75,6 +90,9 @@
 
 /* No comment provided by engineer. */
 "There is nothing on your list. Press + to add new item. 😱😨😰" = "Es steht nichts auf deiner Liste. Drücken Sie +, um einen neuen Eintrag hinzuzufügen. 😱😨😰";
+
+/* No comment provided by engineer. */
+"To change currency follow this steps:\n\n⚙️ Open Settings App on your device.\n🔍 Search for \"Language & Region\"\n🌍 Change Region to country that uses currency you want!\n\nChanging region may affect the format of dates and distances on your phone. However you can allways change them back manually." = "⚙️ Offn die Einstellungen App.\n🔍 Suche nach \"Sprache & Region\".\n🌍 Veränder Region.";
 
 /* No comment provided by engineer. */
 "Your current goal is %@" = "Dein Ziel ist %@";

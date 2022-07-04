@@ -25,7 +25,7 @@ struct HomeView: View {
                     .sheet(isPresented: $vm.showSheet) {
                         GoalView()
                     }
-                if vm.sortedListItems().isEmpty {
+                if vm.savedEntities.isEmpty {
                     nothingOnListView
                 } else {
                     listView

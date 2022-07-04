@@ -43,12 +43,8 @@ class HomeViewModel: ObservableObject {
     }
     
     // New items on top
-    func sortedListItems() -> [PostEntity] {
-        savedEntities.reversed()
-    }
-    
     func sortListItems() {
-        sortedArray = savedEntities.sorted(by: { ($0.date ?? DateFormatter().date(from: "01/05/2004")) ?? Date() > $1.date ?? Date() })
+        sortedArray = savedEntities.sorted(by: {$0.date ?? Date() > $1.date ?? Date()})
     }
     
     // Reload items
@@ -60,7 +56,7 @@ class HomeViewModel: ObservableObject {
     // Delete item
     func deletePost(indexSet: IndexSet) {
         indexSet.forEach { index in
-            let item = sortedListItems()[index]
+            let item = sortedArray[index]
             coreDataManager.deleteItem(item: item)
             reloadItems()
         }
@@ -79,7 +75,7 @@ class HomeViewModel: ObservableObject {
     
     
     func updateBilance() {
-        portfolioSummary = sortedListItems().sum(\.price)
+        portfolioSummary = savedEntities.sum(\.price)
         updateGoalPercentage()
     }
     

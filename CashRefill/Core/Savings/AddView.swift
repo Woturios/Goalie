@@ -28,7 +28,10 @@ struct AddView: View {
                     .padding(.top, 25)
                 
                 Text("Add new item:")
-                AddEditFormView(addItemTitle: LocalizedStringKey("Add new item..."), addPriceTitle: LocalizedStringKey("Add price..."))
+                    .font(.title)
+                    .fontWeight(.bold)
+
+                AddEditFormView(itemTitle: LocalizedStringKey("Add new item..."), priceTitle: LocalizedStringKey("Add price..."))
                 button
                 Spacer()
             }

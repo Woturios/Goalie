@@ -37,9 +37,6 @@ struct BottomGradientBackground: View {
     }
 }
 
-//struct
-
-
 struct GetBackgroundTheme: View {
     
     @EnvironmentObject private var vm: HomeViewModel
@@ -51,6 +48,8 @@ struct GetBackgroundTheme: View {
             AngularGradientBackground(primaryGradientColor: vm.getAccentColor(), secondaryGradientColor: Color("PrimaryGradient"))
         } else if vm.selectedTheme == 1 {
             BottomGradientBackground(primaryGradientColor: vm.getAccentColor(), secondaryGradientColor: Color("PrimaryGradient"))
+        } else if vm.selectedTheme == 4 {
+            EmptyView()
         }
     }
 }
