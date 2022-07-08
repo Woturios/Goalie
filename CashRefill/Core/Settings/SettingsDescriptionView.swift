@@ -22,17 +22,18 @@ struct SettingsDescriptionView: View {
                     .onTapGesture {
                         self.presentationMode.wrappedValue.dismiss()
                     }
-                VStack(alignment: .leading, spacing: 10) {
-                    Text(title)
-                        .font(.title)
-                        .fontWeight(.bold)
-                    ScrollView {
-                        Text(description)
+                ScrollView(showsIndicators: false) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text(title)
+                            .font(.title)
+                            .fontWeight(.bold)
+                        
+                            Text(description)
                     }
+                    .frame(maxWidth: 500)
+                    
+                    Spacer()
                 }
-                .frame(maxWidth: 500)
-                
-                Spacer()
             }
             .padding()
             .navigationBarHidden(true)

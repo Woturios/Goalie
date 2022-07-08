@@ -32,10 +32,16 @@
 "Change currency" = "Zmień walutę";
 
 /* No comment provided by engineer. */
+"Change Currency" = "Zmień walutę";
+
+/* No comment provided by engineer. */
 "Change currency 💰" = "Zmień walutę 💸";
 
 /* No comment provided by engineer. */
 "Change language" = "Zmień język 🇵🇱";
+
+/* No comment provided by engineer. */
+"Change Language" = "Zmień język";
 
 /* No comment provided by engineer. */
 "Created: " = "Stworzono:";
@@ -44,13 +50,19 @@
 "Donate to us in Cryptocurrency!" = "Pomóż nam wpłacając kryptowaluty!";
 
 /* No comment provided by engineer. */
+"Edit item..." = "Edytuj rzecz...";
+
+/* No comment provided by engineer. */
+"Edit price..." = "Edytuj cenę...";
+
+/* No comment provided by engineer. */
 "Edit your list item:" = "Edytuj swój wpis:";
 
 /* No comment provided by engineer. */
 "Goal" = "Cel";
 
 /* No comment provided by engineer. */
-"Goalie is currently supporting three languages:\n\n🇺🇸 English\n🇵🇱 Polish\n🇩🇪 German\n\nTo change language go to Settings app, search for Goalie. You will see a setting to change app language.\n" = "Goalie wspiera obecnie trzy języki:\n\n🇺🇸 Angielski\n🇵🇱 Polski\n🇩🇪 Niemiecki\n\nŻeby zmienić język, otwórz aplikacje ustawienia i wyszukaj \"Goalie\". Po kliknięciu zobaczysz możliwość zmiany języka.";
+"Goalie is curently supporting three languages:\n\n🇺🇸 English\n🇵🇱 Polish\n🇩🇪 German\n\nTo change language go to Settings app and search for Goalie. You will se a setting to change app language." = "Goalie obecnie wspiera trzy języki:\n\n🇺🇸 Angielski\n🇵🇱 Polski\n🇩🇪 Niemiecki\n\nŻeby zmienić język otwórz aplikacje Ustawienia. Wyszukaj Goalie. Zobaczysz ustawienie zmiany języka w aplikacji.";
 
 /* No comment provided by engineer. */
 "Help us to improve Goalie!" = "Pomóż nam ulepszyć Goalie!";
@@ -71,6 +83,9 @@
 "Minimalist theme" = "Minimalistyczne tło";
 
 /* No comment provided by engineer. */
+"name" = "imię";
+
+/* No comment provided by engineer. */
 "Oh, no! 😰😱🥶" = "Och, nie! 😰😱🥶";
 
 /* No comment provided by engineer. */
@@ -78,6 +93,9 @@
 
 /* No comment provided by engineer. */
 "Please, type the name and price of the item! 🫡" = "Napisz nazwę oraz cenę przedmiotu! 🫡";
+
+/* No comment provided by engineer. */
+"price" = "cena";
 
 /* No comment provided by engineer. */
 "Price:" = "Cena:";
@@ -111,6 +129,9 @@
 
 /* No comment provided by engineer. */
 "There is nothing on your list. Press + to add new item. 😱😨😰" = "Na twojej liście nic nie ma! Naciśnij + i dodaj nową rzecz. 😱😨😰";
+
+/* No comment provided by engineer. */
+"To change currency follow this steps:\n\n⚙️ Open Settings App on your device.\n🔍 Search for \"Language & Region\"\n🌍 Change Region to country that uses currency you want!\n\nChanging region may affect the format of dates and distances on your phone. However you can allways change them back manually." = "⚙️ Na swoim urządzeniu otwórz aplikacje Ustawienia.\n🔍 Wyszukaj \"Język i Region\"\n🌍 Zmień region na kraj, którego walutę chcesz używać.\n\nZmiana regionu może zmienić jednostki miary oraz format czasu i daty. Lokalne jednostki można ustawić z powrotem manualnie.";
 
 /* No comment provided by engineer. */
 "To change currency follow this steps:\n\n⚙️ Open Settings App on your device.\n🔍 Search for \"Language & Region\"\n🌍 Change Region to country that uses Currency you want!\n\nChanging region may affect the format of dates and distances on your phone. However you can allways change them back manually." = "Jeśli chcesz zmienić walutę, podążaj za poniższymi instrukcjami:\n\n⚙️ Na swoim urządzeniu otwórz aplikację Ustawienia.\n🔍 Wyszukaj \"Język i Region\" lub kliknij w ustawienia \"Ogólne\", szukana opcja będzie na liście ustawień.\n🌍 Zmień region na kraj którego walutę chcesz używać.\n\n❗️Zmiana regionu może wpłynąć na sposób wyświetlania daty oraz zmienić jednostki odległości oraz temperatury. \nPolskie jednostki można ustawić z powrotem ręcznie w ustawieniach.\n\nZmiana regionu nie wpływa na zmianę języka urządzenia.";

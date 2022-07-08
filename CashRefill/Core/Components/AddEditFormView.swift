@@ -10,8 +10,8 @@ import SwiftUI
 struct AddEditFormView: View {
     
     // MARK: PROPERTIES
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @EnvironmentObject private var vm: HomeViewModel
+    @Binding var textFieldName: String
+    @Binding var textFieldPrice: String
     var itemTitle: LocalizedStringKey
     var priceTitle: LocalizedStringKey
     @FocusState private var firstFocus: Bool
@@ -19,14 +19,14 @@ struct AddEditFormView: View {
     // MARK: BODY
     var body: some View {
         VStack(spacing: 10) {
-            TextField(itemTitle, text: $vm.textFieldName)
-                .withClearButton(text: $vm.textFieldName)
+            TextField(itemTitle, text: $textFieldName)
+                .withClearButton(text: $textFieldName)
                 .focused($firstFocus)
                 .withDefaultTextFieldFormatting()
                 .keyboardType(.alphabet)
             
-            TextField(priceTitle, text: $vm.textFieldPrice)
-                .withClearButton(text: $vm.textFieldPrice)
+            TextField(priceTitle, text: $textFieldPrice)
+                .withClearButton(text: $textFieldPrice)
                 .withDefaultTextFieldFormatting()
                 .keyboardType(.decimalPad)
         }
@@ -41,6 +41,7 @@ struct AddEditFormView: View {
 // MARK: PREVIEWS
 struct AddEditFormView_Previews: PreviewProvider {
     static var previews: some View {
-        AddEditFormView(itemTitle: "", priceTitle: "")
+//        AddEditFormView(itemTitle: "", priceTitle: "")
+        AddEditFormView(textFieldName: .constant("title"), textFieldPrice: .constant("price"), itemTitle: "name", priceTitle: "price")
     }
 }

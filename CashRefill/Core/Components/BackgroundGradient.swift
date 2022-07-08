@@ -43,11 +43,11 @@ struct GetBackgroundTheme: View {
 
     var body: some View {
         if vm.selectedTheme == 3 {
-            BackgroundGradient(primaryGradientColor: vm.getAccentColor(), secondaryGradientColor: Color("PrimaryGradient"))
+            BackgroundGradient(primaryGradientColor: vm.getAccentColor(), secondaryGradientColor: Color.theme.reversed)
         } else if vm.selectedTheme == 2 {
-            AngularGradientBackground(primaryGradientColor: vm.getAccentColor(), secondaryGradientColor: Color("PrimaryGradient"))
+            AngularGradientBackground(primaryGradientColor: vm.getAccentColor(), secondaryGradientColor: Color.theme.reversed)
         } else if vm.selectedTheme == 1 {
-            BottomGradientBackground(primaryGradientColor: vm.getAccentColor(), secondaryGradientColor: Color("PrimaryGradient"))
+            BottomGradientBackground(primaryGradientColor: vm.getAccentColor(), secondaryGradientColor: Color.theme.reversed)
         } else if vm.selectedTheme == 4 {
             EmptyView()
         }

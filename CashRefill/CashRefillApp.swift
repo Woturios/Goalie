@@ -14,9 +14,10 @@ struct CashRefillApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                    HomeView()
-            }
+            TabBarView()
+//            NavigationView {
+//                    HomeView()
+//            }
             .navigationViewStyle(StackNavigationViewStyle())
             .environmentObject(vm)
         }

@@ -73,18 +73,12 @@ extension HomeView {
                 .sheet(isPresented: $vm.showSheet) {
                     GoalView()
                 }
-            NavigationLink {
-                SettingsView()
-            } label: {
-                CircleButton(buttonName: "gearshape")
-
-            }
-//                .onTapGesture {
-//                    settingsSheet = true
-//                }
-//                .sheet(isPresented: $settingsSheet) {
-//                    SettingsView()
-//                }
+//            NavigationLink {
+//                SettingsView()
+//            } label: {
+//                CircleButton(buttonName: "gearshape")
+//
+//            }
             NavigationLink {
                 AddView()
             } label: {
@@ -143,6 +137,7 @@ extension HomeView {
                     .cornerRadius(10)
                     .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
+                
                 ForEach(vm.sortedArray) { entity in
                     ZStack {
                         HStack {
@@ -152,7 +147,6 @@ extension HomeView {
                             Spacer()
                             Text("\(entity.price.asCurrencyWith2Decimals())")
                                 .font(.headline)
-                                .fontWeight(.semibold)
                                 .foregroundColor(Color.theme.accent)
                         }
                         

@@ -16,27 +16,30 @@ struct SettingsView: View {
         ZStack {
             GetBackgroundTheme()
             
-            VStack(alignment: .leading, spacing: 3) {
-                NavigationBackView()
-                    .onTapGesture {
-                        self.presentationMode.wrappedValue.dismiss()
+            VStack(alignment: .leading, spacing: 10) {
+//                NavigationBackView()
+//                    .onTapGesture {
+//                        self.presentationMode.wrappedValue.dismiss()
+//                    }
+                
+                ScrollView(showsIndicators: false) {
+                    donateView
+                    
+                    Text("Settings")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    VStack(alignment: .leading, spacing: 10) {
+                        selectThemeView
+                        changeCurrencyButtonView
+                        changeLanguageButtonView
+                        Spacer()
                     }
-                
-                donateView
-                
-                Text("Settings")
-                    .font(.title)
-                    .fontWeight(.bold)
-                
-                VStack(alignment: .leading, spacing: 10) {
-                    selectThemeView
-                    changeCurrencyButtonView
-                    changeLanguageButtonView
-                    Spacer()
                 }
             }
             .padding()
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: 500)
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
@@ -63,7 +66,7 @@ extension SettingsView {
             DonateView()
         } label: {
             HStack {
-                VStack {
+                VStack() {
                     Text("Help us to improve Goalie!")
                         .font(.title3)
                         .fontWeight(.bold)
@@ -72,6 +75,8 @@ extension SettingsView {
                         .font(.headline)
                         .foregroundColor(Color.theme.accent.opacity(0.6))
                 }
+                .minimumScaleFactor(0.4)
+                
                 Image(systemName: "hand.tap")
                     .font(.custom("tap", size: 40))
                     .foregroundColor(Color.theme.accent.opacity(0.8))
@@ -140,9 +145,10 @@ extension SettingsView {
                         Button {
                             vm.selectedTheme = 3
                         } label: {
-                            BackgroundGradient(primaryGradientColor: vm.getAccentColor(), secondaryGradientColor: Color("PrimaryGradient"))
+                            RadialGradient(colors: [vm.getAccentColor(), Color.theme.reversed], center: .topLeading, startRadius: 0, endRadius: 50)
                                 .cornerRadius(10)
-                                .frame(maxWidth: 100, maxHeight: 100)
+                                .frame(height: 100)
+                                .frame(maxWidth: 100)
                                 .scaleEffect((vm.selectedTheme == 3) ? 0.9 : 1)
                         }
                         .buttonStyle(.plain)
@@ -150,9 +156,10 @@ extension SettingsView {
                         Button {
                             vm.selectedTheme = 1
                         } label: {
-                            BottomGradientBackground(primaryGradientColor: vm.getAccentColor(), secondaryGradientColor: Color("PrimaryGradient"))
+                            RadialGradient(colors: [vm.getAccentColor().opacity(0.5), Color.theme.reversed], center: .bottom, startRadius: 0, endRadius: 50).ignoresSafeArea()
                                 .cornerRadius(10)
-                                .frame(maxWidth: 100, maxHeight: 100)
+                                .frame(height: 100)
+                                .frame(maxWidth: 100)
                                 .scaleEffect((vm.selectedTheme == 1) ? 0.9 : 1)
                         }
                         .buttonStyle(.plain)
@@ -160,9 +167,10 @@ extension SettingsView {
                         Button {
                             vm.selectedTheme = 2
                         } label: {
-                            AngularGradientBackground(primaryGradientColor: vm.getAccentColor(), secondaryGradientColor: Color("PrimaryGradient"))
+                            AngularGradient(colors: [vm.getAccentColor(), Color.theme.reversed], center: .topLeading, angle: .degrees(95))
                                 .cornerRadius(10)
-                                .frame(maxWidth: 100, maxHeight: 100)
+                                .frame(height: 100)
+                                .frame(maxWidth: 100)
                                 .scaleEffect((vm.selectedTheme == 2) ? 0.9 : 1)
                         }
                         .buttonStyle(.plain)
@@ -173,7 +181,8 @@ extension SettingsView {
                         ZStack {
                             Color.theme.reversed
                                 .cornerRadius(10)
-                                .frame(maxWidth: 315, maxHeight: 100)
+                                .frame(height: 100)
+                                .frame(maxWidth: 315)
                                 .scaleEffect((vm.selectedTheme == 4) ? 0.9 : 1)
                             Text("Minimalist theme")
                                 .font(.headline)

@@ -31,7 +31,10 @@ struct AddView: View {
                     .font(.title)
                     .fontWeight(.bold)
 
-                AddEditFormView(itemTitle: LocalizedStringKey("Add new item..."), priceTitle: LocalizedStringKey("Add price..."))
+                AddEditFormView(textFieldName: $vm.textFieldName,
+                                textFieldPrice: $vm.textFieldPrice,
+                                itemTitle: "Add new item...",
+                                priceTitle: "Add price...")
                 button
                 Spacer()
             }

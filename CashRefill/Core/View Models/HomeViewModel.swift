@@ -99,6 +99,10 @@ class HomeViewModel: ObservableObject {
         updateBilance()
     }
     
+    func editListItem() {
+        
+    }
+    
     // MARK: THEME FUNC
     func getAccentColor() -> Color {
         if selectedTab == 0 {

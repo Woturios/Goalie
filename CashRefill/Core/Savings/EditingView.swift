@@ -35,16 +35,11 @@ struct EditingView: View {
                     .fontWeight(.semibold)
                 
                 VStack(spacing: 10) {
-                    TextField(item.name ?? "", text: $itemName)
-                        .withClearButton(text: $itemName)
-                        .focused($firstFocus)
-                        .withDefaultTextFieldFormatting()
-                        .keyboardType(.alphabet)
                     
-                    TextField(String("\(item.price)"), text: $itemPrice)
-                        .withClearButton(text: $itemPrice)
-                        .withDefaultTextFieldFormatting()
-                        .keyboardType(.decimalPad)
+                    AddEditFormView(textFieldName: $itemName,
+                                    textFieldPrice: $itemPrice,
+                                    itemTitle: LocalizedStringKey("Edit item..."),
+                                    priceTitle: LocalizedStringKey("Edit price..."))
                     button
                     HStack {
                         Text("Created: ")
@@ -95,9 +90,12 @@ extension EditingView {
     }
 }
 
-// MARK: PREVIEW
+ //MARK: PREVIEW
 //struct EditingView_Previews: PreviewProvider {
+//    let item: [PostEntity] = [
+//        
+//    ]
 //    static var previews: some View {
-//        EditingView(itemName: "name", itemPrice: "23", item: PostEntity.indice)
+//        EditingView(itemName: "name", itemPrice: "20", item: <#T##PostEntity#>)
 //    }
 //}
