@@ -51,6 +51,20 @@ struct EditingView: View {
                     .frame(height: 55)
                     .withDataPresentationFieldStyle()
                     deleteButton
+                    
+                    VStack {
+                        Text("Some older items will need an update to work properly. Repairing item will create new item with current date and delete the current one.")
+                            .padding()
+                        Button {
+                            vm.repairListItem(title: itemName, price: Double(itemPrice) ?? 0, item: item)
+                        } label: {
+                            Text("REPAIR ITEM 🔧")
+                                .withDefaultButtonFormatting(backgroundColor: Color.gray, foregroundColor: Color.theme.reversed)
+                                .withPressableStyle()
+                        }
+                    }
+                    .withDataPresentationFieldStyle()
+
                     Spacer()
                 }
                 .onAppear {

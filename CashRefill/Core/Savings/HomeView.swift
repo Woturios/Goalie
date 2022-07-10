@@ -132,16 +132,13 @@ extension HomeView {
                                 }
 
                                 NavigationLink {
-                                    EditingView(itemName: item.name ?? "", itemPrice: String("\(item.price)"), item: item)
+                                    EditingView(itemName: (item.name ?? item.id?.uuidString) ?? "You need to repair this Item.", itemPrice: String("\(item.price)"), item: item)
                                 } label: {
                                     EmptyView()
                                 }
                                 .opacity(0)
                             }
                             .listRowBackground(Color.clear)
-                            .onAppear {
-                                
-                            }
                         }
                         .onDelete(perform: vm.deletePost)
                         

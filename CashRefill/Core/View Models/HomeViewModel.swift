@@ -119,8 +119,11 @@ class HomeViewModel: ObservableObject {
         updateBilance()
     }
         
-    func editListItem() {
-        
+    func repairListItem(title: String, price: Double, item: PostEntity) {
+        coreDataManager.saveItem(title: title, price: price, date: Date(), id: UUID())
+        coreDataManager.deleteItem(item: item)
+        reloadItems()
+        updateBilance()
     }
     
     // MARK: THEME FUNC
