@@ -51,20 +51,7 @@ struct EditingView: View {
                     .frame(height: 55)
                     .withDataPresentationFieldStyle()
                     deleteButton
-                    
-                    VStack {
-                        Text("Some older items will need an update to work properly. Repairing item will create new item with current date and delete the current one.")
-                            .padding()
-                        Button {
-                            vm.repairListItem(title: itemName, price: Double(itemPrice) ?? 0, item: item)
-                        } label: {
-                            Text("REPAIR ITEM 🔧")
-                                .withDefaultButtonFormatting(backgroundColor: Color.gray, foregroundColor: Color.theme.reversed)
-                                .withPressableStyle()
-                        }
-                    }
-                    .withDataPresentationFieldStyle()
-
+                    repairButton
                     Spacer()
                 }
                 .onAppear {
@@ -114,6 +101,21 @@ extension EditingView {
                 .withDefaultButtonFormatting(backgroundColor: Color.red)
         }
 
+    }
+    
+    private var repairButton: some View {
+        VStack {
+            Text("Some older items will need an update to work properly. Repairing item will create new item with current date and delete the current one.")
+                .padding()
+            Button {
+                vm.repairListItem(title: item.name ?? "No name", price: Double(item.price), item: item)
+            } label: {
+                Text("REPAIR ITEM 🔧")
+                    .withDefaultButtonFormatting(backgroundColor: Color.gray, foregroundColor: Color.theme.reversed)
+                    .withPressableStyle()
+            }
+        }
+        .withDataPresentationFieldStyle()
     }
 }
 
