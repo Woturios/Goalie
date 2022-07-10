@@ -50,6 +50,7 @@ struct EditingView: View {
                     }
                     .frame(height: 55)
                     .withDataPresentationFieldStyle()
+                    deleteButton
                     Spacer()
                 }
                 .onAppear {
@@ -88,14 +89,24 @@ extension EditingView {
         }
         
     }
+    
+    private var deleteButton: some View {
+        Button {
+            vm.coreDataManager.deleteItem(item: item)
+            vm.reloadItems()
+            self.presentationMode.wrappedValue.dismiss()
+        } label: {
+            Text(LocalizedStringKey("DELETE 😡"))
+                .withDefaultButtonFormatting(backgroundColor: Color.red)
+        }
+
+    }
 }
 
  //MARK: PREVIEW
 //struct EditingView_Previews: PreviewProvider {
-//    let item: [PostEntity] = [
-//        
-//    ]
 //    static var previews: some View {
-//        EditingView(itemName: "name", itemPrice: "20", item: <#T##PostEntity#>)
+//        EditingView(itemName: <#String#>, itemPrice: <#String#>, item: <#PostEntity#>)
+//            .environmentObject(HomeViewModel())
 //    }
 //}

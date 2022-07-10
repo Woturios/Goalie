@@ -9,8 +9,8 @@ import Foundation
 
 extension DateFormatter {
     static let displayDate: DateFormatter = {
-         let formatter = DateFormatter()
-         formatter.dateFormat = "dd MMMM"
-         return formatter
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM yyyy"
+        return formatter
     }()
 }

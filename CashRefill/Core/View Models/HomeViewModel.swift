@@ -9,12 +9,21 @@ import Foundation
 import SwiftUI
 import CoreData
 
+struct Month: Identifiable {
+    let id = UUID()
+    let title: String
+    let items: [PostEntity]
+    let price: Double
+    let date: Date
+}
+
 class HomeViewModel: ObservableObject {
     
     // MARK: PROPERTIES
     let coreDataManager: CoreDataManager = CoreDataManager()
     @Published var savedEntities: [PostEntity] = []
     @Published var sortedArray: [PostEntity] = []
+    @Published var mappedArray: [Month] = []
         
     @Published var textFieldName: String = ""
     @Published var textFieldPrice: String = ""
@@ -32,7 +41,6 @@ class HomeViewModel: ObservableObject {
     // MARK: INIT
     init() {
         reloadItems()
-        sortListItems()
         updateBilance()
     }
 
@@ -47,10 +55,21 @@ class HomeViewModel: ObservableObject {
         sortedArray = savedEntities.sorted(by: {$0.date ?? Date() > $1.date ?? Date()})
     }
     
+    func mapListItems() {
+        let grouped = Dictionary(grouping: sortedArray) { (entity: PostEntity) -> String in
+            DateFormatter.displayDate.string(from: entity.date ?? Date())
+        }
+        
+        self.mappedArray = grouped.map({ month -> Month in
+            Month(title: month.key, items: month.value, price: month.value[0].price, date: month.value[0].date ?? Date())
+        }).sorted(by: { $0.date > $1.date })
+    }
+    
     // Reload items
     func reloadItems() {
         savedEntities = fetchPortfolio()
         sortListItems()
+        mapListItems()
     }
     
     // Delete item
@@ -63,14 +82,15 @@ class HomeViewModel: ObservableObject {
         updateBilance()
     }
     
+    
     // Update item
     func updatePost() {
         coreDataManager.updateItem()
     }
     
     // Save item
-    func saveData(price: String, date: Date) {
-        coreDataManager.saveItem(title: textFieldName, price: Double(price) ?? 0, date: date)
+    func saveData(price: String, date: Date, id: UUID) {
+        coreDataManager.saveItem(title: textFieldName, price: Double(price) ?? 0, date: date, id: id)
     }
     
     
@@ -91,14 +111,14 @@ class HomeViewModel: ObservableObject {
     func addNewItemToList() {
         let fieldPrice = String(textFieldPrice.replacingOccurrences(of: ",", with: "."))
         let currentDate = Date()
-        saveData(price: fieldPrice, date: currentDate)
+        saveData(price: fieldPrice, date: currentDate, id: UUID())
         UIApplication.shared.endEdditing()
         textFieldName = ""
         textFieldPrice = ""
         reloadItems()
         updateBilance()
     }
-    
+        
     func editListItem() {
         
     }

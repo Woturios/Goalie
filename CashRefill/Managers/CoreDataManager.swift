@@ -54,12 +54,13 @@ class CoreDataManager {
         }
     }
     
-    func saveItem(title: String, price: Double, date: Date) {
+    func saveItem(title: String, price: Double, date: Date, id: UUID) {
         
         let item = PostEntity(context: container.viewContext)
         item.name = title
         item.price = price
         item.date = date
+        item.id = id
         
         do {
             try container.viewContext.save()

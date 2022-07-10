@@ -116,50 +116,91 @@ extension HomeView {
     
     private var listView: some View {
         VStack {
-            HStack {
-                Text("Item:")
-                    .font(.caption)
-                    .foregroundColor(Color.theme.accent)
-                Spacer()
-                Text("Price:")
-                    .font(.caption)
-                    .foregroundColor(Color.theme.accent)
-            }
-            .padding(.horizontal)
-            
             List {
-                Text(DateFormatter.displayDate.string(from: Date()))
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 55)
-                    .background(Color.primary.opacity(0.1))
-                    .cornerRadius(10)
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
-                
-                ForEach(vm.sortedArray) { entity in
-                    ZStack {
-                        HStack {
-                            Text(entity.name ?? "No Name")
-                                .font(.headline)
-                                .foregroundColor(Color.theme.accent)
-                            Spacer()
-                            Text("\(entity.price.asCurrencyWith2Decimals())")
-                                .font(.headline)
-                                .foregroundColor(Color.theme.accent)
+                ForEach(vm.mappedArray) { section in
+                    Section {
+                        ForEach(section.items) { item in
+                            ZStack {
+                                HStack {
+                                    Text(item.name ?? "No Name")
+                                        .font(.headline)
+                                        .foregroundColor(Color.theme.accent)
+                                    Spacer()
+                                    Text("\(item.price.asCurrencyWith2Decimals())")
+                                        .font(.headline)
+                                        .foregroundColor(Color.theme.accent)
+                                }
+
+                                NavigationLink {
+                                    EditingView(itemName: item.name ?? "", itemPrice: String("\(item.price)"), item: item)
+                                } label: {
+                                    EmptyView()
+                                }
+                                .opacity(0)
+                            }
+                            .listRowBackground(Color.clear)
+                            .onAppear {
+                                
+                            }
                         }
+                        .onDelete(perform: vm.deletePost)
                         
-                        NavigationLink {
-                            EditingView(itemName: entity.name ?? "", itemPrice: String("\(entity.price)"), item: entity)
-                        } label: {
-                            EmptyView()
+                    } header: {
+                        VStack {
+                            Text("\(DateFormatter.displayDate.string(from: section.date ))")
+                                .font(.title3)
+                                .fontWeight(.bold)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 3)
+    //                            .padding(.horizontal)
+                                .background(vm.getAccentColor().opacity(0.45))
+                                .cornerRadius(10)
+                            HStack {
+                                Text("Item:")
+                                    .font(.caption)
+                                    .foregroundColor(Color.theme.accent)
+                                Spacer()
+                                Text("Price:")
+                                    .font(.caption)
+                                    .foregroundColor(Color.theme.accent)
+                            }
                         }
-                        .opacity(0)
                     }
-                    .listRowBackground(Color.clear)
                 }
-                .onDelete(perform: vm.deletePost)
+                /*
+//                ForEach(vm.sortedArray) { entity in
+//                    Section {
+                        ZStack {
+                            HStack {
+                                Text(entity.name ?? "No Name")
+                                    .font(.headline)
+                                    .foregroundColor(Color.theme.accent)
+                                Spacer()
+                                Text("\(entity.price.asCurrencyWith2Decimals())")
+                                    .font(.headline)
+                                    .foregroundColor(Color.theme.accent)
+                            }
+
+                            NavigationLink {
+                                EditingView(itemName: entity.name ?? "", itemPrice: String("\(entity.price)"), item: entity)
+                            } label: {
+                                EmptyView()
+                            }
+                            .opacity(0)
+                        }
+                        .listRowBackground(Color.clear)
+//
+//                    } header: {
+                        Text("\(DateFormatter.displayDate.string(from: entity.date ?? Date()))")
+                            .font(.title3)
+                            .fontWeight(.bold)
+                            .padding(3)
+                            .background(vm.getAccentColor().opacity(0.5))
+                            .cornerRadius(10)
+//                    }
+//                }
+//                .onDelete(perform: vm.deletePost)
+                 */
             }
             .foregroundColor(Color.theme.accent)
             .navigationBarHidden(true)
