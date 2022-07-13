@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TabBarView: View {
+    
+    @EnvironmentObject private var vm: HomeViewModel
+    
     var body: some View {
         TabView {
             NavigationView {
@@ -34,6 +37,7 @@ struct TabBarView: View {
                     Text("Settings")
                 }
         }
+        .accentColor(vm.getAccentColor())
     }
 }
 

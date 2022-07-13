@@ -89,9 +89,11 @@ extension AccountView {
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .foregroundColor(Color.theme.thirdTabContent)
+                            .minimumScaleFactor(0.5)
                     }
                 }
             }
+            .minimumScaleFactor(0.5)
         }
     }
     
@@ -148,6 +150,7 @@ extension AccountView {
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .foregroundColor(Color.theme.secondTabContent)
+                            .minimumScaleFactor(0.5)
                     }
                     
                 }

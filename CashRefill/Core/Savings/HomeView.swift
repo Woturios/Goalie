@@ -64,6 +64,7 @@ extension HomeView {
             Text("Your Savings")
                 .font(.title2)
                 .fontWeight(.bold)
+                .minimumScaleFactor(0.5)
             
             Spacer()
             CircleButton(buttonName: "crown")
@@ -85,7 +86,6 @@ extension HomeView {
                 CircleButton(buttonName: "plus.circle")
             }
         }
-        .minimumScaleFactor(0.5)
         .padding(.horizontal)
         .padding(.top, 25)
     }
@@ -143,14 +143,14 @@ extension HomeView {
                         .onDelete(perform: vm.deletePost)
                         
                     } header: {
-                        VStack {
+                        VStack(alignment: .leading) {
                             Text("\(DateFormatter.displayDate.string(from: section.date ))")
                                 .font(.title3)
                                 .fontWeight(.bold)
-                                .frame(maxWidth: .infinity)
+                                .frame(maxWidth: vm.dataDisplayStyle ? .infinity : nil)
                                 .padding(.vertical, 3)
-    //                            .padding(.horizontal)
-                                .background(vm.getAccentColor().opacity(0.45))
+                                .padding(.horizontal, 40)
+                                .background(vm.getAccentColor().opacity(0.8))
                                 .cornerRadius(10)
                             HStack {
                                 Text("Item:")

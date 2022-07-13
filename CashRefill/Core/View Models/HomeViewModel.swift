@@ -9,13 +9,6 @@ import Foundation
 import SwiftUI
 import CoreData
 
-struct Month: Identifiable {
-    let id = UUID()
-    let title: String
-    let items: [PostEntity]
-    let price: Double
-    let date: Date
-}
 
 class HomeViewModel: ObservableObject {
     
@@ -35,8 +28,10 @@ class HomeViewModel: ObservableObject {
     @Published var selectedTab: Int = 0
     @Published var showSheet: Bool = false
     @Published var alertIsToggled: Bool = false
+    @AppStorage("dataDisplayStyle") var dataDisplayStyle: Bool = true
     
     @AppStorage("SelectedTheme") var selectedTheme: Int = 1
+    @AppStorage("preferedColorMode") var preferedColorMode: Int = 2
     
     // MARK: INIT
     init() {
@@ -135,6 +130,10 @@ class HomeViewModel: ObservableObject {
         } else {
             return Color.green
         }
+    }
+    
+    func toggleDataDisplayStyle() {
+        dataDisplayStyle.toggle()
     }
 
 }

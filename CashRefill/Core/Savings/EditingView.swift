@@ -14,7 +14,6 @@ struct EditingView: View {
     @EnvironmentObject private var vm: HomeViewModel
     @State var itemName: String
     @State var itemPrice: String
-    @FocusState private var firstFocus: Bool
     let item: PostEntity
     
     // MARK: BODY
@@ -29,34 +28,31 @@ struct EditingView: View {
                     }
                     .padding(.top, 25)
                 
-                Text("Edit your list item:")
-                    .foregroundColor(Color.theme.accent)
-                    .font(.title)
-                    .fontWeight(.semibold)
-                
-                VStack(spacing: 10) {
+                ScrollView(showsIndicators: false) {
+                    Text("Edit your list item:")
+                        .foregroundColor(Color.theme.accent)
+                        .font(.title)
+                        .fontWeight(.semibold)
                     
-                    AddEditFormView(textFieldName: $itemName,
-                                    textFieldPrice: $itemPrice,
-                                    itemTitle: LocalizedStringKey("Edit item..."),
-                                    priceTitle: LocalizedStringKey("Edit price..."))
-                    button
-                    HStack {
-                        Text("Created: ")
-                            .foregroundColor(Color.primary.opacity(0.3))
-                        Text("\(item.date?.formatted(date: .long, time: .shortened) ?? "")")
-                            .foregroundColor(Color.gray)
-                            
-                    }
-                    .frame(height: 55)
-                    .withDataPresentationFieldStyle()
-                    deleteButton
-                    repairButton
-                    Spacer()
-                }
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        firstFocus = true
+                    VStack(spacing: 10) {
+                        
+                        AddEditFormView(textFieldName: $itemName,
+                                        textFieldPrice: $itemPrice,
+                                        itemTitle: LocalizedStringKey("Edit item..."),
+                                        priceTitle: LocalizedStringKey("Edit price..."))
+                        button
+                        HStack {
+                            Text("Created: ")
+                                .foregroundColor(Color.primary.opacity(0.3))
+                            Text("\(item.date?.formatted(date: .long, time: .shortened) ?? "")")
+                                .foregroundColor(Color.gray)
+                                
+                        }
+                        .frame(height: 55)
+                        .withDataPresentationFieldStyle()
+                        deleteButton
+                        repairButton
+                        Spacer()
                     }
                 }
             }

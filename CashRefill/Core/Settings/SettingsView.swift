@@ -32,6 +32,45 @@ struct SettingsView: View {
                     
                     VStack(alignment: .leading, spacing: 10) {
                         selectThemeView
+                        changeSectionDisplayStyle
+                        
+                        HStack {
+                            Text("Light")
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .frame(height: 55)
+                                .background(vm.getAccentColor().opacity(vm.preferedColorMode == 0 ? 1 : 0))
+                                .cornerRadius(10)
+                                .onTapGesture {
+                                    withAnimation(.easeInOut) {
+                                        vm.preferedColorMode = 0
+                                    }
+                                }
+                            Text("Dark")
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .frame(height: 55)
+                                .background(vm.getAccentColor().opacity(vm.preferedColorMode == 1 ? 1 : 0))
+                                .cornerRadius(10)
+                                .onTapGesture {
+                                    withAnimation(.easeInOut) {
+                                        vm.preferedColorMode = 1
+                                    }
+                                }
+                            
+                            Text("System")
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .frame(height: 55)
+                                .background(vm.getAccentColor().opacity(vm.preferedColorMode == 2 ? 1 : 0))
+                                .cornerRadius(10)
+                                .onTapGesture {
+                                    withAnimation(.easeInOut) {
+                                        vm.preferedColorMode = 2
+                                    }
+                                }
+                        }
+                        .frame(maxWidth:.infinity)
+                        .frame(height: 55)
+                        .withDefaultButtonFormatting(backgroundColor: Color.theme.reversed, foregroundColor: Color.primary)
+                        
                         changeCurrencyButtonView
                         changeLanguageButtonView
                         Spacer()
@@ -60,6 +99,20 @@ struct SettingsView_Previews: PreviewProvider {
 }
 
 extension SettingsView {
+    
+    private var changeSectionDisplayStyle: some View {
+        VStack(alignment: .leading) {
+            Toggle("Wide month section header", isOn: $vm.dataDisplayStyle)
+                .padding(.horizontal)
+                .withDefaultButtonFormatting(backgroundColor: Color.theme.reversed, foregroundColor: Color.primary)
+                .tint(vm.getAccentColor())
+            
+            Text("Changes the style of month header to be shorter and placed on the left. May be better for some wider screens like iPads.")
+                .font(.caption)
+                .foregroundColor(Color.theme.secondary)
+                .padding(.horizontal)
+        }
+    }
     
     private var donateView: some View {
         NavigationLink {
@@ -145,7 +198,7 @@ extension SettingsView {
                         Button {
                             vm.selectedTheme = 3
                         } label: {
-                            RadialGradient(colors: [vm.getAccentColor(), Color.theme.reversed], center: .topLeading, startRadius: 0, endRadius: 50)
+                            RadialGradient(colors: [vm.getAccentColor().opacity(0.5), Color.theme.reversed], center: .topLeading, startRadius: 0, endRadius: 50)
                                 .cornerRadius(10)
                                 .frame(height: 100)
                                 .frame(maxWidth: 100)
@@ -167,7 +220,7 @@ extension SettingsView {
                         Button {
                             vm.selectedTheme = 2
                         } label: {
-                            AngularGradient(colors: [vm.getAccentColor(), Color.theme.reversed], center: .topLeading, angle: .degrees(95))
+                            AngularGradient(colors: [vm.getAccentColor().opacity(0.5), Color.theme.reversed], center: .topLeading, angle: .degrees(95))
                                 .cornerRadius(10)
                                 .frame(height: 100)
                                 .frame(maxWidth: 100)

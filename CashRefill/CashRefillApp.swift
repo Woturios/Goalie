@@ -18,6 +18,10 @@ struct CashRefillApp: App {
 //            NavigationView {
 //                    HomeView()
 //            }
+                .preferredColorScheme(
+                    vm.preferedColorMode == 0 ? .light :
+                        vm.preferedColorMode == 1 ? .dark :
+                        nil)
             .navigationViewStyle(StackNavigationViewStyle())
             .environmentObject(vm)
         }
