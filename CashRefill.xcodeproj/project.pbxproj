@@ -27,6 +27,8 @@
 		8304E0D92843911C0078F616 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8304E0D82843911C0078F616 /* ClearButton.swift */; };
 		831EECD2286DA16000100F27 /* DonateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831EECD1286DA16000100F27 /* DonateView.swift */; };
 		831F59CB2846670800EDA488 /* BackgroundGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831F59CA2846670800EDA488 /* BackgroundGradient.swift */; };
+		832FAA09288020DC00FE0E3D /* GoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FAA08288020DC00FE0E3D /* GoalsView.swift */; };
+		832FAA0B28807B2E00FE0E3D /* progressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FAA0A28807B2E00FE0E3D /* progressBarView.swift */; };
 		833AB3BA2875F23100AB184F /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833AB3B92875F23100AB184F /* TabBarView.swift */; };
 		8350D5622840368100C6C385 /* NavigationBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8350D5612840368100C6C385 /* NavigationBackView.swift */; };
 		8350D56A2840E3DD00C6C385 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8350D5692840E3DD00C6C385 /* UINavigationController.swift */; };
@@ -66,6 +68,8 @@
 		8304E0D82843911C0078F616 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
 		831EECD1286DA16000100F27 /* DonateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateView.swift; sourceTree = "<group>"; };
 		831F59CA2846670800EDA488 /* BackgroundGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradient.swift; sourceTree = "<group>"; };
+		832FAA08288020DC00FE0E3D /* GoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsView.swift; sourceTree = "<group>"; };
+		832FAA0A28807B2E00FE0E3D /* progressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressBarView.swift; sourceTree = "<group>"; };
 		833AB3B92875F23100AB184F /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		8350D5612840368100C6C385 /* NavigationBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBackView.swift; sourceTree = "<group>"; };
 		8350D5692840E3DD00C6C385 /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 				833AB3B92875F23100AB184F /* TabBarView.swift */,
 				5C3AF864283D667D00100C48 /* Components */,
 				5C8EB75328368128007D2237 /* Savings */,
+				832FAA07288020A000FE0E3D /* Goals */,
 				8381B57F286CD0B000A6FE9C /* Settings */,
 				5C8EB7552836816D007D2237 /* View Models */,
 			);
@@ -118,6 +123,7 @@
 				8350D5612840368100C6C385 /* NavigationBackView.swift */,
 				831F59CA2846670800EDA488 /* BackgroundGradient.swift */,
 				8381B57B286B50C500A6FE9C /* SheetTitleView.swift */,
+				832FAA0A28807B2E00FE0E3D /* progressBarView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -190,7 +196,6 @@
 				5C8EB74B28358CA1007D2237 /* HomeView.swift */,
 				5C8EB7602836A851007D2237 /* AddView.swift */,
 				5C7C9889283C43CC004C305E /* EditingView.swift */,
-				5CE01B172837968E0074F6AE /* GoalView.swift */,
 			);
 			path = Savings;
 			sourceTree = "<group>";
@@ -210,6 +215,15 @@
 				5C8EB7562836818D007D2237 /* HomeViewModel.swift */,
 			);
 			path = "View Models";
+			sourceTree = "<group>";
+		};
+		832FAA07288020A000FE0E3D /* Goals */ = {
+			isa = PBXGroup;
+			children = (
+				832FAA08288020DC00FE0E3D /* GoalsView.swift */,
+				5CE01B172837968E0074F6AE /* GoalView.swift */,
+			);
+			path = Goals;
 			sourceTree = "<group>";
 		};
 		835AD79E2844E6E400EE04AF /* Modifiers */ = {
@@ -330,9 +344,11 @@
 				831EECD2286DA16000100F27 /* DonateView.swift in Sources */,
 				835AD7A82845149700EE04AF /* Double.swift in Sources */,
 				5C8EB7522835B870007D2237 /* UIApplication.swift in Sources */,
+				832FAA0B28807B2E00FE0E3D /* progressBarView.swift in Sources */,
 				5C272F332837A2C00003E729 /* SetGoalView.swift in Sources */,
 				5C8EB7612836A851007D2237 /* AddView.swift in Sources */,
 				8381B578286B39EE00A6FE9C /* SettingsView.swift in Sources */,
+				832FAA09288020DC00FE0E3D /* GoalsView.swift in Sources */,
 				833AB3BA2875F23100AB184F /* TabBarView.swift in Sources */,
 				835AD7A62845086E00EE04AF /* DefaultTextFieldModifier.swift in Sources */,
 				5C8EB75D2836986D007D2237 /* AccountView.swift in Sources */,

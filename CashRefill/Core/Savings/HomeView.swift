@@ -67,13 +67,13 @@ extension HomeView {
                 .minimumScaleFactor(0.5)
             
             Spacer()
-            CircleButton(buttonName: "crown")
-                .onTapGesture {
-                    vm.showSheet = true
-                }
-                .sheet(isPresented: $vm.showSheet) {
-                    GoalView()
-                }
+//            CircleButton(buttonName: "crown")
+//                .onTapGesture {
+//                    vm.showSheet = true
+//                }
+//                .sheet(isPresented: $vm.showSheet) {
+//                    GoalView()
+//                }
 //            NavigationLink {
 //                SettingsView()
 //            } label: {
@@ -150,7 +150,7 @@ extension HomeView {
                                 .frame(maxWidth: vm.dataDisplayStyle ? .infinity : nil)
                                 .padding(.vertical, 3)
                                 .padding(.horizontal, 40)
-                                .background(vm.getAccentColor().opacity(0.8))
+                                .background(vm.getAccentColor().opacity(0.5))
                                 .cornerRadius(10)
                             HStack {
                                 Text("Item:")

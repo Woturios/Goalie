@@ -21,13 +21,13 @@ struct TabBarView: View {
                 Text("Home")
             }
             
-//            NavigationView {
-//                GoalsView()
-//            }
-//            .tabItem {
-//                Image(systemName: "target")
-//                Text("Goals")
-//            }
+            NavigationView {
+                GoalsView()
+            }
+            .tabItem {
+                Image(systemName: "target")
+                Text("Goals")
+            }
             
             NavigationView {
                 SettingsView()

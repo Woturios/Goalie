@@ -21,8 +21,6 @@ struct GoalView: View {
             
             // Content layer
             VStack(alignment: .leading) {
-//                navBar
-//                pageTitle
                 SheetTitleView(title: "Set your goal 🏆")
                 VStack(alignment: .center ,spacing: 10) {
                     setGoalTitle

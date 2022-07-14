@@ -21,6 +21,7 @@ class CoreDataManager {
         }
     }
     
+    // List items
     /// Fetch core data
     func getListItems() -> [PostEntity] {
         
@@ -67,6 +68,55 @@ class CoreDataManager {
         } catch {
             print("Failed to save Item \(error)")
         }
-        
     }
+    
+    
+    
+    // Goals
+    /// fetch goals
+    func getGoals() -> [PiggyEntity] {
+        let fetchGoalsRequest: NSFetchRequest<PiggyEntity> = PiggyEntity.fetchRequest()
+        
+        do {
+            return try container.viewContext.fetch(fetchGoalsRequest)
+        } catch {
+            return []
+        }
+    }
+    
+    func deleteGoal(item: PiggyEntity) {
+        container.viewContext.delete(item)
+        
+        do {
+            try container.viewContext.save()
+        } catch {
+            container.viewContext.rollback()
+            print("Failed to save context \(error)")
+        }
+    }
+    
+    func updateGoal() {
+        
+        do {
+            try container.viewContext.save()
+        } catch {
+            container.viewContext.rollback()
+            print("Failed to update Goal \(error)")
+        }
+    }
+    
+    func saveGoal(goal: Double, name: String, emoji: String) {
+        
+        let piggy = PiggyEntity(context: container.viewContext)
+        piggy.goal = goal
+        piggy.emoji = emoji
+        piggy.name = name
+        
+        do {
+            try container.viewContext.save()
+        } catch {
+            print("Failed to save Goal \(error)")
+        }
+    }
+
 }

@@ -17,6 +17,8 @@ class HomeViewModel: ObservableObject {
     @Published var savedEntities: [PostEntity] = []
     @Published var sortedArray: [PostEntity] = []
     @Published var mappedArray: [Month] = []
+    
+    @Published var goalsArray: [PiggyEntity] = []
         
     @Published var textFieldName: String = ""
     @Published var textFieldPrice: String = ""
