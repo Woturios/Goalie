@@ -5,17 +5,17 @@
         <attribute name="goal" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="isCompleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PostEntity" inverseName="piggies" inverseEntity="PostEntity"/>
+        <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PostEntity" inverseName="piggie" inverseEntity="PostEntity"/>
     </entity>
     <entity name="PostEntity" representedClassName="PostEntity" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="price" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="piggies" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PiggyEntity" inverseName="posts" inverseEntity="PiggyEntity"/>
+        <relationship name="piggie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PiggyEntity" inverseName="posts" inverseEntity="PiggyEntity"/>
     </entity>
     <elements>
-        <element name="PostEntity" positionX="199.265625" positionY="68.4453125" width="128" height="104"/>
         <element name="PiggyEntity" positionX="-63" positionY="9" width="128" height="118"/>
+        <element name="PostEntity" positionX="199.265625" positionY="68.4453125" width="128" height="104"/>
     </elements>
 </model>

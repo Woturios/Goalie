@@ -12,6 +12,7 @@ struct AddView: View {
     // MARK: PROPERTIES
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject private var vm: HomeViewModel
+    @State private var selectedPiggy: String = ""
     
     // MARK: BODY
     var body: some View {
@@ -26,6 +27,22 @@ struct AddView: View {
                         self.presentationMode.wrappedValue.dismiss()
                     }
                     .padding(.top, 25)
+                
+                Picker(selection: $selectedPiggy) {
+                    ForEach(vm.goalsArray) { goal in
+                        Text(goal.name ?? "no name")
+                            .font(.headline)
+                            .foregroundColor(Color.theme.accent)
+                    }
+                } label: {
+                    Text("Select Piggy Box")
+                }
+                .tint(Color.theme.accent)
+                .frame(height: 55)
+                .frame(maxWidth: .infinity)
+                .withDefaultTextFieldFormatting()
+
+
                 
                 Text("Add new item:")
                     .font(.title)

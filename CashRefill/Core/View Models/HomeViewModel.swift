@@ -23,6 +23,9 @@ class HomeViewModel: ObservableObject {
     @Published var textFieldName: String = ""
     @Published var textFieldPrice: String = ""
     
+    @Published var fieldGoalPrice: Double = 0
+    @Published var fieldGoalName: String = ""
+    
     @Published var portfolioSummary: Double = 0
     @AppStorage("goal") var goal: Double = 0
     @Published var goalPercentage: Double = 0
@@ -38,6 +41,7 @@ class HomeViewModel: ObservableObject {
     // MARK: INIT
     init() {
         reloadItems()
+        reloadGoals()
         updateBilance()
     }
 
@@ -136,6 +140,27 @@ class HomeViewModel: ObservableObject {
     
     func toggleDataDisplayStyle() {
         dataDisplayStyle.toggle()
+    }
+    
+    // GOALS
+    func fetchGoals() -> [PiggyEntity] {
+        coreDataManager.getGoals()
+    }
+    
+    func saveGoal(goal: Double, name: String, emoji: String) {
+        coreDataManager.saveGoal(goal: goal, name: name, emoji: emoji)
+    }
+    
+    func reloadGoals() {
+        goalsArray = fetchGoals()
+    }
+    
+    func addNewGoal(goal: Double, name: String, emoji: String) {
+        saveGoal(goal: goal, name: name, emoji: emoji)
+        UIApplication.shared.endEdditing()
+        fieldGoalName = ""
+        fieldGoalPrice = 0
+        reloadGoals()
     }
 
 }

@@ -22,9 +22,9 @@ struct HomeView: View {
             VStack(alignment: .leading, spacing: 3) {
                 homeNavigation
                 AccountView()
-                    .sheet(isPresented: $vm.showSheet) {
-                        GoalView()
-                    }
+//                    .sheet(isPresented: $vm.showSheet) {
+//                        GoalView()
+//                    }
                 if vm.savedEntities.isEmpty {
                     nothingOnListView
                 } else {
@@ -103,14 +103,6 @@ extension HomeView {
         .padding(.horizontal)
         .frame(maxWidth: .infinity)
 
-    }
-    
-    private var listTitleView: some View {
-        Text("History 🕰")
-            .font(.title2)
-            .fontWeight(.bold)
-            .padding(.horizontal)
-            .foregroundColor(Color.theme.accent)
     }
     
     

@@ -15,10 +15,19 @@ struct GoalsView: View {
         ZStack {
             GetBackgroundTheme()
             
-            VStack {
-                navigation
-                SingleGoalView(emoji: "📱", goalTitle: "iPhone", currentProgress: 100, progressPercentage: 10, goalSet: 5100)
-                Spacer()
+            ScrollView {
+                VStack {
+                    navigation
+                    SingleGoalView(emoji: "📱", goalTitle: "iPhone", currentProgress: 100, progressPercentage: 10, goalSet: 5100)
+                    
+                    Divider()
+        
+                    ForEach(vm.goalsArray) { goal in
+                        SingleGoalView(emoji: goal.emoji ?? "", goalTitle: goal.name ?? "NO name", currentProgress: 0, progressPercentage: Double(0 / goal.goal), goalSet: goal.goal)
+                    }
+                    Spacer()
+                }
+
             }
         }
         .navigationBarHidden(true)
@@ -46,7 +55,7 @@ extension GoalsView {
                     vm.showSheet = true
                 }
                 .sheet(isPresented: $vm.showSheet) {
-                    GoalView()
+                    NewGoalView()
                 }
         }
         .padding(.horizontal)
@@ -76,13 +85,13 @@ struct SingleGoalView: View {
                 .font(.largeTitle)
                 
                 HStack {
-                    Text("\(currentProgress)")
+                    Text("\(currentProgress.asCurrencyWith0Decimals())")
                         .fontWeight(.semibold)
                     Spacer()
-                    Text("\(progressPercentage)" + "%")
+                    Text("\(progressPercentage.asPercentage())")
                         .fontWeight(.semibold)
                     Spacer()
-                    Text("\(goalSet)")
+                    Text("\(goalSet.asCurrencyWith0Decimals())")
                         .fontWeight(.semibold)
                 }
                 .font(.title)

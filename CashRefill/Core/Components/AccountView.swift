@@ -18,9 +18,9 @@ struct AccountView: View {
                 .tag(0)
             goalTile
                 .tag(1)
-                .onTapGesture {
-                    vm.showSheet = true
-                }
+//                .onTapGesture {
+//                    vm.showSheet = true
+//                }
             percentageTile
                 .tag(2)
         }
@@ -80,7 +80,7 @@ extension AccountView {
                             .foregroundColor(Color.theme.thirdTabContent)
                     }
                     if vm.goal != 0 {
-                        Text("\(vm.goalPercentage, specifier: "%.0f") %")
+                        Text("\(vm.goalPercentage.asPercentage())")
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .foregroundColor(Color.theme.thirdTabContent)

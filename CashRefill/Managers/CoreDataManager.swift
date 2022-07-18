@@ -11,6 +11,7 @@ import CoreData
 class CoreDataManager {
     
     let container: NSPersistentContainer
+    let context: NSManagedObjectContext
     
     init() {
         container = NSPersistentContainer(name: "ItemsContainer")
@@ -19,6 +20,7 @@ class CoreDataManager {
                 fatalError("Core Data Store failed \(error.localizedDescription)")
             }
         }
+        context = container.viewContext
     }
     
     // List items
@@ -28,19 +30,19 @@ class CoreDataManager {
         let fetchRequest: NSFetchRequest<PostEntity> = PostEntity.fetchRequest()
         
         do {
-            return try container.viewContext.fetch(fetchRequest)
+            return try context.fetch(fetchRequest)
         } catch {
             return []
         }
     }
     
     func deleteItem(item: PostEntity) {
-        container.viewContext.delete(item)
+        context.delete(item)
         
         do {
-            try container.viewContext.save()
+            try context.save()
         } catch {
-            container.viewContext.rollback()
+            context.rollback()
             print("Failed to save context \(error)")
         }
     }
@@ -48,23 +50,23 @@ class CoreDataManager {
     func updateItem() {
         
         do {
-            try container.viewContext.save()
+            try context.save()
         } catch {
-            container.viewContext.rollback()
+            context.rollback()
             print("Failed to update Item \(error)")
         }
     }
     
     func saveItem(title: String, price: Double, date: Date, id: UUID) {
         
-        let item = PostEntity(context: container.viewContext)
+        let item = PostEntity(context: context)
         item.name = title
         item.price = price
         item.date = date
         item.id = id
         
         do {
-            try container.viewContext.save()
+            try context.save()
         } catch {
             print("Failed to save Item \(error)")
         }
@@ -78,19 +80,19 @@ class CoreDataManager {
         let fetchGoalsRequest: NSFetchRequest<PiggyEntity> = PiggyEntity.fetchRequest()
         
         do {
-            return try container.viewContext.fetch(fetchGoalsRequest)
+            return try context.fetch(fetchGoalsRequest)
         } catch {
             return []
         }
     }
     
     func deleteGoal(item: PiggyEntity) {
-        container.viewContext.delete(item)
+        context.delete(item)
         
         do {
-            try container.viewContext.save()
+            try context.save()
         } catch {
-            container.viewContext.rollback()
+            context.rollback()
             print("Failed to save context \(error)")
         }
     }
@@ -98,22 +100,22 @@ class CoreDataManager {
     func updateGoal() {
         
         do {
-            try container.viewContext.save()
+            try context.save()
         } catch {
-            container.viewContext.rollback()
+            context.rollback()
             print("Failed to update Goal \(error)")
         }
     }
     
     func saveGoal(goal: Double, name: String, emoji: String) {
         
-        let piggy = PiggyEntity(context: container.viewContext)
+        let piggy = PiggyEntity(context: context)
         piggy.goal = goal
         piggy.emoji = emoji
         piggy.name = name
         
         do {
-            try container.viewContext.save()
+            try context.save()
         } catch {
             print("Failed to save Goal \(error)")
         }
