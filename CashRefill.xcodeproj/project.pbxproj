@@ -31,6 +31,7 @@
 		832FAA0D28814CEE00FE0E3D /* NewGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FAA0C28814CEE00FE0E3D /* NewGoalView.swift */; };
 		8338B2C2288DA7FF00D1EC77 /* GoalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8338B2C1288DA7FF00D1EC77 /* GoalDetailView.swift */; };
 		8338B2C4288DBB7D00D1EC77 /* EmojiPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8338B2C3288DBB7D00D1EC77 /* EmojiPickerView.swift */; };
+		8338B2CE288DFE5F00D1EC77 /* MoneyWithoutGool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8338B2CD288DFE5F00D1EC77 /* MoneyWithoutGool.swift */; };
 		833AB3BA2875F23100AB184F /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833AB3B92875F23100AB184F /* TabBarView.swift */; };
 		8350D5622840368100C6C385 /* NavigationBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8350D5612840368100C6C385 /* NavigationBackView.swift */; };
 		8350D56A2840E3DD00C6C385 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8350D5692840E3DD00C6C385 /* UINavigationController.swift */; };
@@ -74,6 +75,7 @@
 		832FAA0C28814CEE00FE0E3D /* NewGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalView.swift; sourceTree = "<group>"; };
 		8338B2C1288DA7FF00D1EC77 /* GoalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailView.swift; sourceTree = "<group>"; };
 		8338B2C3288DBB7D00D1EC77 /* EmojiPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerView.swift; sourceTree = "<group>"; };
+		8338B2CD288DFE5F00D1EC77 /* MoneyWithoutGool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyWithoutGool.swift; sourceTree = "<group>"; };
 		833AB3B92875F23100AB184F /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		8350D5612840368100C6C385 /* NavigationBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBackView.swift; sourceTree = "<group>"; };
 		8350D5692840E3DD00C6C385 /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				832FAA0C28814CEE00FE0E3D /* NewGoalView.swift */,
 				8338B2C1288DA7FF00D1EC77 /* GoalDetailView.swift */,
 				8338B2C3288DBB7D00D1EC77 /* EmojiPickerView.swift */,
+				8338B2CD288DFE5F00D1EC77 /* MoneyWithoutGool.swift */,
 			);
 			path = Goals;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				5C8EB74F28358D7F007D2237 /* ItemsContainer.xcdatamodeld in Sources */,
 				5C08E94A2837D9EC001F6941 /* Color.swift in Sources */,
 				5C3AF867283D678D00100C48 /* CoreDataManager.swift in Sources */,
+				8338B2CE288DFE5F00D1EC77 /* MoneyWithoutGool.swift in Sources */,
 				5C7C988A283C43CC004C305E /* EditingView.swift in Sources */,
 				5C08E94C2837E9B1001F6941 /* Sequence.swift in Sources */,
 				835AD7A42844E95900EE04AF /* PressableButtonStyle.swift in Sources */,

@@ -26,7 +26,6 @@ struct EditingView: View {
                     .onTapGesture {
                         self.presentationMode.wrappedValue.dismiss()
                     }
-                    .padding(.top, 25)
                 
                 ScrollView(showsIndicators: false) {
                     Text("Edit your list item:")
@@ -35,6 +34,25 @@ struct EditingView: View {
                         .fontWeight(.semibold)
                     
                     VStack(spacing: 10) {
+                        
+                        Text(vm.selectedGoal?.uppercased() ?? "Select goal".uppercased())
+                            .foregroundColor(vm.getAccentColor())
+                            .frame(height: 55)
+                            .frame(maxWidth: .infinity)
+                            .withDefaultTextFieldFormatting()
+                            .onTapGesture {
+                                vm.isPresented = true
+                            }
+                            .sheet(isPresented: $vm.isPresented) {
+                                selectGoalView()
+                            }
+                            .onAppear {
+                                guard let goalPassedId = item.piggyID else { return }
+                                vm.goalID = goalPassedId
+                                if let goalName = vm.goalsArray.first(where: { $0.id == goalPassedId }) {
+                                    vm.selectedGoal = goalName.name
+                                }
+                            }
                         
                         AddEditFormView(textFieldName: $itemName,
                                         textFieldPrice: $itemPrice,

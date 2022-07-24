@@ -58,7 +58,7 @@ extension HomeView {
     
     private var homeNavigation: some View {
         HStack(spacing: 20) {
-            ScrollView(.horizontal) {
+            ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 20) {
                     Text("Your Savings")
                         .font(.title2)

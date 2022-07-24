@@ -29,6 +29,9 @@ struct NewGoalView: View {
             
             VStack(alignment: .leading) {
                 NavigationBackView()
+                    .onTapGesture {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
                 
                 Text("How much do you want to save?")
                     .font(.headline)
@@ -78,8 +81,10 @@ struct NewGoalView: View {
                     }
                     vm.fieldGoalPrice = Double(newGoalPrice) ?? 0
                     selection = "0"
-                    vm.addNewGoal(goal: Double(newGoalPrice) ?? 0, name: newGoalTitle)
-                    newGoalPrice = ""
+                    if newGoalTitle == "" { return } else {
+                        vm.addNewGoal(goal: Double(newGoalPrice) ?? 0, name: newGoalTitle)
+                        newGoalPrice = ""
+                    }
                     self.presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text(LocalizedStringKey("SAVE"))

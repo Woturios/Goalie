@@ -18,7 +18,22 @@ struct GoalsView: View {
             ScrollView {
                 VStack {
                     navigation
-                    SingleGoalView(emoji: "📱", goalTitle: "iPhone", currentProgress: 100, progressPercentage: 10, goalSet: 5100, barProgress: $vm.goalPercentage)
+                    NavigationLink {
+                        
+                    } label: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(.ultraThickMaterial)
+                            
+                                HStack {
+                                    Text("Free Resources")
+                                    Text("10 PLN")
+                                        .fontWeight(.bold)
+                                }
+                                .font(.largeTitle)
+                        }
+                    }
+
                     
                     Divider()
         
@@ -33,7 +48,7 @@ struct GoalsView: View {
                     }
                     Spacer()
                 }
-
+                .padding(.horizontal)
             }
         }
         .navigationBarHidden(true)
@@ -62,7 +77,6 @@ extension GoalsView {
                 CircleButton(buttonName: "crown")
             }
         }
-        .padding(.horizontal)
         .padding(.top, 25)
     }
 }
@@ -99,17 +113,16 @@ struct SingleGoalView: View {
                     Text("\(goalSet.asCurrencyWith0Decimals())")
                         .fontWeight(.semibold)
                 }
+                .padding(.horizontal, 3)
                 .font(.title)
                 
                 ProgressBar(value: $barProgress)
                     .frame(height: 20)
             }
-            .padding()
+            .padding(.horizontal)
             .minimumScaleFactor(0.1)
         }
         .frame(height: 150)
         .frame(maxWidth: .infinity)
-        .padding()
-
     }
 }

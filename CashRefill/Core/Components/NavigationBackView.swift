@@ -18,6 +18,7 @@ struct NavigationBackView: View {
                 .foregroundColor(Color.theme.accent)
             Spacer()
         }
+        .padding(.top, 25)
     }
 }
 

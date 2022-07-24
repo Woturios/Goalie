@@ -12,7 +12,7 @@ struct AddView: View {
     // MARK: PROPERTIES
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject private var vm: HomeViewModel
-    @State var isPresented: Bool = false
+    
 //    @State var selectedPiggy: PiggyEntity
     
     // MARK: BODY
@@ -27,21 +27,20 @@ struct AddView: View {
                     .onTapGesture {
                         self.presentationMode.wrappedValue.dismiss()
                     }
-                    .padding(.top, 25)
                 
                 Text("Add new item:")
                     .font(.title)
                     .fontWeight(.bold)
 
-                Text(vm.goalID?.uuidString ?? "Select goal")
+                Text(vm.selectedGoal?.uppercased() ?? "Select goal".uppercased())
                     .foregroundColor(vm.getAccentColor())
                     .frame(height: 55)
                     .frame(maxWidth: .infinity)
                     .withDefaultTextFieldFormatting()
                     .onTapGesture {
-                        isPresented = true
+                        vm.isPresented = true
                     }
-                    .sheet(isPresented: $isPresented) {
+                    .sheet(isPresented: $vm.isPresented) {
                         selectGoalView()
                     }
 
@@ -118,6 +117,7 @@ struct selectGoalView: View {
                     .withDefaultTextFieldFormatting()
                     .onTapGesture {
                         vm.goalID = goal.id
+                        vm.selectedGoal = goal.name
                     }
             }
         }

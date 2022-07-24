@@ -18,12 +18,14 @@ class HomeViewModel: ObservableObject {
     @Published var sortedArray: [PostEntity] = []
     @Published var mappedArray: [Month] = []
     @Published var filteredArray: [PostEntity] = []
+    @Published var noGoalArray: [PostEntity] = []
     
     @Published var goalsArray: [PiggyEntity] = []
         
     @Published var textFieldName: String = ""
     @Published var textFieldPrice: String = ""
     @Published var goalID: UUID?
+    @AppStorage("selectGoal") var selectedGoal: String?
     @Published var currentEmoji: String = "🤨"
     
     @Published var fieldGoalPrice: Double = 0
@@ -33,6 +35,7 @@ class HomeViewModel: ObservableObject {
     @AppStorage("goal") var goal: Double = 0
     @Published var goalPercentage: Double = 0
     
+    @Published var isPresented: Bool = false
     @Published var selectedTab: Int = 0
     @Published var showSheet: Bool = false
     @Published var alertIsToggled: Bool = false
@@ -88,6 +91,15 @@ class HomeViewModel: ObservableObject {
         }
     }
     
+    func deleteFiltered(indexSet: IndexSet) {
+        indexSet.forEach { index in
+            let item = filteredArray[index]
+            coreDataManager.deleteItem(item: item)
+            reloadItems()
+
+        }
+    }
+    
     
     // Update item
     func updatePost() {
@@ -116,6 +128,9 @@ class HomeViewModel: ObservableObject {
     func addNewItemToList() {
         let fieldPrice = String(textFieldPrice.replacingOccurrences(of: ",", with: "."))
         let currentDate = Date()
+        if let firstGoal = goalsArray.first(where: { $0.name == selectedGoal }) {
+            goalID = firstGoal.id
+        }
         guard let goalId = goalID else { return }
         saveData(price: fieldPrice, date: currentDate, id: UUID(), piggyId: goalId)
         UIApplication.shared.endEdditing()
@@ -139,7 +154,7 @@ class HomeViewModel: ObservableObject {
         dataDisplayStyle.toggle()
     }
     
-    // GOALS
+    // MARK: GOALS
     func fetchGoals() -> [PiggyEntity] {
         coreDataManager.getGoals()
     }
@@ -150,6 +165,11 @@ class HomeViewModel: ObservableObject {
     
     func reloadGoals() {
         goalsArray = fetchGoals()
+    }
+    
+    func deleteGoal(item: PiggyEntity) {
+        coreDataManager.deleteGoal(item: item)
+        reloadGoals()
     }
     
     func addNewGoal(goal: Double, name: String) {
