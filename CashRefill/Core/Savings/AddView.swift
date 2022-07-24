@@ -12,7 +12,7 @@ struct AddView: View {
     // MARK: PROPERTIES
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject private var vm: HomeViewModel
-    @State private var selectedPiggy: String = ""
+    @State var selectedPiggy: UUID
     
     // MARK: BODY
     var body: some View {
@@ -28,6 +28,11 @@ struct AddView: View {
                     }
                     .padding(.top, 25)
                 
+                Text("Add new item:")
+                    .font(.title)
+                    .fontWeight(.bold)
+
+                
                 Picker(selection: $selectedPiggy) {
                     ForEach(vm.goalsArray) { goal in
                         Text(goal.name ?? "no name")
@@ -37,16 +42,13 @@ struct AddView: View {
                 } label: {
                     Text("Select Piggy Box")
                 }
+                .onChange(of: selectedPiggy, perform: { newValue in
+                    <#code#>
+                })
                 .tint(Color.theme.accent)
                 .frame(height: 55)
                 .frame(maxWidth: .infinity)
                 .withDefaultTextFieldFormatting()
-
-
-                
-                Text("Add new item:")
-                    .font(.title)
-                    .fontWeight(.bold)
 
                 AddEditFormView(textFieldName: $vm.textFieldName,
                                 textFieldPrice: $vm.textFieldPrice,
@@ -62,21 +64,21 @@ struct AddView: View {
 }
 
 // MARK: PREVIEW
-struct AddView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            AddView()
-                .environmentObject(HomeViewModel())
-                .preferredColorScheme(.light)
-        }
-        
-        NavigationView {
-            AddView()
-                .environmentObject(HomeViewModel())
-                .preferredColorScheme(.dark)
-        }
-    }
-}
+//struct AddView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            AddView(, selectedPiggy: <#PiggyEntity#>)
+//                .environmentObject(HomeViewModel())
+//                .preferredColorScheme(.light)
+//        }
+//
+//        NavigationView {
+//            AddView(, selectedPiggy: <#PiggyEntity#>)
+//                .environmentObject(HomeViewModel())
+//                .preferredColorScheme(.dark)
+//        }
+//    }
+//}
 
 // MARK: EXTENSION
 extension AddView {
@@ -91,7 +93,7 @@ extension AddView {
     private var button: some View {
         Button {
             guard !vm.textFieldName.isEmpty && !vm.textFieldPrice.isEmpty else { return vm.alertIsToggled = true }
-            vm.addNewItemToList()
+            vm.addNewItemToList(piggy: selectedPiggy)
             self.presentationMode.wrappedValue.dismiss()
         } label: {
             Text(LocalizedStringKey("ADD TO MY LIST 🥳"))

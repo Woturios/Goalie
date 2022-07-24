@@ -18,9 +18,6 @@ struct AccountView: View {
                 .tag(0)
             goalTile
                 .tag(1)
-//                .onTapGesture {
-//                    vm.showSheet = true
-//                }
             percentageTile
                 .tag(2)
         }

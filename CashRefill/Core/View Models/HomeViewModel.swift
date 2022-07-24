@@ -90,8 +90,8 @@ class HomeViewModel: ObservableObject {
     }
     
     // Save item
-    func saveData(price: String, date: Date, id: UUID) {
-        coreDataManager.saveItem(title: textFieldName, price: Double(price) ?? 0, date: date, id: id)
+    func saveData(price: String, date: Date, id: UUID, piggy: PiggyEntity, piggyId: UUID) {
+        coreDataManager.saveItem(title: textFieldName, price: Double(price) ?? 0, date: date, id: id, piggyID: piggyId)
     }
     
     
@@ -109,10 +109,10 @@ class HomeViewModel: ObservableObject {
         return goal.asCurrencyWith0Decimals()
     }
     
-    func addNewItemToList() {
+    func addNewItemToList(piggy: PiggyEntity) {
         let fieldPrice = String(textFieldPrice.replacingOccurrences(of: ",", with: "."))
         let currentDate = Date()
-        saveData(price: fieldPrice, date: currentDate, id: UUID())
+        saveData(price: fieldPrice, date: currentDate, id: UUID(), piggy: piggy)
         UIApplication.shared.endEdditing()
         textFieldName = ""
         textFieldPrice = ""
@@ -121,7 +121,7 @@ class HomeViewModel: ObservableObject {
     }
         
     func repairListItem(title: String, price: Double, item: PostEntity) {
-        coreDataManager.saveItem(title: title, price: price, date: Date(), id: UUID())
+//        coreDataManager.saveItem(title: title, price: price, date: Date(), id: UUID(), piggy: <#PiggyEntity#>)
         coreDataManager.deleteItem(item: item)
         reloadItems()
         updateBilance()
@@ -147,8 +147,8 @@ class HomeViewModel: ObservableObject {
         coreDataManager.getGoals()
     }
     
-    func saveGoal(goal: Double, name: String, emoji: String) {
-        coreDataManager.saveGoal(goal: goal, name: name, emoji: emoji)
+    func saveGoal(goal: Double, name: String, emoji: String, id: UUID) {
+        coreDataManager.saveGoal(goal: goal, name: name, emoji: emoji, id: id)
     }
     
     func reloadGoals() {
@@ -156,7 +156,7 @@ class HomeViewModel: ObservableObject {
     }
     
     func addNewGoal(goal: Double, name: String, emoji: String) {
-        saveGoal(goal: goal, name: name, emoji: emoji)
+        saveGoal(goal: goal, name: name, emoji: emoji, id: UUID())
         UIApplication.shared.endEdditing()
         fieldGoalName = ""
         fieldGoalPrice = 0

@@ -17,10 +17,6 @@ struct SettingsView: View {
             GetBackgroundTheme()
             
             VStack(alignment: .leading, spacing: 10) {
-//                NavigationBackView()
-//                    .onTapGesture {
-//                        self.presentationMode.wrappedValue.dismiss()
-//                    }
                 
                 ScrollView(showsIndicators: false) {
                     donateView

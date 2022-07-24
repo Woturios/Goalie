@@ -61,10 +61,20 @@ extension HomeView {
     
     private var homeNavigation: some View {
         HStack(spacing: 20) {
-            Text("Your Savings")
-                .font(.title2)
-                .fontWeight(.bold)
-                .minimumScaleFactor(0.5)
+            ScrollView(.horizontal) {
+                HStack {
+                    Text("Your Savings")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .minimumScaleFactor(0.5)
+                    
+                    Text("Yerbata")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .minimumScaleFactor(0.5)
+                        .foregroundColor(Color.theme.accent)
+                }
+            }
             
             Spacer()
 //            CircleButton(buttonName: "crown")
@@ -102,7 +112,6 @@ extension HomeView {
         }
         .padding(.horizontal)
         .frame(maxWidth: .infinity)
-
     }
     
     

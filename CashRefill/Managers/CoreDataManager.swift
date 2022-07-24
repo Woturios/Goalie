@@ -57,13 +57,14 @@ class CoreDataManager {
         }
     }
     
-    func saveItem(title: String, price: Double, date: Date, id: UUID) {
+    func saveItem(title: String, price: Double, date: Date, id: UUID, piggyID: UUID) {
         
         let item = PostEntity(context: context)
         item.name = title
         item.price = price
         item.date = date
         item.id = id
+        item.piggyID = piggyID
         
         do {
             try context.save()
@@ -107,12 +108,13 @@ class CoreDataManager {
         }
     }
     
-    func saveGoal(goal: Double, name: String, emoji: String) {
+    func saveGoal(goal: Double, name: String, emoji: String, id: UUID) {
         
         let piggy = PiggyEntity(context: context)
         piggy.goal = goal
         piggy.emoji = emoji
         piggy.name = name
+        piggy.id = id
         
         do {
             try context.save()
