@@ -17,11 +17,14 @@ class HomeViewModel: ObservableObject {
     @Published var savedEntities: [PostEntity] = []
     @Published var sortedArray: [PostEntity] = []
     @Published var mappedArray: [Month] = []
+    @Published var filteredArray: [PostEntity] = []
     
     @Published var goalsArray: [PiggyEntity] = []
         
     @Published var textFieldName: String = ""
     @Published var textFieldPrice: String = ""
+    @Published var goalID: UUID?
+    @Published var currentEmoji: String = "🤨"
     
     @Published var fieldGoalPrice: Double = 0
     @Published var fieldGoalName: String = ""
@@ -42,7 +45,6 @@ class HomeViewModel: ObservableObject {
     init() {
         reloadItems()
         reloadGoals()
-        updateBilance()
     }
 
     // MARK: FUNC
@@ -66,6 +68,10 @@ class HomeViewModel: ObservableObject {
         }).sorted(by: { $0.date > $1.date })
     }
     
+    func filterArray(goal: PiggyEntity) {
+        filteredArray = sortedArray.filter { $0.piggyID == goal.id }
+    }
+    
     // Reload items
     func reloadItems() {
         savedEntities = fetchPortfolio()
@@ -80,7 +86,6 @@ class HomeViewModel: ObservableObject {
             coreDataManager.deleteItem(item: item)
             reloadItems()
         }
-        updateBilance()
     }
     
     
@@ -90,43 +95,35 @@ class HomeViewModel: ObservableObject {
     }
     
     // Save item
-    func saveData(price: String, date: Date, id: UUID, piggy: PiggyEntity, piggyId: UUID) {
+    func saveData(price: String, date: Date, id: UUID, piggyId: UUID) {
         coreDataManager.saveItem(title: textFieldName, price: Double(price) ?? 0, date: date, id: id, piggyID: piggyId)
     }
     
-    
-    func updateBilance() {
-        portfolioSummary = savedEntities.sum(\.price)
-        updateGoalPercentage()
+    func updateBilance(goal: Double) {
+        portfolioSummary = filteredArray.sum(\.price)
+        updateGoalPercentage(goal: goal)
     }
     
     // update goal percentage
-    func updateGoalPercentage() {
-        goalPercentage = (portfolioSummary / goal * 100)
+    func updateGoalPercentage(goal: Double) {
+        goalPercentage = (portfolioSummary / goal)
     }
     
     func goalAsCurrency() -> String {
         return goal.asCurrencyWith0Decimals()
     }
     
-    func addNewItemToList(piggy: PiggyEntity) {
+    func addNewItemToList() {
         let fieldPrice = String(textFieldPrice.replacingOccurrences(of: ",", with: "."))
         let currentDate = Date()
-        saveData(price: fieldPrice, date: currentDate, id: UUID(), piggy: piggy)
+        guard let goalId = goalID else { return }
+        saveData(price: fieldPrice, date: currentDate, id: UUID(), piggyId: goalId)
         UIApplication.shared.endEdditing()
         textFieldName = ""
         textFieldPrice = ""
         reloadItems()
-        updateBilance()
     }
-        
-    func repairListItem(title: String, price: Double, item: PostEntity) {
-//        coreDataManager.saveItem(title: title, price: price, date: Date(), id: UUID(), piggy: <#PiggyEntity#>)
-        coreDataManager.deleteItem(item: item)
-        reloadItems()
-        updateBilance()
-    }
-    
+            
     // MARK: THEME FUNC
     func getAccentColor() -> Color {
         if selectedTab == 0 {
@@ -155,8 +152,8 @@ class HomeViewModel: ObservableObject {
         goalsArray = fetchGoals()
     }
     
-    func addNewGoal(goal: Double, name: String, emoji: String) {
-        saveGoal(goal: goal, name: name, emoji: emoji, id: UUID())
+    func addNewGoal(goal: Double, name: String) {
+        saveGoal(goal: goal, name: name, emoji: currentEmoji, id: UUID())
         UIApplication.shared.endEdditing()
         fieldGoalName = ""
         fieldGoalPrice = 0

@@ -12,7 +12,8 @@ struct AddView: View {
     // MARK: PROPERTIES
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject private var vm: HomeViewModel
-    @State var selectedPiggy: UUID
+    @State var isPresented: Bool = false
+//    @State var selectedPiggy: PiggyEntity
     
     // MARK: BODY
     var body: some View {
@@ -32,23 +33,17 @@ struct AddView: View {
                     .font(.title)
                     .fontWeight(.bold)
 
-                
-                Picker(selection: $selectedPiggy) {
-                    ForEach(vm.goalsArray) { goal in
-                        Text(goal.name ?? "no name")
-                            .font(.headline)
-                            .foregroundColor(Color.theme.accent)
+                Text(vm.goalID?.uuidString ?? "Select goal")
+                    .foregroundColor(vm.getAccentColor())
+                    .frame(height: 55)
+                    .frame(maxWidth: .infinity)
+                    .withDefaultTextFieldFormatting()
+                    .onTapGesture {
+                        isPresented = true
                     }
-                } label: {
-                    Text("Select Piggy Box")
-                }
-                .onChange(of: selectedPiggy, perform: { newValue in
-                    <#code#>
-                })
-                .tint(Color.theme.accent)
-                .frame(height: 55)
-                .frame(maxWidth: .infinity)
-                .withDefaultTextFieldFormatting()
+                    .sheet(isPresented: $isPresented) {
+                        selectGoalView()
+                    }
 
                 AddEditFormView(textFieldName: $vm.textFieldName,
                                 textFieldPrice: $vm.textFieldPrice,
@@ -64,21 +59,21 @@ struct AddView: View {
 }
 
 // MARK: PREVIEW
-//struct AddView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            AddView(, selectedPiggy: <#PiggyEntity#>)
-//                .environmentObject(HomeViewModel())
-//                .preferredColorScheme(.light)
-//        }
-//
-//        NavigationView {
-//            AddView(, selectedPiggy: <#PiggyEntity#>)
-//                .environmentObject(HomeViewModel())
-//                .preferredColorScheme(.dark)
-//        }
-//    }
-//}
+struct AddView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            AddView()
+                .environmentObject(HomeViewModel())
+                .preferredColorScheme(.light)
+        }
+
+        NavigationView {
+            AddView()
+                .environmentObject(HomeViewModel())
+                .preferredColorScheme(.dark)
+        }
+    }
+}
 
 // MARK: EXTENSION
 extension AddView {
@@ -93,7 +88,7 @@ extension AddView {
     private var button: some View {
         Button {
             guard !vm.textFieldName.isEmpty && !vm.textFieldPrice.isEmpty else { return vm.alertIsToggled = true }
-            vm.addNewItemToList(piggy: selectedPiggy)
+            vm.addNewItemToList()
             self.presentationMode.wrappedValue.dismiss()
         } label: {
             Text(LocalizedStringKey("ADD TO MY LIST 🥳"))
@@ -108,4 +103,24 @@ extension AddView {
     }
 }
 
+
+struct selectGoalView: View {
+    
+    @EnvironmentObject private var vm: HomeViewModel
+    
+    var body: some View {
+        VStack {
+            ForEach(vm.goalsArray) { goal in
+                Text(goal.name ?? "no name")
+                    .foregroundColor(vm.getAccentColor())
+                    .frame(height: 55)
+                    .frame(maxWidth: .infinity)
+                    .withDefaultTextFieldFormatting()
+                    .onTapGesture {
+                        vm.goalID = goal.id
+                    }
+            }
+        }
+    }
+}
 

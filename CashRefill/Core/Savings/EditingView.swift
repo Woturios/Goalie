@@ -51,7 +51,6 @@ struct EditingView: View {
                         .frame(height: 55)
                         .withDataPresentationFieldStyle()
                         deleteButton
-                        repairButton
                         Spacer()
                     }
                 }
@@ -71,7 +70,6 @@ extension EditingView {
                 item.price = Double("\(itemPrice.replacingOccurrences(of: ",", with: "."))") ?? 0
                 vm.updatePost()
                 vm.reloadItems()
-                vm.updateBilance()
             }
             self.presentationMode.wrappedValue.dismiss()
         } label: {
@@ -97,21 +95,6 @@ extension EditingView {
                 .withDefaultButtonFormatting(backgroundColor: Color.red)
         }
 
-    }
-    
-    private var repairButton: some View {
-        VStack {
-            Text("Some older items will need an update to work properly. Repairing item will create new item with current date and delete the current one.")
-                .padding()
-            Button {
-                vm.repairListItem(title: item.name ?? "No name", price: Double(item.price), item: item)
-            } label: {
-                Text("REPAIR ITEM 🔧")
-                    .withDefaultButtonFormatting(backgroundColor: Color.gray, foregroundColor: Color.theme.reversed)
-                    .withPressableStyle()
-            }
-        }
-        .withDataPresentationFieldStyle()
     }
 }
 

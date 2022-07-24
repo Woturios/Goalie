@@ -94,7 +94,6 @@ extension SetGoalView {
                 vm.goal = Double(newGoal) ?? 0
                 selection = "0"
             }
-            vm.updateGoalPercentage()
             UIApplication.shared.endEdditing()
             newGoal = ""
             self.presentationMode.wrappedValue.dismiss()

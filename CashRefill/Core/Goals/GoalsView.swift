@@ -18,12 +18,18 @@ struct GoalsView: View {
             ScrollView {
                 VStack {
                     navigation
-                    SingleGoalView(emoji: "📱", goalTitle: "iPhone", currentProgress: 100, progressPercentage: 10, goalSet: 5100)
+                    SingleGoalView(emoji: "📱", goalTitle: "iPhone", currentProgress: 100, progressPercentage: 10, goalSet: 5100, barProgress: $vm.goalPercentage)
                     
                     Divider()
         
                     ForEach(vm.goalsArray) { goal in
-                        SingleGoalView(emoji: goal.emoji ?? "", goalTitle: goal.name ?? "NO name", currentProgress: 0, progressPercentage: Double(0 / goal.goal), goalSet: goal.goal)
+                        NavigationLink {
+                            GoalDetailView(goal: goal)
+                        } label: {
+                            SingleGoalView(emoji: goal.emoji ?? "", goalTitle: goal.name ?? "NO name", currentProgress: 0, progressPercentage: Double(0 / goal.goal), goalSet: goal.goal, barProgress: $vm.goalPercentage)
+
+                        }
+                        .foregroundColor(Color.theme.accent)
                     }
                     Spacer()
                 }
@@ -50,13 +56,11 @@ extension GoalsView {
                 .minimumScaleFactor(0.5)
             
             Spacer()
-            CircleButton(buttonName: "crown")
-                .onTapGesture {
-                    vm.showSheet = true
-                }
-                .sheet(isPresented: $vm.showSheet) {
-                    NewGoalView()
-                }
+            NavigationLink {
+                NewGoalView()
+            } label: {
+                CircleButton(buttonName: "crown")
+            }
         }
         .padding(.horizontal)
         .padding(.top, 25)
@@ -70,6 +74,7 @@ struct SingleGoalView: View {
     let currentProgress: Double
     let progressPercentage: Double
     let goalSet: Double
+    @Binding var barProgress: Double
     
     var body: some View {
         ZStack {
@@ -96,7 +101,7 @@ struct SingleGoalView: View {
                 }
                 .font(.title)
                 
-                ProgressBar(value: .constant(0.7))
+                ProgressBar(value: $barProgress)
                     .frame(height: 20)
             }
             .padding()

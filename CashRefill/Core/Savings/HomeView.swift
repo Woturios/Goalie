@@ -22,9 +22,6 @@ struct HomeView: View {
             VStack(alignment: .leading, spacing: 3) {
                 homeNavigation
                 AccountView()
-//                    .sheet(isPresented: $vm.showSheet) {
-//                        GoalView()
-//                    }
                 if vm.savedEntities.isEmpty {
                     nothingOnListView
                 } else {
@@ -62,34 +59,22 @@ extension HomeView {
     private var homeNavigation: some View {
         HStack(spacing: 20) {
             ScrollView(.horizontal) {
-                HStack {
+                HStack(spacing: 20) {
                     Text("Your Savings")
                         .font(.title2)
                         .fontWeight(.bold)
                         .minimumScaleFactor(0.5)
                     
-                    Text("Yerbata")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .minimumScaleFactor(0.5)
-                        .foregroundColor(Color.theme.accent)
+                    ForEach(vm.goalsArray) { goal in
+                        Text(goal.name ?? "no name")
+                            .foregroundColor(Color.gray.opacity(0.5))
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .minimumScaleFactor(0.5)
+                    }
                 }
             }
             
-            Spacer()
-//            CircleButton(buttonName: "crown")
-//                .onTapGesture {
-//                    vm.showSheet = true
-//                }
-//                .sheet(isPresented: $vm.showSheet) {
-//                    GoalView()
-//                }
-//            NavigationLink {
-//                SettingsView()
-//            } label: {
-//                CircleButton(buttonName: "gearshape")
-//
-//            }
             NavigationLink {
                 AddView()
             } label: {

@@ -20,6 +20,7 @@ struct NewGoalView: View {
     @State private var selection: String = ""
     @State var newGoalPrice: String = ""
     @State var newGoalTitle: String = ""
+
     
     
     var body: some View {
@@ -27,7 +28,7 @@ struct NewGoalView: View {
             GetBackgroundTheme()
             
             VStack(alignment: .leading) {
-                SheetTitleView(title: "Create new goal 🏆")
+                NavigationBackView()
                 
                 Text("How much do you want to save?")
                     .font(.headline)
@@ -49,13 +50,27 @@ struct NewGoalView: View {
                 })
                 .pickerStyle(.segmented)
                 
-                TextField("Add custom goal...", text: $newGoalPrice)
-                    .withClearButton(text: $newGoalPrice)
-                    .withDefaultTextFieldFormatting()
-                    .keyboardType(.numberPad)
-                    .onChange(of: newGoalPrice) { _ in
-                        selection = newGoalPrice
-                    }
+                HStack {
+                    TextField("Add custom goal...", text: $newGoalPrice)
+                        .withClearButton(text: $newGoalPrice)
+                        .withDefaultTextFieldFormatting()
+                        .keyboardType(.numberPad)
+                        .onChange(of: newGoalPrice) { _ in
+                            selection = newGoalPrice
+                        }
+                    
+                    Text(vm.currentEmoji)
+                        .frame(width: 55, height: 55)
+                        .font(.title)
+                        .background(Color.theme.textFieldColor)
+                        .cornerRadius(10)
+                        .onTapGesture {
+                            vm.showSheet = true
+                        }
+                        .sheet(isPresented: $vm.showSheet) {
+                            EmojiPickerView()
+                        }
+                }
                 
                 Button {
                     if filterOptions.contains(selection) {
@@ -63,7 +78,7 @@ struct NewGoalView: View {
                     }
                     vm.fieldGoalPrice = Double(newGoalPrice) ?? 0
                     selection = "0"
-                    vm.addNewGoal(goal: Double(newGoalPrice) ?? 0, name: newGoalTitle, emoji: "😀")
+                    vm.addNewGoal(goal: Double(newGoalPrice) ?? 0, name: newGoalTitle)
                     newGoalPrice = ""
                     self.presentationMode.wrappedValue.dismiss()
                 } label: {
@@ -71,13 +86,15 @@ struct NewGoalView: View {
                         .withDefaultButtonFormatting(backgroundColor: vm.getAccentColor(), foregroundColor: Color.theme.reversed)
                 }
                 .withPressableStyle()
-
-
+                
+                
                 
                 Spacer()
             }
             .padding(.horizontal)
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
 }
 
@@ -90,6 +107,6 @@ struct NewGoalView_Previews: PreviewProvider {
         NewGoalView()
             .environmentObject(HomeViewModel())
             .preferredColorScheme(.dark)
-
+        
     }
 }
