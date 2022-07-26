@@ -112,7 +112,7 @@ class HomeViewModel: ObservableObject {
     }
     
     func updateBilance(goal: Double) {
-        portfolioSummary = filteredArray.sum(\.price)
+        portfolioSummary = sortedArray.sum(\.price)
         updateGoalPercentage(goal: goal)
     }
     

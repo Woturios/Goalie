@@ -18,24 +18,6 @@ struct GoalsView: View {
             ScrollView {
                 VStack {
                     navigation
-                    NavigationLink {
-                        
-                    } label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(.ultraThickMaterial)
-                            
-                                HStack {
-                                    Text("Free Resources")
-                                    Text("10 PLN")
-                                        .fontWeight(.bold)
-                                }
-                                .font(.largeTitle)
-                        }
-                    }
-
-                    
-                    Divider()
         
                     ForEach(vm.goalsArray) { goal in
                         NavigationLink {

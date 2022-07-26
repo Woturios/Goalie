@@ -35,7 +35,7 @@ struct EditingView: View {
                     
                     VStack(spacing: 10) {
                         
-                        Text(vm.selectedGoal?.uppercased() ?? "Select goal".uppercased())
+                        Text(vm.goalsArray.first(where: { $0.id == item.piggyID })?.name?.uppercased() ?? "Select goal".uppercased())
                             .foregroundColor(vm.getAccentColor())
                             .frame(height: 55)
                             .frame(maxWidth: .infinity)
@@ -44,15 +44,15 @@ struct EditingView: View {
                                 vm.isPresented = true
                             }
                             .sheet(isPresented: $vm.isPresented) {
-                                selectGoalView()
+                                editGoalView(item: item)
                             }
-                            .onAppear {
-                                guard let goalPassedId = item.piggyID else { return }
-                                vm.goalID = goalPassedId
-                                if let goalName = vm.goalsArray.first(where: { $0.id == goalPassedId }) {
-                                    vm.selectedGoal = goalName.name
-                                }
-                            }
+//                            .onAppear {
+//                                guard let goalPassedId = item.piggyID else { return }
+//                                vm.goalID = goalPassedId
+//                                if let goalName = vm.goalsArray.first(where: { $0.id == goalPassedId }) {
+//                                    vm.selectedGoal = goalName.name
+//                                }
+//                            }
                         
                         AddEditFormView(textFieldName: $itemName,
                                         textFieldPrice: $itemPrice,

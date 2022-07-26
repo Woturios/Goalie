@@ -13,6 +13,7 @@ struct HomeView: View {
     // MARK: PROPERTIES
     @EnvironmentObject private var vm: HomeViewModel
     @State var settingsSheet: Bool = false
+    @State var selectedGoal: String = ""
     
     // MARK: BODY
     var body: some View {
@@ -25,7 +26,25 @@ struct HomeView: View {
                 if vm.savedEntities.isEmpty {
                     nothingOnListView
                 } else {
-                    listView
+                    if selectedGoal == "" {
+                        listView
+                    } else if selectedGoal == vm.goalsArray.first(where: { $0.name == selectedGoal })?.name {
+                        List {
+                            ForEach(vm.filteredArray) { item in
+                                HStack {
+                                    Text(item.name ?? "no name")
+                                    Spacer()
+                                    Text("\(item.price.asCurrencyWith2Decimals())")
+                                    
+                                }
+                                .font(.headline)
+                                .foregroundColor(Color.theme.accent)
+                                .listRowBackground(Color.clear)
+                            }
+                            .onDelete(perform: vm.deleteFiltered)
+                        }
+                        .listStyle(.plain)
+                    }
                 }
             }
             .navigationBarHidden(true)
@@ -63,14 +82,22 @@ extension HomeView {
                     Text("Your Savings")
                         .font(.title2)
                         .fontWeight(.bold)
+                        .foregroundColor(selectedGoal == "" ? Color.theme.accent : Color.gray.opacity(0.5))
                         .minimumScaleFactor(0.5)
+                        .onTapGesture {
+                            selectedGoal = ""
+                        }
                     
                     ForEach(vm.goalsArray) { goal in
                         Text(goal.name ?? "no name")
-                            .foregroundColor(Color.gray.opacity(0.5))
+                            .foregroundColor(selectedGoal == goal.name ? Color.theme.accent : Color.gray.opacity(0.5))
                             .font(.title2)
                             .fontWeight(.bold)
                             .minimumScaleFactor(0.5)
+                            .onTapGesture {
+                                selectedGoal = goal.name ?? ""
+                                vm.filterArray(goal: goal)
+                            }
                     }
                 }
             }

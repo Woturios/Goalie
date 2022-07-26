@@ -16,8 +16,8 @@ struct NavigationBackView: View {
                 .font(.headline)
                 .fontWeight(.bold)
                 .foregroundColor(Color.theme.accent)
-            Spacer()
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.top, 25)
     }
 }

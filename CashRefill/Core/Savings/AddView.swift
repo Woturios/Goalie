@@ -124,3 +124,26 @@ struct selectGoalView: View {
     }
 }
 
+struct editGoalView: View {
+    
+    @EnvironmentObject private var vm: HomeViewModel
+    let item: PostEntity
+    
+    var body: some View {
+        VStack {
+            ForEach(vm.goalsArray) { goal in
+                Text(goal.name ?? "no name")
+                    .foregroundColor(vm.getAccentColor())
+                    .frame(height: 55)
+                    .frame(maxWidth: .infinity)
+                    .withDefaultTextFieldFormatting()
+                    .onTapGesture {
+//                        vm.goalID
+                        item.piggyID = goal.id
+                        vm.selectedGoal = goal.name
+                    }
+            }
+        }
+    }
+}
+

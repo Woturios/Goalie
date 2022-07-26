@@ -9,6 +9,8 @@ import SwiftUI
 
 struct EmojiPickerView: View {
     
+    // OLD EMOJI
+    /*
     private let fashion: [String] = [
         "💍", "👜", "👘", "👢", "🕶", "👖", "👠", "👟", "🧥", "🧢", "👗",
     ]
@@ -44,21 +46,27 @@ struct EmojiPickerView: View {
     private let faces: [String] = [
         "🥹", "☺️", "😍", "🙃", "😛", "🤪", "😎", "🥸", "🥺", "🤠", "😈", "😺",
     ]
+     */
+    
+    @State var emojiSearchText: String = ""
         
     var body: some View {
         VStack {
-            SheetTitleView(title: "Select emoji")
+            SheetTitleView(title: "")
+            TextField("Select emoji", text: $emojiSearchText)
+                .withDefaultTextFieldFormatting()
             ScrollView {
-                SingleCategoryView(title: "Faces", emojis: faces)
-                SingleCategoryView(title: "Fashion", emojis: fashion)
-                SingleCategoryView(title: "Sports", emojis: sports)
-                SingleCategoryView(title: "Hobbies", emojis: hobby)
-                SingleCategoryView(title: "Traveling", emojis: travel)
-                SingleCategoryView(title: "Objects", emojis: objects)
-                SingleCategoryView(title: "Utilities", emojis: utilities)
-                SingleCategoryView(title: "Animals", emojis: animals)
-                SingleCategoryView(title: "Investing", emojis: investing)
-                Spacer()
+                SingleCategoryView(title: emojiSearchText, emojis: EmojiProvider.all().filter({ $0.description.contains(emojiSearchText.lowercased()) }))
+                
+                SingleCategoryView(title: "Faces", emojis: EmojiProvider.all().filter({ $0.category == "faces" }))
+                SingleCategoryView(title: "Fashion", emojis: EmojiProvider.all().filter({ $0.category == "fashion" }))
+                SingleCategoryView(title: "Sports", emojis: EmojiProvider.all().filter({ $0.category == "sports" }))
+                SingleCategoryView(title: "Hobbies", emojis: EmojiProvider.all().filter({ $0.category == "hobby" }))
+                SingleCategoryView(title: "Traveling", emojis: EmojiProvider.all().filter({ $0.category == "travel" }))
+                SingleCategoryView(title: "Objects", emojis: EmojiProvider.all().filter({ $0.category == "objects" }))
+                SingleCategoryView(title: "Utilities", emojis: EmojiProvider.all().filter({ $0.category == "utilities" }))
+                SingleCategoryView(title: "Animals", emojis: EmojiProvider.all().filter({ $0.category == "animals" }))
+                SingleCategoryView(title: "Investing", emojis: EmojiProvider.all().filter({ $0.category == "investing" }))
             }
         }
         .padding(.horizontal)
@@ -86,13 +94,13 @@ struct SingleCategoryView: View {
     ]
     
     let title: String
-    let emojis: [String]
+    let emojis: [EmojiModel]
     
     var body: some View {
         VStack(alignment: .leading) {
             LazyVGrid(columns: columns, spacing: 6, pinnedViews: [.sectionHeaders]) {
                 Section {
-                    ForEach(emojis, id: \.self) { emoji in
+                    ForEach(emojis) { emoji in
                         subView(emoji: emoji)
                     }
                 } header: {
@@ -113,17 +121,17 @@ struct SingleCategoryView: View {
 struct subView: View {
     
     @State var wasTapped: Bool = false
-    let emoji: String
+    let emoji: EmojiModel
     @EnvironmentObject private var vm: HomeViewModel
     
     var body: some View {
-        Text(emoji)
+        Text(emoji.emoji)
             .font(.largeTitle)
             .frame(width: 50, height: 50)
             .background(wasTapped ? vm.getAccentColor().opacity(0.5) : Color.clear)
             .cornerRadius(10)
             .onTapGesture {
-                vm.currentEmoji = emoji
+                vm.currentEmoji = emoji.emoji
                 wasTapped = true
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

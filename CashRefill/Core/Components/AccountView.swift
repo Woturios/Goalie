@@ -10,6 +10,11 @@ import SwiftUI
 struct AccountView: View {
     
     @EnvironmentObject private var vm: HomeViewModel
+    @State var ballanceImages: [String] = [
+        "💵", "💶", "💷", "💴"
+    ]
+    @AppStorage("ballanceIndes") var index: Int = 0
+    
     
     // MARK: BODY
     var body: some View {
@@ -67,7 +72,7 @@ extension AccountView {
                         }
                     }
                 } else {
-                    Text("😱")
+                    Text("🥹")
                         .font(.system(size: 55))
                 }
                 VStack(alignment: .leading) {
@@ -103,8 +108,15 @@ extension AccountView {
                 .foregroundColor(Color.theme.firstTabBg)
                 .padding(.horizontal)
             HStack(spacing: 20) {
-                Text("💸")
+                Text(ballanceImages[index])
                     .font(.system(size: 55))
+                    .onTapGesture {
+                        if index < ballanceImages.count - 1 {
+                            index += 1
+                        } else {
+                            index = 0
+                        }
+                    }
                 VStack(alignment: .leading) {
                     HStack {
                         Text("Savings")

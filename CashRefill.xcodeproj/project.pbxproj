@@ -32,6 +32,7 @@
 		8338B2C2288DA7FF00D1EC77 /* GoalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8338B2C1288DA7FF00D1EC77 /* GoalDetailView.swift */; };
 		8338B2C4288DBB7D00D1EC77 /* EmojiPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8338B2C3288DBB7D00D1EC77 /* EmojiPickerView.swift */; };
 		8338B2CE288DFE5F00D1EC77 /* MoneyWithoutGool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8338B2CD288DFE5F00D1EC77 /* MoneyWithoutGool.swift */; };
+		8338B2D0288E79C800D1EC77 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8338B2CF288E79C800D1EC77 /* Emoji.swift */; };
 		833AB3BA2875F23100AB184F /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833AB3B92875F23100AB184F /* TabBarView.swift */; };
 		8350D5622840368100C6C385 /* NavigationBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8350D5612840368100C6C385 /* NavigationBackView.swift */; };
 		8350D56A2840E3DD00C6C385 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8350D5692840E3DD00C6C385 /* UINavigationController.swift */; };
@@ -76,6 +77,7 @@
 		8338B2C1288DA7FF00D1EC77 /* GoalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailView.swift; sourceTree = "<group>"; };
 		8338B2C3288DBB7D00D1EC77 /* EmojiPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerView.swift; sourceTree = "<group>"; };
 		8338B2CD288DFE5F00D1EC77 /* MoneyWithoutGool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyWithoutGool.swift; sourceTree = "<group>"; };
+		8338B2CF288E79C800D1EC77 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		833AB3B92875F23100AB184F /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		8350D5612840368100C6C385 /* NavigationBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBackView.swift; sourceTree = "<group>"; };
 		8350D5692840E3DD00C6C385 /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			children = (
 				5C8EB74D28358D7F007D2237 /* ItemsContainer.xcdatamodeld */,
 				835541FA287AF86800628AC8 /* MonthModel.swift */,
+				8338B2CF288E79C800D1EC77 /* Emoji.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				8304E0D92843911C0078F616 /* ClearButton.swift in Sources */,
 				5C2E8D1E2836CAA100E5365D /* CircleButton.swift in Sources */,
 				831EECD2286DA16000100F27 /* DonateView.swift in Sources */,
+				8338B2D0288E79C800D1EC77 /* Emoji.swift in Sources */,
 				835AD7A82845149700EE04AF /* Double.swift in Sources */,
 				5C8EB7522835B870007D2237 /* UIApplication.swift in Sources */,
 				832FAA0D28814CEE00FE0E3D /* NewGoalView.swift in Sources */,
