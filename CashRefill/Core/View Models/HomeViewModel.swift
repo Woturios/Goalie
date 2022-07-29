@@ -18,7 +18,7 @@ class HomeViewModel: ObservableObject {
     @Published var sortedArray: [PostEntity] = []
     @Published var mappedArray: [Month] = []
     @Published var filteredArray: [PostEntity] = []
-    @Published var noGoalArray: [PostEntity] = []
+    @Published var mappedFilteredArray: [FilteredMonth] = []
     
     @Published var goalsArray: [PiggyEntity] = []
         
@@ -72,7 +72,17 @@ class HomeViewModel: ObservableObject {
     }
     
     func filterArray(goal: PiggyEntity) {
-        filteredArray = sortedArray.filter { $0.piggyID == goal.id }
+        filteredArray = sortedArray.filter({ $0.piggyID == goal.id })
+    }
+    
+    func mapFilteredItems(goal: PiggyEntity) {
+        let groupedFiltered = Dictionary(grouping: sortedArray) { (entity: PostEntity) -> String in
+            DateFormatter.displayDate.string(from: entity.date ?? Date())
+        }
+        
+        self.mappedFilteredArray = groupedFiltered.map({ month -> FilteredMonth in
+            FilteredMonth(piggyID: month.value[0].piggyID ?? UUID(), title: month.key, items: month.value, price: month.value[0].price, date: month.value[0].date ?? Date())
+        }).sorted(by: { $0.date > $1.date }).filter({$0.piggyID == goal.id})
     }
     
     // Reload items

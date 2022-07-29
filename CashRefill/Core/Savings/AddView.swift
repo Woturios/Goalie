@@ -13,7 +13,7 @@ struct AddView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject private var vm: HomeViewModel
     
-//    @State var selectedPiggy: PiggyEntity
+    //    @State var selectedPiggy: PiggyEntity
     
     // MARK: BODY
     var body: some View {
@@ -31,7 +31,7 @@ struct AddView: View {
                 Text("Add new item:")
                     .font(.title)
                     .fontWeight(.bold)
-
+                
                 Text(vm.selectedGoal?.uppercased() ?? "Select goal".uppercased())
                     .foregroundColor(vm.getAccentColor())
                     .frame(height: 55)
@@ -43,7 +43,7 @@ struct AddView: View {
                     .sheet(isPresented: $vm.isPresented) {
                         selectGoalView()
                     }
-
+                
                 AddEditFormView(textFieldName: $vm.textFieldName,
                                 textFieldPrice: $vm.textFieldPrice,
                                 itemTitle: "Add new item...",
@@ -65,7 +65,7 @@ struct AddView_Previews: PreviewProvider {
                 .environmentObject(HomeViewModel())
                 .preferredColorScheme(.light)
         }
-
+        
         NavigationView {
             AddView()
                 .environmentObject(HomeViewModel())
@@ -110,15 +110,29 @@ struct selectGoalView: View {
     var body: some View {
         VStack {
             ForEach(vm.goalsArray) { goal in
-                Text(goal.name ?? "no name")
-                    .foregroundColor(vm.getAccentColor())
-                    .frame(height: 55)
-                    .frame(maxWidth: .infinity)
-                    .withDefaultTextFieldFormatting()
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10)
+                        .foregroundColor(vm.getAccentColor())
+                    
+                    HStack {
+                        ZStack {
+                            Circle()
+                                .frame(width: 100)
+                                .foregroundColor(vm.getAccentColor())
+                            
+                            Text(goal.emoji ?? "🇰🇵")
+                                .font(.system(size: 50))
+                        }
+                        Text(goal.name ?? "no name")
+                            .font(.title)
+                            .minimumScaleFactor(0.4)
+                    }
                     .onTapGesture {
                         vm.goalID = goal.id
                         vm.selectedGoal = goal.name
                     }
+                }
+                .frame(height: 120)
             }
         }
     }
@@ -138,7 +152,7 @@ struct editGoalView: View {
                     .frame(maxWidth: .infinity)
                     .withDefaultTextFieldFormatting()
                     .onTapGesture {
-//                        vm.goalID
+                        //                        vm.goalID
                         item.piggyID = goal.id
                         vm.selectedGoal = goal.name
                     }

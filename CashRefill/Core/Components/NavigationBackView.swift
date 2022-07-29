@@ -18,7 +18,7 @@ struct NavigationBackView: View {
                 .foregroundColor(Color.theme.accent)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.top, 25)
+//        .padding(.top, 25)
     }
 }
 

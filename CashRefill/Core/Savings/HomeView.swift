@@ -109,7 +109,7 @@ extension HomeView {
             }
         }
         .padding(.horizontal)
-        .padding(.top, 25)
+//        .padding(.top, 25)
     }
     
     private var nothingOnListView: some View {
@@ -130,7 +130,7 @@ extension HomeView {
     private var listView: some View {
         VStack {
             List {
-                ForEach(vm.mappedArray) { section in
+                ForEach( vm.mappedArray) { section in
                     Section {
                         ForEach(section.items) { item in
                             ZStack {

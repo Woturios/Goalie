@@ -14,3 +14,12 @@ struct Month: Identifiable {
     let price: Double
     let date: Date
 }
+
+struct FilteredMonth: Identifiable {
+    let id = UUID()
+    let piggyID: UUID
+    let title: String
+    let items: [PostEntity]
+    let price: Double
+    let date: Date
+}

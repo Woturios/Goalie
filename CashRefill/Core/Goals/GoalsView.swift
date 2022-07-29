@@ -59,7 +59,7 @@ extension GoalsView {
                 CircleButton(buttonName: "crown")
             }
         }
-        .padding(.top, 25)
+//        .padding(.top, 25)
     }
 }
 
@@ -74,8 +74,8 @@ struct SingleGoalView: View {
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(.thinMaterial)
+//            RoundedRectangle(cornerRadius: 10)
+//                .fill(.thinMaterial)
             
             VStack(alignment: .leading, spacing: 5) {
                 HStack {

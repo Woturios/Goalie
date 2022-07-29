@@ -51,25 +51,32 @@ struct EmojiPickerView: View {
     @State var emojiSearchText: String = ""
         
     var body: some View {
-        VStack {
-            SheetTitleView(title: "")
-            TextField("Select emoji", text: $emojiSearchText)
-                .withDefaultTextFieldFormatting()
-            ScrollView {
-                SingleCategoryView(title: emojiSearchText, emojis: EmojiProvider.all().filter({ $0.description.contains(emojiSearchText.lowercased()) }))
-                
-                SingleCategoryView(title: "Faces", emojis: EmojiProvider.all().filter({ $0.category == "faces" }))
-                SingleCategoryView(title: "Fashion", emojis: EmojiProvider.all().filter({ $0.category == "fashion" }))
-                SingleCategoryView(title: "Sports", emojis: EmojiProvider.all().filter({ $0.category == "sports" }))
-                SingleCategoryView(title: "Hobbies", emojis: EmojiProvider.all().filter({ $0.category == "hobby" }))
-                SingleCategoryView(title: "Traveling", emojis: EmojiProvider.all().filter({ $0.category == "travel" }))
-                SingleCategoryView(title: "Objects", emojis: EmojiProvider.all().filter({ $0.category == "objects" }))
-                SingleCategoryView(title: "Utilities", emojis: EmojiProvider.all().filter({ $0.category == "utilities" }))
-                SingleCategoryView(title: "Animals", emojis: EmojiProvider.all().filter({ $0.category == "animals" }))
-                SingleCategoryView(title: "Investing", emojis: EmojiProvider.all().filter({ $0.category == "investing" }))
+        ZStack {
+            Color.theme.reversed.ignoresSafeArea()
+            
+            VStack {
+                SheetTitleView(title: "")
+                TextField("Select emoji", text: $emojiSearchText)
+                    .withDefaultTextFieldFormatting()
+                ScrollView {
+                    if emojiSearchText != "" {
+                        SingleCategoryView(title: emojiSearchText, emojis: EmojiProvider.all().filter({ $0.description.contains(emojiSearchText.lowercased()) }))
+                    } else {
+                        SingleCategoryView(title: "Faces", emojis: EmojiProvider.all().filter({ $0.category == "faces" }))
+                        SingleCategoryView(title: "Fashion", emojis: EmojiProvider.all().filter({ $0.category == "fashion" }))
+                        SingleCategoryView(title: "Sports", emojis: EmojiProvider.all().filter({ $0.category == "sports" }))
+                        SingleCategoryView(title: "Hobbies", emojis: EmojiProvider.all().filter({ $0.category == "hobby" }))
+                        SingleCategoryView(title: "Traveling", emojis: EmojiProvider.all().filter({ $0.category == "travel" }))
+                        SingleCategoryView(title: "Objects", emojis: EmojiProvider.all().filter({ $0.category == "objects" }))
+                        SingleCategoryView(title: "Utilities", emojis: EmojiProvider.all().filter({ $0.category == "utilities" }))
+                        SingleCategoryView(title: "Animals", emojis: EmojiProvider.all().filter({ $0.category == "animals" }))
+                        SingleCategoryView(title: "Investing", emojis: EmojiProvider.all().filter({ $0.category == "investing" }))
+                    }
+                }
             }
+            .padding(.horizontal)
+
         }
-        .padding(.horizontal)
     }
 }
 
@@ -108,9 +115,8 @@ struct SingleCategoryView: View {
                         .font(.title)
                         .fontWeight(.semibold)
                         .frame(maxWidth: vm.dataDisplayStyle ? .infinity : nil, alignment: .leading)
-                        .padding(.vertical, 3)
-                        .padding(.horizontal, 40)
-                        .background(vm.getAccentColor().brightness(0.5))
+                        .padding(.vertical)
+                        .background(Color.theme.reversed)
                         .cornerRadius(10)
                 }
             }
