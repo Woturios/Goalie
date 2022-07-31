@@ -14,6 +14,7 @@ struct HomeView: View {
     @EnvironmentObject private var vm: HomeViewModel
     @State var settingsSheet: Bool = false
     @State var selectedGoal: String = ""
+    @State private var showItemEditing = false
     
     // MARK: BODY
     var body: some View {
@@ -29,21 +30,8 @@ struct HomeView: View {
                     if selectedGoal == "" {
                         listView
                     } else if selectedGoal == vm.goalsArray.first(where: { $0.name == selectedGoal })?.name {
-                        List {
-                            ForEach(vm.filteredArray) { item in
-                                HStack {
-                                    Text(item.name ?? "no name")
-                                    Spacer()
-                                    Text("\(item.price.asCurrencyWith2Decimals())")
-                                    
-                                }
-                                .font(.headline)
-                                .foregroundColor(Color.theme.accent)
-                                .listRowBackground(Color.clear)
-                            }
-                            .onDelete(perform: vm.deleteFiltered)
-                        }
-                        .listStyle(.plain)
+                        filteredList
+                            .padding(.horizontal)
                     }
                 }
             }
@@ -96,7 +84,7 @@ extension HomeView {
                             .minimumScaleFactor(0.5)
                             .onTapGesture {
                                 selectedGoal = goal.name ?? ""
-                                vm.filterArray(goal: goal)
+                                vm.mapFilteredItems(goal: goal)
                             }
                     }
                 }
@@ -129,92 +117,149 @@ extension HomeView {
     
     private var listView: some View {
         VStack {
-            List {
-                ForEach( vm.mappedArray) { section in
-                    Section {
+            ForEach(vm.mappedArray) { section in
+                Section {
+                    VStack(spacing: 0) {
                         ForEach(section.items) { item in
-                            ZStack {
-                                HStack {
-                                    Text(item.name ?? "No Name")
-                                        .font(.headline)
-                                        .foregroundColor(Color.theme.accent)
-                                    Spacer()
-                                    Text("\(item.price.asCurrencyWith2Decimals())")
-                                        .font(.headline)
-                                        .foregroundColor(Color.theme.accent)
-                                }
-
-                                NavigationLink {
-                                    EditingView(itemName: (item.name ?? item.id?.uuidString) ?? "You need to repair this Item.", itemPrice: String("\(item.price)"), item: item)
-                                } label: {
-                                    EmptyView()
-                                }
-                                .opacity(0)
-                            }
-                            .listRowBackground(Color.clear)
-                        }
-                        .onDelete(perform: vm.deletePost)
-                        
-                    } header: {
-                        VStack(alignment: .leading) {
-                            Text("\(DateFormatter.displayDate.string(from: section.date ))")
-                                .font(.title3)
-                                .fontWeight(.bold)
-                                .frame(maxWidth: vm.dataDisplayStyle ? .infinity : nil)
-                                .padding(.vertical, 3)
-                                .padding(.horizontal, 40)
-                                .background(vm.getAccentColor().opacity(0.5))
-                                .cornerRadius(10)
-                            HStack {
-                                Text("Item:")
-                                    .font(.caption)
-                                    .foregroundColor(Color.theme.accent)
-                                Spacer()
-                                Text("Price:")
-                                    .font(.caption)
-                                    .foregroundColor(Color.theme.accent)
-                            }
-                        }
-                    }
-                }
-                /*
-//                ForEach(vm.sortedArray) { entity in
-//                    Section {
-                        ZStack {
-                            HStack {
-                                Text(entity.name ?? "No Name")
-                                    .font(.headline)
-                                    .foregroundColor(Color.theme.accent)
-                                Spacer()
-                                Text("\(entity.price.asCurrencyWith2Decimals())")
-                                    .font(.headline)
-                                    .foregroundColor(Color.theme.accent)
-                            }
-
-                            NavigationLink {
-                                EditingView(itemName: entity.name ?? "", itemPrice: String("\(entity.price)"), item: entity)
+                            NavigationLink(isActive: $showItemEditing) {
+                                EditingView(itemName: (item.name ?? item.id?.uuidString) ?? "You need to repair this Item.", itemPrice: String("\(item.price)"), item: item)
                             } label: {
                                 EmptyView()
                             }
-                            .opacity(0)
+                            
+                            VStack {
+                                HStack {
+                                    Text(item.name ?? "No Name")
+                                        .font(.title2)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(Color.theme.accent)
+                                    Spacer()
+                                    Text("\(item.price.asCurrencyWith2Decimals())")
+                                        .font(.title2)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(Color.theme.accent)
+                                }
+                                .frame(height: 40)
+                                .background(Color.theme.reversed.opacity(0.0001))
+                                .contextMenu {
+                                    Button(role: .destructive) {
+                                        vm.coreDataManager.deleteItem(item: item)
+                                        vm.reloadItems()
+                                        vm.reloadGoals()
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
+                                    }
+                                    
+                                    Button {
+                                        showItemEditing.toggle()
+                                    } label: {
+                                        Text("Edit")
+                                    }
+
+                                }
+
+                                Divider()
+                            }
                         }
-                        .listRowBackground(Color.clear)
-//
-//                    } header: {
-                        Text("\(DateFormatter.displayDate.string(from: entity.date ?? Date()))")
+                    }
+                } header: {
+                    VStack(alignment: .leading) {
+                        Text("\(DateFormatter.displayDate.string(from: section.date ))")
                             .font(.title3)
                             .fontWeight(.bold)
-                            .padding(3)
+                            .frame(maxWidth: vm.dataDisplayStyle ? .infinity : nil)
+                            .padding(.vertical, 3)
+                            .padding(.horizontal, 40)
                             .background(vm.getAccentColor().opacity(0.5))
                             .cornerRadius(10)
-//                    }
-//                }
-//                .onDelete(perform: vm.deletePost)
-                 */
+                        HStack {
+                            Text("Item:")
+                                .font(.caption)
+                                .foregroundColor(Color.theme.accent)
+                            Spacer()
+                            Text("Price:")
+                                .font(.caption)
+                                .foregroundColor(Color.theme.accent)
+                        }
+                    }
+                }
             }
-            .foregroundColor(Color.theme.accent)
-            .navigationBarHidden(true)
-            .listStyle(.plain)
+            Spacer()
+        }
+        .foregroundColor(Color.theme.accent)
+        .navigationBarHidden(true)
+        .padding()
+    }
+    
+    private var filteredList: some View {
+        VStack {
+            ForEach(vm.mappedFilteredArray) { section in
+                Section {
+                    VStack(spacing: 0) {
+                        ForEach(section.items) { item in
+                            NavigationLink(isActive: $showItemEditing) {
+                                EditingView(itemName: (item.name ?? item.id?.uuidString) ?? "You need to repair this Item.", itemPrice: String("\(item.price)"), item: item)
+                            } label: {
+                                EmptyView()
+                            }
+                            
+                            VStack {
+                                HStack {
+                                    Text(item.name ?? "No Name")
+                                        .font(.title2)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(Color.theme.accent)
+                                    Spacer()
+                                    Text("\(item.price.asCurrencyWith2Decimals())")
+                                        .font(.title2)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(Color.theme.accent)
+                                }
+                                .frame(height: 40)
+                                .background(Color.theme.reversed.opacity(0.0001))
+                                .contextMenu {
+                                    Button(role: .destructive) {
+                                        vm.coreDataManager.deleteItem(item: item)
+                                        vm.reloadItems()
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
+                                    }
+                                    
+                                    Button {
+                                        showItemEditing.toggle()
+                                    } label: {
+                                        Text("Edit")
+                                    }
+
+                                }
+
+                                Divider()
+                            }
+                        }
+                    }
+                } header: {
+                    VStack(alignment: .leading) {
+                        Text("\(DateFormatter.displayDate.string(from: section.date ))")
+                            .font(.title3)
+                            .fontWeight(.bold)
+                            .frame(maxWidth: vm.dataDisplayStyle ? .infinity : nil)
+                            .padding(.vertical, 3)
+                            .padding(.horizontal, 40)
+                            .background(vm.getAccentColor().opacity(0.5))
+                            .cornerRadius(10)
+                        HStack {
+                            Text("Item:")
+                                .font(.caption)
+                                .foregroundColor(Color.theme.accent)
+                            Spacer()
+                            Text("Price:")
+                                .font(.caption)
+                                .foregroundColor(Color.theme.accent)
+                        }
+                    }
+                }
+            }
+            Spacer()
         }
     }
 }

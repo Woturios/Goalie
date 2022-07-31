@@ -12,145 +12,54 @@ struct GoalDetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject private var vm: HomeViewModel
     let goal: PiggyEntity
+    @State private var showEditingView: Bool = false
+    @State private var showItemEditing = false
     
     
     var body: some View {
-        VStack {
+        ZStack(alignment: .top) {
             ScrollView(showsIndicators: false) {
-                HStack {
-                    NavigationBackView()
-                        .onTapGesture {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }
-                    
-                    HStack {
-                        Button {
-                            
-                        } label: {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .frame(height: 40)
-                                    .foregroundColor(Color.yellow.opacity(0.3))
-                                
-                                HStack {
-                                    Image(systemName: "pin")
-                                    Text("pin")
-                                }
-                                .foregroundColor(Color.black)
-                            }
-                            .frame(width: 100)
-                        }
-                        .withPressableStyle()
-                        
-                        
-                        Button {
-                            vm.deleteGoal(item: goal)
-                            self.presentationMode.wrappedValue.dismiss()
-                        } label: {
-                            ZStack {
-                                Circle()
-                                    .frame(width: 40)
-                                    .foregroundColor(Color.red.opacity(0.3))
-                                
-                                Image(systemName: "trash")
-                                    .foregroundColor(Color.red)
-                                    .font(.headline)
-                            }
-                            .withPressableStyle()
-                        }
-                    }
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    //                .padding(.top, 25)
-                }
-                .frame(maxHeight: 75)
-                
-                HStack {
-                    ZStack {
-                        Circle()
-                            .frame(width: 100, height: 100)
-                            .foregroundColor(vm.getAccentColor().opacity(0.2))
-                        
-                        Text(goal.emoji ?? "🤨")
-                            .font(.system(size: 60))
+                ZStack {
+                    VStack {
+                        Color.green
+                            .frame(height: 300)
+
+                        Spacer()
                     }
                     
                     VStack {
-                        
-                        Spacer()
-                        
+//                        goalProfile
                         Text(goal.name ?? "no name")
                             .font(.largeTitle)
+                            .foregroundColor(Color.white)
                             .fontWeight(.semibold)
                             .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.top, 260)
+                        goalStatistics
+                        mappedList
                     }
+                    .padding(.horizontal)
+
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .frame(height: 100)
-                .padding(.horizontal)
-                
-                VStack(spacing: 3) {
-                    HStack {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 25)
-                                .frame(height: 50)
-                                .foregroundColor(Color.blue.opacity(0.5))
-                            
-                            Text(String(vm.filteredArray.sum(\.price).asCurrencyWith2Decimals()))
-                                .font(.headline)
-                        }
-                        ZStack {
-                            Circle()
-                                .frame(width: 50)
-                                .foregroundColor(Color.red.opacity(0.5))
-                            
-                            Text(String(vm.goalPercentage.asPercentage()))
-                                .font(.headline)
-                        }
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 25)
-                                .frame(height: 50)
-                                .foregroundColor(Color.green.opacity(0.5))
-                            
-                            Text(String(goal.goal.asCurrencyWith2Decimals()))
-                                .font(.headline)
-                        }
-                    }
-                    ProgressBar(value: $vm.goalPercentage)
-                        .frame(height: 10)
-                }
-                .frame(height: 80)
-                .padding(.horizontal)
-                
-                
-                mappedList
-                
             }
-            //            List {
-            //                ForEach(vm.filteredArray) { item in
-            //                    HStack {
-            //                        Text(item.name ?? "no name")
-            //                        Spacer()
-            //                        Text("\(item.price.asCurrencyWith2Decimals())")
-            //
-            //                    }
-            //                    .font(.headline)
-            //                    .foregroundColor(Color.theme.accent)
-            //                    .listRowBackground(Color.clear)
-            //                }
-            //                .onDelete(perform: vm.deleteFiltered)
-            //            }
-            //            .listStyle(.plain)
+            .ignoresSafeArea(edges: .top)
+            
+            navigationBar
+                .padding(.horizontal)
+            
+            NavigationLink(isActive: $showEditingView) {
+                GoalEditingView(piggy: goal, goalName: goal.name ?? "no name", goalPrice: String("\(goal.goal)"))
+            } label: {
+                EmptyView()
+            }
+
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
-        .padding(.horizontal)
         .onAppear {
-            //            vm.filterArray(goal: goal)
             vm.mapFilteredItems(goal: goal)
             vm.updateBilance(goal: goal.goal)
         }
-        
-        
     }
 }
 
@@ -162,48 +71,186 @@ struct GoalDetailView: View {
 //}
 
 extension GoalDetailView {
+    
+    private var goalStatistics: some View {
+        VStack(spacing: 3) {
+            HStack {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 25)
+                        .frame(height: 50)
+                        .foregroundColor(Color.blue.opacity(0.5))
+                    
+                    Text(String(vm.filteredArray.sum(\.price).asCurrencyWith2Decimals()))
+                        .font(.headline)
+                }
+                ZStack {
+                    Circle()
+                        .frame(width: 50)
+                        .foregroundColor(Color.red.opacity(0.5))
+                    
+                    Text(String(vm.goalPercentage.asPercentage()))
+                        .font(.headline)
+                }
+                ZStack {
+                    RoundedRectangle(cornerRadius: 25)
+                        .frame(height: 50)
+                        .foregroundColor(Color.green.opacity(0.5))
+                    
+                    Text(String(goal.goal.asCurrencyWith2Decimals()))
+                        .font(.headline)
+                }
+            }
+            ProgressBar(value: $vm.goalPercentage)
+                .frame(height: 10)
+        }
+        .frame(height: 80)
+//        .padding(.horizontal)
+        
+    }
+    
+    private var goalProfile: some View {
+        HStack {
+            ZStack {
+                Circle()
+                    .frame(width: 100, height: 100)
+                    .foregroundColor(vm.getAccentColor())
+                
+                Text(goal.emoji ?? "🤨")
+                    .font(.system(size: 60))
+            }
+            
+            VStack {
+                
+                Spacer()
+                
+                Text(goal.name ?? "no name")
+                    .font(.largeTitle)
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(height: 100)
+        .padding(.horizontal)
+        
+    }
+    
+    private var navigationBar: some View {
+        HStack {
+            NavigationBackView()
+                .onTapGesture {
+                    self.presentationMode.wrappedValue.dismiss()
+                }
+            
+            HStack {
+                Button {
+                    
+                } label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .frame(height: 40)
+                            .foregroundColor(Color.yellow)
+                        
+                        HStack {
+                            Image(systemName: "pin")
+                            Text("pin")
+                        }
+                        .foregroundColor(Color.black)
+                    }
+                    .frame(width: 100)
+                }
+                .withPressableStyle()
+                
+                
+                Menu {
+                    Button(role: .destructive) {
+                        vm.deleteGoal(item: goal)
+                        self.presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Label {
+                            Text("Delete")
+                        } icon: {
+                            Image(systemName: "trash")
+                        }
+                    }
+                    
+                    Button {
+                        showEditingView = true
+                    } label: {
+                        Label {
+                            Text("Edit Goal")
+                        } icon: {
+                            Image(systemName: "slider.horizontal.3")
+                        }
+
+                    }
+                    
+                } label: {
+                    ZStack {
+                        Circle()
+                            .frame(width: 40)
+                            .foregroundColor(Color.red)
+                        
+                        Image(systemName: "ellipsis")
+                            .foregroundColor(Color.theme.accent)
+                            .font(.headline)
+                    }
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .trailing)
+        }
+        .frame(maxHeight: 75)
+        
+    }
+    
+    
     private var mappedList: some View {
         VStack {
             ForEach(vm.mappedFilteredArray) { section in
                 Section {
                     VStack(spacing: 0) {
                         ForEach(section.items) { item in
-                            NavigationLink {
+                            NavigationLink(isActive: $showItemEditing) {
                                 EditingView(itemName: (item.name ?? item.id?.uuidString) ?? "You need to repair this Item.", itemPrice: String("\(item.price)"), item: item)
                             } label: {
-                                VStack {
-                                    HStack {
-                                        Text(item.name ?? "No Name")
-                                            .font(.title2)
-                                            .fontWeight(.semibold)
-                                            .foregroundColor(Color.theme.accent)
-                                        Spacer()
-                                        Text("\(item.price.asCurrencyWith2Decimals())")
-                                            .font(.title2)
-                                            .fontWeight(.semibold)
-                                            .foregroundColor(Color.theme.accent)
+                                EmptyView()
+                            }
+                            
+                            VStack {
+                                HStack {
+                                    Text(item.name ?? "No Name")
+                                        .font(.title2)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(Color.theme.accent)
+                                    Spacer()
+                                    Text("\(item.price.asCurrencyWith2Decimals())")
+                                        .font(.title2)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(Color.theme.accent)
+                                }
+                                .frame(height: 40)
+                                .background(Color.theme.reversed.opacity(0.0001))
+                                .contextMenu {
+                                    Button(role: .destructive) {
+                                        vm.coreDataManager.deleteItem(item: item)
+                                        vm.reloadItems()
+                                        vm.mapFilteredItems(goal: goal)
+                                        vm.updateBilance(goal: goal.goal)
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
                                     }
-                                    .frame(height: 40)
-                                    Divider()
-                                }
-                            }
-                            .contextMenu {
-                                Button(role: .destructive) {
-                                    vm.coreDataManager.deleteItem(item: item)
-                                    vm.reloadItems()
-                                    vm.mapFilteredItems(goal: goal)
-                                    vm.updateBilance(goal: goal.goal)
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
+                                    
+                                    Button {
+                                        showItemEditing.toggle()
+                                    } label: {
+                                        Text("Edit")
+                                    }
+
                                 }
 
-                                Text("Edit")
+                                Divider()
                             }
-                            //                        .listRowBackground(Color.clear)
                         }
-    //                    .onDelete(perform: vm.deletePost)
-                        
-
                     }
                 } header: {
                     VStack(alignment: .leading) {
@@ -229,6 +276,5 @@ extension GoalDetailView {
             }
         }
         .foregroundColor(Color.theme.accent)
-        .listStyle(.plain)
     }
 }

@@ -24,7 +24,6 @@ struct GoalsView: View {
                             GoalDetailView(goal: goal)
                         } label: {
                             SingleGoalView(emoji: goal.emoji ?? "", goalTitle: goal.name ?? "NO name", currentProgress: 0, progressPercentage: Double(0 / goal.goal), goalSet: goal.goal, barProgress: $vm.goalPercentage)
-
                         }
                         .foregroundColor(Color.theme.accent)
                     }
@@ -74,9 +73,6 @@ struct SingleGoalView: View {
     
     var body: some View {
         ZStack {
-//            RoundedRectangle(cornerRadius: 10)
-//                .fill(.thinMaterial)
-            
             VStack(alignment: .leading, spacing: 5) {
                 HStack {
                     Text(emoji)

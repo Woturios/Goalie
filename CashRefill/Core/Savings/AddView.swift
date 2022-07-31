@@ -13,8 +13,6 @@ struct AddView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject private var vm: HomeViewModel
     
-    //    @State var selectedPiggy: PiggyEntity
-    
     // MARK: BODY
     var body: some View {
         ZStack {
@@ -152,7 +150,6 @@ struct editGoalView: View {
                     .frame(maxWidth: .infinity)
                     .withDefaultTextFieldFormatting()
                     .onTapGesture {
-                        //                        vm.goalID
                         item.piggyID = goal.id
                         vm.selectedGoal = goal.name
                     }

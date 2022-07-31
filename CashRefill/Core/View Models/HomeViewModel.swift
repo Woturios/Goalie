@@ -182,6 +182,10 @@ class HomeViewModel: ObservableObject {
         reloadGoals()
     }
     
+    func updateGoal() {
+        coreDataManager.updateGoal()
+    }
+    
     func addNewGoal(goal: Double, name: String) {
         saveGoal(goal: goal, name: name, emoji: currentEmoji, id: UUID())
         UIApplication.shared.endEdditing()

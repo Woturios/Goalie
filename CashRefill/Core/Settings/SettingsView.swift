@@ -19,58 +19,16 @@ struct SettingsView: View {
             VStack(alignment: .leading, spacing: 10) {
                 
                 ScrollView(showsIndicators: false) {
-                    donateView
-                    
-                    Text("Settings")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    
+                    title
                     VStack(alignment: .leading, spacing: 10) {
                         selectThemeView
                         changeSectionDisplayStyle
-                        
-                        HStack {
-                            Text("Light")
-                                .frame(minWidth: 0, maxWidth: .infinity)
-                                .frame(height: 55)
-                                .background(vm.getAccentColor().opacity(vm.preferedColorMode == 0 ? 1 : 0))
-                                .cornerRadius(10)
-                                .onTapGesture {
-                                    withAnimation(.easeInOut) {
-                                        vm.preferedColorMode = 0
-                                    }
-                                }
-                            Text("Dark")
-                                .frame(minWidth: 0, maxWidth: .infinity)
-                                .frame(height: 55)
-                                .background(vm.getAccentColor().opacity(vm.preferedColorMode == 1 ? 1 : 0))
-                                .cornerRadius(10)
-                                .onTapGesture {
-                                    withAnimation(.easeInOut) {
-                                        vm.preferedColorMode = 1
-                                    }
-                                }
-                            
-                            Text("System")
-                                .frame(minWidth: 0, maxWidth: .infinity)
-                                .frame(height: 55)
-                                .background(vm.getAccentColor().opacity(vm.preferedColorMode == 2 ? 1 : 0))
-                                .cornerRadius(10)
-                                .onTapGesture {
-                                    withAnimation(.easeInOut) {
-                                        vm.preferedColorMode = 2
-                                    }
-                                }
-                        }
-                        .frame(maxWidth:.infinity)
-                        .frame(height: 55)
-                        .withDefaultButtonFormatting(backgroundColor: Color.theme.reversed, foregroundColor: Color.primary)
-                        
+                        selectColorMode
                         changeCurrencyButtonView
                         changeLanguageButtonView
                         Spacer()
                     }
+                    donateView
                 }
             }
             .padding()
@@ -95,6 +53,54 @@ struct SettingsView_Previews: PreviewProvider {
 }
 
 extension SettingsView {
+    private var title: some View {
+        Text("Settings")
+            .font(.title)
+            .fontWeight(.bold)
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    private var selectColorMode: some View {
+        HStack {
+            Text("Light")
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .frame(height: 55)
+                .background(vm.getAccentColor().opacity(vm.preferedColorMode == 0 ? 1 : 0))
+                .cornerRadius(10)
+                .onTapGesture {
+                    withAnimation(.easeInOut) {
+                        vm.preferedColorMode = 0
+                    }
+                }
+            Text("Dark")
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .frame(height: 55)
+                .background(vm.getAccentColor().opacity(vm.preferedColorMode == 1 ? 1 : 0))
+                .cornerRadius(10)
+                .onTapGesture {
+                    withAnimation(.easeInOut) {
+                        vm.preferedColorMode = 1
+                    }
+                }
+            
+            Text("System")
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .frame(height: 55)
+                .background(vm.getAccentColor().opacity(vm.preferedColorMode == 2 ? 1 : 0))
+                .cornerRadius(10)
+                .onTapGesture {
+                    withAnimation(.easeInOut) {
+                        vm.preferedColorMode = 2
+                    }
+                }
+        }
+        .frame(maxWidth:.infinity)
+        .frame(height: 55)
+        .withDefaultButtonFormatting(backgroundColor: Color.theme.reversed, foregroundColor: Color.primary)
+    }
+}
+
+extension SettingsView {
     
     private var changeSectionDisplayStyle: some View {
         VStack(alignment: .leading) {
@@ -114,28 +120,31 @@ extension SettingsView {
         NavigationLink {
             DonateView()
         } label: {
-            HStack {
-                VStack() {
-                    Text("Help us to improve Goalie!")
-                        .font(.title3)
-                        .fontWeight(.bold)
+            ZStack {
+                RoundedRectangle(cornerRadius: 50)
+                    .foregroundColor(vm.getAccentColor().opacity(0.8))
+                
+                HStack {
+                    VStack() {
+                        Text("Help us to improve Goalie!")
+                            .font(.title3)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.theme.accent.opacity(0.8))
+                        Text("Donate to us!")
+                            .font(.headline)
+                            .foregroundColor(Color.theme.accent.opacity(0.6))
+                    }
+                    .minimumScaleFactor(0.4)
+                    
+                    Image(systemName: "hand.tap")
+                        .font(.custom("tap", size: 40))
                         .foregroundColor(Color.theme.accent.opacity(0.8))
-                    Text("Donate to us in Cryptocurrency!")
-                        .font(.headline)
-                        .foregroundColor(Color.theme.accent.opacity(0.6))
+                    
                 }
-                .minimumScaleFactor(0.4)
-                
-                Image(systemName: "hand.tap")
-                    .font(.custom("tap", size: 40))
-                    .foregroundColor(Color.theme.accent.opacity(0.8))
-                
             }
             .padding()
             .frame(maxWidth: .infinity)
             .frame(height: 130)
-            .background(Color.yellow.opacity(0.2))
-            .border(Color.yellow.opacity(0.6), width: 5)
             .cornerRadius(10)
         }
         
