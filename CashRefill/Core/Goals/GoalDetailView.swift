@@ -213,42 +213,40 @@ extension GoalDetailView {
                             NavigationLink(isActive: $showItemEditing) {
                                 EditingView(itemName: (item.name ?? item.id?.uuidString) ?? "You need to repair this Item.", itemPrice: String("\(item.price)"), item: item)
                             } label: {
-                                EmptyView()
+                                VStack {
+                                    HStack {
+                                        Text(item.name ?? "No Name")
+                                            .font(.title2)
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(Color.theme.accent)
+                                        Spacer()
+                                        Text("\(item.price.asCurrencyWith2Decimals())")
+                                            .font(.title2)
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(Color.theme.accent)
+                                    }
+                                    .frame(height: 40)
+                                    Divider()
+                                }
                             }
                             
-                            VStack {
-                                HStack {
-                                    Text(item.name ?? "No Name")
-                                        .font(.title2)
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(Color.theme.accent)
-                                    Spacer()
-                                    Text("\(item.price.asCurrencyWith2Decimals())")
-                                        .font(.title2)
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(Color.theme.accent)
+                            
+                            .contextMenu {
+                                Button(role: .destructive) {
+                                    vm.coreDataManager.deleteItem(item: item)
+                                    vm.reloadItems()
+                                    vm.mapFilteredItems(goal: goal)
+                                    vm.updateBilance(goal: goal.goal)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
                                 }
-                                .frame(height: 40)
-                                .background(Color.theme.reversed.opacity(0.0001))
-                                .contextMenu {
-                                    Button(role: .destructive) {
-                                        vm.coreDataManager.deleteItem(item: item)
-                                        vm.reloadItems()
-                                        vm.mapFilteredItems(goal: goal)
-                                        vm.updateBilance(goal: goal.goal)
-                                    } label: {
-                                        Label("Delete", systemImage: "trash")
-                                    }
-                                    
-                                    Button {
-                                        showItemEditing.toggle()
-                                    } label: {
-                                        Text("Edit")
-                                    }
-
+                                
+                                Button {
+                                    showItemEditing.toggle()
+                                } label: {
+                                    Text("Edit")
                                 }
 
-                                Divider()
                             }
                         }
                     }
