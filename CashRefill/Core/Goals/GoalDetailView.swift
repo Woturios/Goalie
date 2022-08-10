@@ -11,7 +11,7 @@ struct GoalDetailView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject private var vm: HomeViewModel
-    let goal: PiggyEntity
+    @Binding var goal: PiggyEntity
     @State private var showEditingView: Bool = false
     @State private var showItemEditing = false
     
@@ -28,13 +28,14 @@ struct GoalDetailView: View {
                     }
                     
                     VStack {
-//                        goalProfile
                         Text(goal.name ?? "no name")
                             .font(.largeTitle)
                             .foregroundColor(Color.white)
                             .fontWeight(.semibold)
                             .frame(maxWidth: .infinity, alignment: .leading)
+                            .frame(height: 40)
                             .padding(.top, 260)
+                            .minimumScaleFactor(0.1)
                         goalStatistics
                         mappedList
                     }
@@ -56,10 +57,6 @@ struct GoalDetailView: View {
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
-        .onAppear {
-            vm.mapFilteredItems(goal: goal)
-            vm.updateBilance(goal: goal.goal)
-        }
     }
 }
 
@@ -104,8 +101,10 @@ extension GoalDetailView {
                 .frame(height: 10)
         }
         .frame(height: 80)
-//        .padding(.horizontal)
-        
+        .onAppear {
+            vm.goalID = goal.id
+            vm.mapFilteredItems()
+        }
     }
     
     private var goalProfile: some View {
@@ -211,42 +210,37 @@ extension GoalDetailView {
                     VStack(spacing: 0) {
                         ForEach(section.items) { item in
                             NavigationLink(isActive: $showItemEditing) {
-                                EditingView(itemName: (item.name ?? item.id?.uuidString) ?? "You need to repair this Item.", itemPrice: String("\(item.price)"), item: item)
+                                EditingView(itemName: (item.name ?? item.id?.uuidString) ?? "You need to repair this Item.", itemPrice: String("\(item.price)"), item: self.$vm.savedEntities[self.vm.savedEntities.firstIndex(of: item)!])
                             } label: {
-                                VStack {
-                                    HStack {
-                                        Text(item.name ?? "No Name")
-                                            .font(.title2)
-                                            .fontWeight(.semibold)
-                                            .foregroundColor(Color.theme.accent)
-                                        Spacer()
-                                        Text("\(item.price.asCurrencyWith2Decimals())")
-                                            .font(.title2)
-                                            .fontWeight(.semibold)
-                                            .foregroundColor(Color.theme.accent)
-                                    }
-                                    .frame(height: 40)
-                                    Divider()
-                                }
+                                EmptyView()
                             }
                             
-                            
+                            VStack {
+                                HStack {
+                                    Text(item.piggyID?.uuidString ?? "No Name")
+                                        .font(.title2)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(Color.theme.accent)
+                                        .multilineTextAlignment(.leading)
+                                    Spacer()
+                                    Text("\(item.price.asCurrencyWith2Decimals())")
+                                        .font(.title2)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(Color.theme.accent)
+                                }
+                                .frame(height: 40)
+                                .padding(.top, 8)
+                                Divider()
+                            }
                             .contextMenu {
                                 Button(role: .destructive) {
                                     vm.coreDataManager.deleteItem(item: item)
                                     vm.reloadItems()
-                                    vm.mapFilteredItems(goal: goal)
+                                    vm.mapFilteredItems()
                                     vm.updateBilance(goal: goal.goal)
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
-                                
-                                Button {
-                                    showItemEditing.toggle()
-                                } label: {
-                                    Text("Edit")
-                                }
-
                             }
                         }
                     }

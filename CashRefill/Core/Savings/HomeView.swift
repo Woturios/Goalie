@@ -34,6 +34,7 @@ struct HomeView: View {
                             .padding(.horizontal)
                     }
                 }
+                Spacer()
             }
             .navigationBarHidden(true)
         }
@@ -84,7 +85,7 @@ extension HomeView {
                             .minimumScaleFactor(0.5)
                             .onTapGesture {
                                 selectedGoal = goal.name ?? ""
-                                vm.mapFilteredItems(goal: goal)
+                                
                             }
                     }
                 }
@@ -122,7 +123,7 @@ extension HomeView {
                     VStack(spacing: 0) {
                         ForEach(section.items) { item in
                             NavigationLink(isActive: $showItemEditing) {
-                                EditingView(itemName: (item.name ?? item.id?.uuidString) ?? "You need to repair this Item.", itemPrice: String("\(item.price)"), item: item)
+                                EditingView(itemName: (item.name ?? item.id?.uuidString) ?? "You need to repair this Item.", itemPrice: String("\(item.price)"), item: self.$vm.savedEntities[self.vm.savedEntities.firstIndex(of: item)!])
                             } label: {
                                 EmptyView()
                             }
@@ -150,11 +151,11 @@ extension HomeView {
                                         Label("Delete", systemImage: "trash")
                                     }
                                     
-                                    Button {
-                                        showItemEditing.toggle()
-                                    } label: {
-                                        Text("Edit")
-                                    }
+//                                    Button {
+//                                        showItemEditing.toggle()
+//                                    } label: {
+//                                        Text("Edit")
+//                                    }
 
                                 }
 
@@ -184,7 +185,6 @@ extension HomeView {
                     }
                 }
             }
-            Spacer()
         }
         .foregroundColor(Color.theme.accent)
         .navigationBarHidden(true)
@@ -198,7 +198,7 @@ extension HomeView {
                     VStack(spacing: 0) {
                         ForEach(section.items) { item in
                             NavigationLink(isActive: $showItemEditing) {
-                                EditingView(itemName: (item.name ?? item.id?.uuidString) ?? "You need to repair this Item.", itemPrice: String("\(item.price)"), item: item)
+                                EditingView(itemName: (item.name ?? item.id?.uuidString) ?? "You need to repair this Item.", itemPrice: String("\(item.price)"), item: self.$vm.savedEntities[self.vm.savedEntities.firstIndex(of: item)!])
                             } label: {
                                 EmptyView()
                             }

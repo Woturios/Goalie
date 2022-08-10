@@ -9,6 +9,7 @@ import Foundation
 
 struct Month: Identifiable {
     let id = UUID()
+    let piggyID: UUID
     let title: String
     let items: [PostEntity]
     let price: Double

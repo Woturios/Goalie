@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5C08E94A2837D9EC001F6941 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C08E9492837D9EC001F6941 /* Color.swift */; };
 		5C08E94C2837E9B1001F6941 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C08E94B2837E9B1001F6941 /* Sequence.swift */; };
-		5C272F332837A2C00003E729 /* SetGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C272F322837A2C00003E729 /* SetGoalView.swift */; };
 		5C2E8D1E2836CAA100E5365D /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E8D1D2836CAA100E5365D /* CircleButton.swift */; };
 		5C3AF867283D678D00100C48 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3AF866283D678D00100C48 /* CoreDataManager.swift */; };
 		5C7C9888283C3008004C305E /* AddEditFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7C9887283C3008004C305E /* AddEditFormView.swift */; };
@@ -53,7 +52,6 @@
 /* Begin PBXFileReference section */
 		5C08E9492837D9EC001F6941 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		5C08E94B2837E9B1001F6941 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
-		5C272F322837A2C00003E729 /* SetGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalView.swift; sourceTree = "<group>"; };
 		5C2E8D1D2836CAA100E5365D /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		5C3AF866283D678D00100C48 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5C7C9887283C3008004C305E /* AddEditFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditFormView.swift; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				5C7C9887283C3008004C305E /* AddEditFormView.swift */,
-				5C272F322837A2C00003E729 /* SetGoalView.swift */,
 				5C2E8D1D2836CAA100E5365D /* CircleButton.swift */,
 				5C8EB75C2836986D007D2237 /* AccountView.swift */,
 				8350D5612840368100C6C385 /* NavigationBackView.swift */,
@@ -361,7 +358,6 @@
 				832FAA0D28814CEE00FE0E3D /* NewGoalView.swift in Sources */,
 				8338B2C2288DA7FF00D1EC77 /* GoalDetailView.swift in Sources */,
 				832FAA0B28807B2E00FE0E3D /* progressBarView.swift in Sources */,
-				5C272F332837A2C00003E729 /* SetGoalView.swift in Sources */,
 				5C8EB7612836A851007D2237 /* AddView.swift in Sources */,
 				8381B578286B39EE00A6FE9C /* SettingsView.swift in Sources */,
 				832FAA09288020DC00FE0E3D /* GoalsView.swift in Sources */,

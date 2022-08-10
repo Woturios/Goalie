@@ -63,36 +63,36 @@ extension AccountView {
             
             HStack(spacing: 20) {
 //                 PROGRESSIVE EMOTICON SHOWING PROGRESS IN %
-                if vm.goal != 0 {
-                    VStack(spacing: 1) {
-                        ForEach(1..<11) { index in
-                            Rectangle()
-                                .frame(width: 55, height: 5)
-                                .foregroundColor(Double(11 - index) > (Double(vm.goalPercentage / 10) + 0.05) ? Color.theme.thirdTabContent.opacity(0.1) : Color.theme.thirdTabContent)
-                        }
-                    }
-                } else {
-                    Text("🥹")
-                        .font(.system(size: 55))
-                }
+//                if vm.goal != 0 {
+//                    VStack(spacing: 1) {
+//                        ForEach(1..<11) { index in
+//                            Rectangle()
+//                                .frame(width: 55, height: 5)
+//                                .foregroundColor(Double(11 - index) > (Double(vm.goalPercentage / 10) + 0.05) ? Color.theme.thirdTabContent.opacity(0.1) : Color.theme.thirdTabContent)
+//                        }
+//                    }
+//                } else {
+//                    Text("🥹")
+//                        .font(.system(size: 55))
+//                }
                 VStack(alignment: .leading) {
                     HStack {
                         Text("Progress")
                             .font(.headline)
                             .foregroundColor(Color.theme.thirdTabContent)
                     }
-                    if vm.goal != 0 {
-                        Text("\(vm.goalPercentage.asPercentage())")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.theme.thirdTabContent)
-                    } else {
-                        Text("Add your goal!")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.theme.thirdTabContent)
-                            .minimumScaleFactor(0.5)
-                    }
+//                    if vm.goal != 0 {
+//                        Text("\(vm.goalPercentage.asPercentage())")
+//                            .font(.largeTitle)
+//                            .fontWeight(.bold)
+//                            .foregroundColor(Color.theme.thirdTabContent)
+//                    } else {
+//                        Text("Add your goal!")
+//                            .font(.largeTitle)
+//                            .fontWeight(.bold)
+//                            .foregroundColor(Color.theme.thirdTabContent)
+//                            .minimumScaleFactor(0.5)
+//                    }
                 }
             }
             .minimumScaleFactor(0.5)
@@ -149,18 +149,18 @@ extension AccountView {
                             .font(.headline)
                             .foregroundColor(Color.theme.secondTabContent)
                     }
-                    if vm.goal != 0 {
-                        Text("\(vm.goal.asCurrencyWith0Decimals())")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.theme.secondTabContent)
-                    } else {
-                        Text("Add your goal!")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.theme.secondTabContent)
-                            .minimumScaleFactor(0.5)
-                    }
+//                    if vm.goal != 0 {
+//                        Text("\(vm.goal.asCurrencyWith0Decimals())")
+//                            .font(.largeTitle)
+//                            .fontWeight(.bold)
+//                            .foregroundColor(Color.theme.secondTabContent)
+//                    } else {
+//                        Text("Add your goal!")
+//                            .font(.largeTitle)
+//                            .fontWeight(.bold)
+//                            .foregroundColor(Color.theme.secondTabContent)
+//                            .minimumScaleFactor(0.5)
+//                    }
                     
                 }
             }

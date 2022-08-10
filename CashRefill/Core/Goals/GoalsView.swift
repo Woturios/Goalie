@@ -21,7 +21,7 @@ struct GoalsView: View {
         
                     ForEach(vm.goalsArray) { goal in
                         NavigationLink {
-                            GoalDetailView(goal: goal)
+                            GoalDetailView(goal: self.$vm.goalsArray[self.vm.goalsArray.firstIndex(of: goal)!])
                         } label: {
                             SingleGoalView(emoji: goal.emoji ?? "", goalTitle: goal.name ?? "NO name", currentProgress: 0, progressPercentage: Double(0 / goal.goal), goalSet: goal.goal, barProgress: $vm.goalPercentage)
                         }

@@ -14,7 +14,7 @@ struct EditingView: View {
     @EnvironmentObject private var vm: HomeViewModel
     @State var itemName: String
     @State var itemPrice: String
-    let item: PostEntity
+    @Binding var item: PostEntity
     
     // MARK: BODY
     var body: some View {

@@ -18,7 +18,7 @@ class HomeViewModel: ObservableObject {
     @Published var sortedArray: [PostEntity] = []
     @Published var mappedArray: [Month] = []
     @Published var filteredArray: [PostEntity] = []
-    @Published var mappedFilteredArray: [FilteredMonth] = []
+    @Published var mappedFilteredArray: [Month] = []
     
     @Published var goalsArray: [PiggyEntity] = []
         
@@ -32,7 +32,6 @@ class HomeViewModel: ObservableObject {
     @Published var fieldGoalName: String = ""
     
     @Published var portfolioSummary: Double = 0
-    @AppStorage("goal") var goal: Double = 0
     @Published var goalPercentage: Double = 0
     
     @Published var isPresented: Bool = false
@@ -67,7 +66,7 @@ class HomeViewModel: ObservableObject {
         }
         
         self.mappedArray = grouped.map({ month -> Month in
-            Month(title: month.key, items: month.value, price: month.value[0].price, date: month.value[0].date ?? Date())
+            Month(piggyID: month.value[0].piggyID ?? UUID(), title: month.key, items: month.value, price: month.value[0].price, date: month.value[0].date ?? Date())
         }).sorted(by: { $0.date > $1.date })
     }
     
@@ -75,14 +74,14 @@ class HomeViewModel: ObservableObject {
         filteredArray = sortedArray.filter({ $0.piggyID == goal.id })
     }
     
-    func mapFilteredItems(goal: PiggyEntity) {
+    func mapFilteredItems() {
         let groupedFiltered = Dictionary(grouping: sortedArray) { (entity: PostEntity) -> String in
             DateFormatter.displayDate.string(from: entity.date ?? Date())
         }
         
-        self.mappedFilteredArray = groupedFiltered.map({ month -> FilteredMonth in
-            FilteredMonth(piggyID: month.value[0].piggyID ?? UUID(), title: month.key, items: month.value, price: month.value[0].price, date: month.value[0].date ?? Date())
-        }).sorted(by: { $0.date > $1.date }).filter({$0.piggyID == goal.id})
+        self.mappedFilteredArray = groupedFiltered.map({ month -> Month in
+            Month(piggyID: month.value[0].piggyID ?? UUID(), title: month.key, items: month.value, price: month.value[0].price, date: month.value[0].date ?? Date())
+        }).sorted(by: { $0.date > $1.date }).filter({$0.piggyID == goalID})
     }
     
     // Reload items
@@ -130,11 +129,7 @@ class HomeViewModel: ObservableObject {
     func updateGoalPercentage(goal: Double) {
         goalPercentage = (portfolioSummary / goal)
     }
-    
-    func goalAsCurrency() -> String {
-        return goal.asCurrencyWith0Decimals()
-    }
-    
+        
     func addNewItemToList() {
         let fieldPrice = String(textFieldPrice.replacingOccurrences(of: ",", with: "."))
         let currentDate = Date()
